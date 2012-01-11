@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd"
+	>
+	
+<hibernate-mapping package="domain">
+	<class name="Contact" table="Contact">
+		<id name="contactId" type="long" column="ID_CONTACT" >
+			<generator class="increment"/>
+		</id>
+
+		<property name="firstName">
+			<column name="FIRST_NAME" />
+		</property>
+		
+		<property name="lastName">
+			<column name="LAST_NAME" />
+		</property>
+		
+		<property name="email">
+			<column name="EMAIL" />
+		</property>
+
+		<set name="phoneNumbers" inverse="true" cascade="all">
+			<key column="ID_CONTACT"  />
+			<one-to-many class="PhoneNumber"/>
+		</set>
+
+		
+		<set name="contactgroup" table="Participation" inverse="true" cascade="save-update">
+			<!-- Here, if inverse = false, it will cause an error because db is updated twice -->
+			<key column="ID_CONTACT" />
+			<many-to-many class="ContactGroup" column="ID_CONTACT_GROUP"  />
+		</set>
+
+		<!-- address, one to one connection -->
+		<many-to-one name="address" 
+					 class="Address"
+					 column="ID_ADDRESS" 
+					 unique="true" 
+					 cascade="all"/>
+
+		<joined-subclass name="Entreprise" table="Entreprise">
+			<key column="ID_ENTREPRISE"  />
+			<property name="numSiret">
+				<column name="NUM_SIRET" />
+			</property>
+		</joined-subclass>
+	</class>
+</hibernate-mapping>
