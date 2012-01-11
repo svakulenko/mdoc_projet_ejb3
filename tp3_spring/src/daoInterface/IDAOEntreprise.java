@@ -2,15 +2,19 @@ package daoInterface;
 
 
 
-import domain.Entreprise;
+//import domain.Entreprise;
 
 
 public interface IDAOEntreprise 
 {
-	public Entreprise getEntreprise();
-	public void setEntreprise(Entreprise entreprise);
 	
-	public String addEntreprise(Entreprise entreprise);
+	//TODO
+//	public Entreprise getEntreprise();
+//	public void setEntreprise(Entreprise entreprise);
+	//	public String addEntreprise(Entreprise entreprise);
+	
+	
+	
 	public String addEntreprise(	String firstName, 
 			String lastName,
 			String email,

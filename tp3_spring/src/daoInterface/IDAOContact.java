@@ -1,6 +1,7 @@
 package daoInterface;
 
-import domain.Contact;
+//TODO
+//import domain.Contact;
 
 public interface IDAOContact {
 //	public void setContact(Contact contact);
@@ -19,7 +20,7 @@ public interface IDAOContact {
 							 );
 	public String addContact(String firstName,String lastName);
 	// Used by Spring framework
-	public String addContact(Contact contact);
+//	public String addContact(Contact contact);
 	public String updateContact(long id,
 			String firstName, 
 			String lastName,

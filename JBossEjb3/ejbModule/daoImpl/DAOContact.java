@@ -13,8 +13,8 @@ import org.hibernate.cfg.Configuration;
 
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
-import org.springframework.orm.hibernate3.HibernateCallback;
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+//import org.springframework.orm.hibernate3.HibernateCallback;
+//import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import util.*;
 
@@ -24,7 +24,10 @@ import domain.Contact;
 import domain.ContactGroup;
 import domain.PhoneNumber;
 
-public class DAOContact extends HibernateDaoSupport implements IDAOContact {
+public class DAOContact
+//TODO
+//extends HibernateDaoSupport 
+implements IDAOContact {
 
 	Contact contact;
 	String firstName;
@@ -58,23 +61,25 @@ public class DAOContact extends HibernateDaoSupport implements IDAOContact {
 	public String clearTable() {
 		System.out.println("::hClearTable start");
 		String rvalue = null;
-		rvalue = getHibernateTemplate().execute(
-				new HibernateCallback<String>() {
-
-					@Override
-					public String doInHibernate(Session arg0)
-							throws HibernateException, SQLException {
-
-						@SuppressWarnings("unchecked")
-						List<Contact> lst = arg0.createQuery("from Contact")
-								.list();
-						for (Contact c : lst) {
-							arg0.delete(c);
-						}
-
-						return ServerUtils.opTableRemoved;
-					}
-				});
+		
+		//TODO
+//		rvalue = getHibernateTemplate().execute(
+//				new HibernateCallback<String>() {
+//
+//					@Override
+//					public String doInHibernate(Session arg0)
+//							throws HibernateException, SQLException {
+//
+//						@SuppressWarnings("unchecked")
+//						List<Contact> lst = arg0.createQuery("from Contact")
+//								.list();
+//						for (Contact c : lst) {
+//							arg0.delete(c);
+//						}
+//
+//						return ServerUtils.opTableRemoved;
+//					}
+//				});
 
 		return rvalue;
 
@@ -82,8 +87,9 @@ public class DAOContact extends HibernateDaoSupport implements IDAOContact {
 
 	public String addContact(Contact contact) {
 		String rvalue = null;
-		getHibernateTemplate().saveOrUpdate(contact);
-		rvalue = ServerUtils.opFait;
+		//TODO
+//		getHibernateTemplate().saveOrUpdate(contact);
+//		rvalue = ServerUtils.opFait;
 		return rvalue;
 	}
 
@@ -108,7 +114,10 @@ public class DAOContact extends HibernateDaoSupport implements IDAOContact {
 		contact.getPhoneNumbers().add(phone);
 		phone.setContact(contact);
 
-		getHibernateTemplate().save(contact);
+		//TODO
+//		getHibernateTemplate().save(contact);
+		
+		
 		rvalue = ServerUtils.opFait;
 		return rvalue;
 
@@ -135,20 +144,19 @@ public class DAOContact extends HibernateDaoSupport implements IDAOContact {
 		System.out.println("searchContactSimple");
 		String rvalue = null;
 		
-		@SuppressWarnings("unchecked")
-		List<Contact> l = this.getHibernateTemplate().find(
-				"from Contact contact where contact.id = ?", new Long(id));
 		
-		System.out.println("l.size=" + l.size());
+		//TODO
+//		@SuppressWarnings("unchecked")
+//		List<Contact> l = this.getHibernateTemplate().find(
+//				"from Contact contact where contact.id = ?", new Long(id));
+				
+//		System.out.println("l.size=" + l.size());
 
-
-			
-		
-		System.out.println("ret value31");
-		if (l.size() != 0)
-			rvalue = ServerUtils.generateTable(l, "Contact table");
-		else
-			rvalue = ServerUtils.opNoRecods;
+//		System.out.println("ret value31");
+//		if (l.size() != 0)
+//			rvalue = ServerUtils.generateTable(l, "Contact table");
+//		else
+//			rvalue = ServerUtils.opNoRecods;
 
 		System.out.println("ret value");
 		return rvalue;
@@ -181,10 +189,13 @@ public class DAOContact extends HibernateDaoSupport implements IDAOContact {
 				.add(Restrictions.like("a.zip", zip+"%"))
 				.add(Restrictions.like("a.country", country+"%"))
 				;;
-				@SuppressWarnings("unchecked")
-				List<Contact> l =getHibernateTemplate().findByCriteria(dc);
-				for (Contact o : l)
-				getHibernateTemplate().delete(o);
+				
+				
+				//TODO
+//				@SuppressWarnings("unchecked")
+//				List<Contact> l =getHibernateTemplate().findByCriteria(dc);
+//				for (Contact o : l)
+//				getHibernateTemplate().delete(o);
 
 		
 		
@@ -222,13 +233,14 @@ public class DAOContact extends HibernateDaoSupport implements IDAOContact {
 				.add(Restrictions.like("a.country", country+"%"))
 				;;
 
-		@SuppressWarnings("unchecked")
-		List<Contact> l =getHibernateTemplate().findByCriteria(dc);
-		
-		if (l.size() != 0)
-			rvalue = ServerUtils.generateTable(l, "Contact table");
-		else
-			rvalue = ServerUtils.opNoRecods;
+				//TODO
+//		@SuppressWarnings("unchecked")
+//		List<Contact> l =getHibernateTemplate().findByCriteria(dc);
+//		
+//		if (l.size() != 0)
+//			rvalue = ServerUtils.generateTable(l, "Contact table");
+//		else
+//			rvalue = ServerUtils.opNoRecods;
 
 		return rvalue;
 	}
@@ -238,26 +250,28 @@ public class DAOContact extends HibernateDaoSupport implements IDAOContact {
 	public String deleteContact(final long id) {
 		System.out.println("::deleteContact start");
 		String rvalue = null;
-		rvalue = getHibernateTemplate().execute(
-				new HibernateCallback<String>() {
-
-					@Override
-					public String doInHibernate(Session arg0)
-							throws HibernateException, SQLException {
-
-						Query q = arg0
-								.createQuery("from Contact where id = :value ");
-						q.setParameter("value", id);
-						
-						@SuppressWarnings("unchecked")
-						List<Contact> l = q.list();
-						for (Contact c : l) {
-							arg0.delete(c);
-						}
-
-						return ServerUtils.opFait;
-					}
-				});
+		
+		//TODO
+//		rvalue = getHibernateTemplate().execute(
+//				new HibernateCallback<String>() {
+//
+//					@Override
+//					public String doInHibernate(Session arg0)
+//							throws HibernateException, SQLException {
+//
+//						Query q = arg0
+//								.createQuery("from Contact where id = :value ");
+//						q.setParameter("value", id);
+//						
+//						@SuppressWarnings("unchecked")
+//						List<Contact> l = q.list();
+//						for (Contact c : l) {
+//							arg0.delete(c);
+//						}
+//
+//						return ServerUtils.opFait;
+//					}
+//				});
 
 		return rvalue;
 	}
@@ -274,14 +288,15 @@ public class DAOContact extends HibernateDaoSupport implements IDAOContact {
 					.append(" left join contact.address as address")
 					.append(" left join contact.phoneNumbers as phoneNumber")
 					.append(" left join contact.contactgroup as contactGroup");
-			List<Object[]> l = getHibernateTemplate().find(requeteS.toString());
-//			 List<Contact> l = getHibernateTemplate().find("from Contact");
-			System.out.println("list ref=" + l);
-
-			if (l.size() == 0)
-				rvalue = ServerUtils.opNoRecods;
-			else
-				rvalue = ServerUtils.generateContactTable(l, "Contact table");
+			
+			//TODO
+//			List<Object[]> l = getHibernateTemplate().find(requeteS.toString());
+//			System.out.println("list ref=" + l);
+//
+//			if (l.size() == 0)
+//				rvalue = ServerUtils.opNoRecods;
+//			else
+//				rvalue = ServerUtils.generateContactTable(l, "Contact table");
 
 		} catch (Exception e) {
 			rvalue = e.getMessage();
@@ -301,38 +316,40 @@ public class DAOContact extends HibernateDaoSupport implements IDAOContact {
 				.append(" left join contact.address as address")
 				.append(" left join contact.phoneNumbers as phoneNumber")
 				.append(" left join contact.contactgroup as contactGroup where contact.id="+id);
-		List<Object[]> l = getHibernateTemplate().find(requeteS.toString());
-		if (l.size() == 0)
-		{
-			rvalue = "Contact dont exist!";
-			return rvalue;
-		}
-		Contact contact = (Contact) l.get(0)[0];	
-		if (firstName != null)
-			contact.setFirstName(firstName);
-		if (lastName != null)
-			contact.setLastName(lastName);
-		if (email != null)
-			contact.setEmail(email);
-
-		Address address = (Address) l.get(0)[1];
-		if (street != null)
-			address.setStreet(street);
-		if (city != null)
-			address.setCity(city);
-		if (zip != null)
-			address.setZip(zip);
-		if (country != null)
-			address.setCountry(country);
-		contact.setAddress(address); // Uni birectionnel
-
-		PhoneNumber phone = (PhoneNumber) l.get(0)[2];
-		if (phoneKind != null)
-			phone.setPhoneKind(phoneKind);
-		if (phoneNumber != null)
-			phone.setPhoneNumber(phoneNumber);
-		getHibernateTemplate().saveOrUpdate(contact);
-		rvalue = ServerUtils.opFait;
+		
+		//TODO
+//		List<Object[]> l = getHibernateTemplate().find(requeteS.toString());
+//		if (l.size() == 0)
+//		{
+//			rvalue = "Contact dont exist!";
+//			return rvalue;
+//		}
+//		Contact contact = (Contact) l.get(0)[0];	
+//		if (firstName != null)
+//			contact.setFirstName(firstName);
+//		if (lastName != null)
+//			contact.setLastName(lastName);
+//		if (email != null)
+//			contact.setEmail(email);
+//
+//		Address address = (Address) l.get(0)[1];
+//		if (street != null)
+//			address.setStreet(street);
+//		if (city != null)
+//			address.setCity(city);
+//		if (zip != null)
+//			address.setZip(zip);
+//		if (country != null)
+//			address.setCountry(country);
+//		contact.setAddress(address); // Uni birectionnel
+//
+//		PhoneNumber phone = (PhoneNumber) l.get(0)[2];
+//		if (phoneKind != null)
+//			phone.setPhoneKind(phoneKind);
+//		if (phoneNumber != null)
+//			phone.setPhoneNumber(phoneNumber);
+//		getHibernateTemplate().saveOrUpdate(contact);
+//		rvalue = ServerUtils.opFait;
 		return rvalue;
 	}
 
