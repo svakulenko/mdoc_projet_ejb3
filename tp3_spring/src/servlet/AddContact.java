@@ -2,6 +2,9 @@ package servlet;
 
 import java.io.IOException;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,11 +18,12 @@ import javax.servlet.http.HttpServletResponse;
 /*import org.springframework.context.*;
 import org.springframework.web.context.support.WebApplicationContextUtils;*/
 
+
 import util.ServerUtils;
 
 import daoInterface.*;
 //import domain.PhoneNumber;
-
+import sessionBeans.*;
 
 /**
  * Servlet implementation class SContactAddContact
@@ -47,7 +51,7 @@ public class AddContact extends HttpServlet
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		System.out.println("Adding contact info into database....");
+		System.out.println("AddContact::doPost Adding contact info into database....");
 		
 		String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastname");
@@ -64,25 +68,35 @@ public class AddContact extends HttpServlet
 		//TODO
 //		ApplicationContext  appCtx =	
 //		WebApplicationContextUtils.getWebApplicationContext(getServletContext());			
-//		IDAOContact daoContact = (IDAOContact) appCtx.getBean("daoContactProperty");
+//		IDAOCon 
+		
+		// CHECK EJB 
+    	Context context;
+		try {
+			context = new InitialContext();
 
+        
+    	//here, we use the name of the bean i.e. mappedName and not the class name
+    	GestionContactRemote beanRemote = (GestionContactRemote)
+        context.lookup("ContactBean");
+        System.out.println(beanRemote.coucouContact("Mon Premier Client EJB3"));
+      
+         GestionContactRemote beanRemote2 = (GestionContactRemote)
+         context.lookup("ContactBeanEntity");
+         
+         System.out.println(beanRemote2.coucouContact("Mon Premier Client EJB3"));
+         //add a contact to the DB
+         beanRemote2.addContact("Edmon", "Dantès", "Dantes@montecristo.com");
+         //Check that the Contact was added to the DB
+         System.out.println("le nom du contact ajouté dans la base de données: "+ beanRemote2.findContactNameById(1));
+		} catch (NamingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//
 		
-		
-		String dbOutput = daoContact.addContact(firstName, 
-												lastName, 
-												email, 
-												street, 
-												city, 
-												zip, 
-												country, 
-												phoneKind, 
-												phoneNumber);
-		daoContact.addContact("first", "last");
-		
-		String responseUrl = "/addContact.jsp" + ServerUtils.getNewParameter("dbOutput", dbOutput);
-		System.out.println("::doPost responseUrl=" + responseUrl);
-
-		RequestDispatcher rd = getServletContext().getRequestDispatcher( responseUrl );
+		//need to set responseUrl
+		RequestDispatcher rd = getServletContext().getRequestDispatcher( "/addContact.jsp" );
 		rd.forward(request, response);
 	}
 
