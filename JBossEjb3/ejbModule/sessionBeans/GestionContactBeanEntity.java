@@ -4,7 +4,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import entityBeans.Contact;
+import entityBeans.ContactSimple;
 
 @Stateless(mappedName="ContactBeanEntity")
 public class GestionContactBeanEntity implements GestionContactRemote {
@@ -17,7 +17,7 @@ public class GestionContactBeanEntity implements GestionContactRemote {
 	}
 	@Override
 	  public void addContact(String fname, String lname, String email) {
-	      Contact contact=new Contact();
+	      ContactSimple contact=new ContactSimple();
 	      contact.setFirstName(fname);
 	      contact.setLastName(lname);
 	      contact.setEmail(email);
@@ -26,7 +26,7 @@ public class GestionContactBeanEntity implements GestionContactRemote {
 
 	@Override
 	   public String findContactNameById(long id) {
-	      Contact contact=em.find(Contact.class, id);
+	      ContactSimple contact=em.find(ContactSimple.class, id);
 	      return contact.getLastName() +", "+contact.getFirstName();
 	   }
 	
