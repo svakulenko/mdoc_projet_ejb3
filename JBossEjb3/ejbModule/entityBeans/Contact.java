@@ -4,6 +4,7 @@ package entityBeans;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.DiscriminatorValue;
@@ -105,7 +106,7 @@ public class Contact
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	@OneToMany(mappedBy = "contact")
+	@OneToMany(mappedBy = "contact", cascade = CascadeType.ALL )
 	public Set<PhoneNumber> getPhoneNumbers() {
 		return phoneNumbers;
 	}
@@ -113,14 +114,14 @@ public class Contact
 		this.phoneNumbers = phoneNumbers;
 	}
 	
-	@ManyToMany(mappedBy = "contacts")
+	@ManyToMany(mappedBy = "contacts", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	public Set<ContactGroup> getContactGroups() {
 		return contactGroups;
 	}
 	public void setContactGroups(Set<ContactGroup> contactGroups) {
 		this.contactGroups = contactGroups;
 	}
-	@OneToOne
+	@OneToOne (cascade = CascadeType.ALL)
 	public Address getAddress() {
 		return address;
 	}

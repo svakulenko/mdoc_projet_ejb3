@@ -92,9 +92,9 @@ public class DAOContact implements IDAOContact {
 				contact.getContactGroups().add(contactGroup);
 				contactGroup.getContacts().add(contact);
 				em.persist(contact);
-				  em.persist(address);
-				  em.persist(phone);
-				em.persist(contactGroup);                                            
+//				  em.persist(address);
+//				  em.persist(phone);
+//				em.persist(contactGroup);                                            
 				
 				rvalue = ServerUtils.opFait;
 				return rvalue;
@@ -113,9 +113,9 @@ public class DAOContact implements IDAOContact {
 		
 	  
 		  em.persist(contact);
-		  em.persist(address);
-		  em.persist(phone);
-		  em.persist(contactGroup);   
+//		  em.persist(address);
+//		  em.persist(phone);
+//		  em.persist(contactGroup);   
 		  
 		return "success";
 	}
