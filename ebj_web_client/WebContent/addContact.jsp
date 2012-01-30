@@ -100,6 +100,14 @@
                 <td style="width: 140px;">*PhoneNumber:</td>
                 <td valign="top"> <input type="text"  name="phonenumber" size="25" value="010203040506 " > </td>
             </tr>
+            <tr>
+                <td style="width: 140px;">*Contact Group:</td>
+                <td style="width: 140px;">
+                <select>
+                    <option>Work</option>
+                    <option>Home</option>
+                    </select>
+            </tr>
 
     </tbody></table>
 </form>
@@ -155,6 +163,16 @@
                 <td style="width: 140px;">*PhoneNumber:</td>
                 <td valign="top"> <input type="text"  name="phonenumber" size="25" value="010203040506 " > </td>
             </tr>
+            
+            <tr>
+                <td style="width: 140px;">*Contact Group:</td>
+                <td style="width: 140px;">
+                <select>
+                    <option>Work</option>
+                    <option>Home</option>
+                    </select>
+            </tr>
+            
 
     </tbody></table>
 </form>
