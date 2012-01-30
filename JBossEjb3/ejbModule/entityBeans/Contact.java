@@ -54,7 +54,7 @@ public class Contact
 	private long contactId;
 	private String email;
 	private Set<PhoneNumber> phoneNumbers = new HashSet<PhoneNumber>();
-//	private Set<ContactGroup> contactGroups = new HashSet<ContactGroup>();
+	private Set<ContactGroup> contactGroups = new HashSet<ContactGroup>();
 	private Address address;
 //	
 //	public Contact(String firstName, String lastName, String email)
@@ -102,14 +102,14 @@ public class Contact
 	public void setPhoneNumbers(Set<PhoneNumber> phoneNumbers) {
 		this.phoneNumbers = phoneNumbers;
 	}
-//	
-////	@ManyToMany(mappedBy = "contacts")
-//	public Set<ContactGroup> getContactGroups() {
-//		return contactGroups;
-//	}
-//	public void setContactGroups(Set<ContactGroup> contactGroups) {
-//		this.contactGroups = contactGroups;
-//	}
+	
+	@ManyToMany(mappedBy = "contacts")
+	public Set<ContactGroup> getContactGroups() {
+		return contactGroups;
+	}
+	public void setContactGroups(Set<ContactGroup> contactGroups) {
+		this.contactGroups = contactGroups;
+	}
 	@OneToOne
 	public Address getAddress() {
 		return address;
