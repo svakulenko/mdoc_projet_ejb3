@@ -169,10 +169,10 @@ public class DAOContact implements IDAOContact {
 		Query query = em.createQuery(req);
 
 		List<Contact> l = query.getResultList();
-		em.remove(l.get(0));
-//		for (Contact i : l) {
-//			em.remove(i);
-//		}
+//		em.remove(l.get(0));
+		for (Contact i : l) {
+			em.remove(i);
+		}
 		
 		
 		return ServerUtils.opTableRemoved;
@@ -204,23 +204,4 @@ public class DAOContact implements IDAOContact {
 	}
 }
 
-
-
-//Contact contact = new Contact();
-//contact.setFirstName(firstName);
-//contact.setLastName(lastName);
-//contact.setEmail(email);
-//
-//Address address = new Address();
-//address.setStreet(street);
-//address.setCity(city);
-//address.setZip(zip);
-//address.setCountry(country);
-//contact.setAddress(address); // Uni birectionnel
-//
-//PhoneNumber phone = new PhoneNumber();
-//phone.setPhoneKind(phoneKind);
-//phone.setPhoneNumber(phoneNumber);
-//contact.getPhoneNumbers().add(phone);
-//phone.setContact(contact);
 
