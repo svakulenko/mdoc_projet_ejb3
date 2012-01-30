@@ -12,7 +12,7 @@ import javax.persistence.ManyToMany;
 
 import org.apache.commons.collections.map.HashedMap;
 
-//@Entity
+@Entity
 public class ContactGroup 
 {
 	private int contactGpoupId;
@@ -33,7 +33,7 @@ public class ContactGroup
 	public void setGroupName(String groupName) {
 		this.groupName = groupName;
 	}
-//	@ManyToMany(mappedBy = "contactGroups")
+	@ManyToMany
 	public Set<Contact> getContacts() {
 		return contacts;
 	}
