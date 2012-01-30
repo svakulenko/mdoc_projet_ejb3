@@ -1,8 +1,8 @@
 package sessionBeans;
+import javax.ejb.Local;
 import javax.ejb.Remote;
 
-
-@Remote
+@Local
 public interface GestionContactRemote {
 
 	public String coucouContact(String nomContact);

@@ -1,66 +1,63 @@
-package domain;
+package entityBeans;
 
-//ADRESS INNER CLASS START
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Address 
 {
-	long addressId;
-	String street;
-	String city;
-	String zip;
-	String country;
-	public Address() {}
+	private long addressId;
+	private String street;
+	private String city;
+	private String zip;
+	private String country;
 	
+	public Address()
+	{}
+	public Address(String street, String city, String zip, String country)
+	{
+		this.street = street;
+		this.city = city;
+		this.zip = zip;
+		this.country = country;
+	}
 	
+	@Id 
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	public long getAddressId() {
 		return addressId;
 	}
-
-
 	public void setAddressId(long addressId) {
 		this.addressId = addressId;
 	}
-
-
 	public String getStreet() {
 		return street;
 	}
-
 	public void setStreet(String street) {
 		this.street = street;
 	}
-
 	public String getCity() {
 		return city;
 	}
-
 	public void setCity(String city) {
 		this.city = city;
 	}
-
 	public String getZip() {
 		return zip;
 	}
-
 	public void setZip(String zip) {
 		this.zip = zip;
 	}
-
 	public String getCountry() {
 		return country;
 	}
-
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	public String toString()
-	{
-		StringBuffer result = new StringBuffer();
-		result.append("Id: " + this.addressId + "\n");
-		result.append("Street: " + this.street + "\n");
-		result.append("City: " + this.city + "\n");
-		result.append("Zip: " + this.zip + "\n");
-		result.append("Country: " + this.country + "\n");
-		return result.toString();
-	}
+	
+	
+	
+	
 }
-// ADRESS INNER CLASS END

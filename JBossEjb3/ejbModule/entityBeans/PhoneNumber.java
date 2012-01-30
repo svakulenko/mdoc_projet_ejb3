@@ -1,5 +1,13 @@
-package domain;
+package entityBeans;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+
+@Entity
 public class PhoneNumber {
 	long phoneId;
 	String phoneKind;
@@ -14,6 +22,7 @@ public class PhoneNumber {
 		this.phoneNumber = phoneNumber;
 	}
 
+	@ManyToOne
 	public Contact getContact() {
 		return contact;
 	}
@@ -22,6 +31,8 @@ public class PhoneNumber {
 		this.contact = contact;
 	}
 
+	@Id 
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	public long getPhoneId() {
 		return phoneId;
 	}

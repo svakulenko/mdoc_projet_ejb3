@@ -1,12 +1,10 @@
-package daoInterface;
+package sessionBeans;
+import javax.ejb.Remote;
 
-import domain.Contact;
-
+@Remote
 public interface IDAOContact {
-//	public void setContact(Contact contact);
-//	public Contact getContact();
 	public String clearTable();
-	// Used naturally via form submission
+	public void addContact(String fname, String lname, String email);
 	public String addContact(	String firstName, 
 								String lastName,
 								String email,
@@ -17,9 +15,6 @@ public interface IDAOContact {
 								String phoneKind,
 								String phoneNumber
 							 );
-	public String addContact(String firstName,String lastName);
-	// Used by Spring framework
-	public String addContact(Contact contact);
 	public String updateContact(long id,
 			String firstName, 
 			String lastName,
@@ -56,7 +51,6 @@ public interface IDAOContact {
 			String phoneNumber,
 			String numSiret
 		 );
-	//public String searchContact(long id);
 	public String deleteContact(long id);
 	public String getAllContacts();
 }

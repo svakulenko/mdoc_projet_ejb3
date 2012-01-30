@@ -1,4 +1,4 @@
-package domain;
+package entityBeans;
 
 public class Entreprise extends Contact{
 

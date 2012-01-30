@@ -10,3 +10,5 @@
       </properties>
    </persistence-unit>
 </persistence>
+<!-- java:/mdocDS -->
+<!-- java:/DefaultDS -->
