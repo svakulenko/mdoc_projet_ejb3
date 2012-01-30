@@ -1,10 +1,12 @@
 package daoInterface;
 
+import javax.ejb.Local;
+
 
 
 //import domain.Entreprise;
 
-
+@Local
 public interface IDAOEntreprise 
 {
 	

@@ -1,5 +1,10 @@
 package entityBeans;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("Entreprise")
 public class Entreprise extends Contact{
 
 	long numSiret; //Syst�me d�Identification du R�pertoire des ETablissements

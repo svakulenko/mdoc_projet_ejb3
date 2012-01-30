@@ -10,7 +10,7 @@ import javax.persistence.PersistenceContext;
 
 import javax.persistence.Query;
 
-import aspect.ContactAspect;
+//import aspect.ContactAspect;
 
 import util.ServerUtils;
 
@@ -48,7 +48,7 @@ public class DAOContact implements IDAOContact {
 		return "";
 	}
 
-	@Interceptors(ContactAspect.class)
+//	@Interceptors(ContactAspect.class)
 	@Override
 	public String addContact(String firstName, String lastName, String email,
 			String street, String city, String zip, String country,
