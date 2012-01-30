@@ -3,10 +3,13 @@ package sessionBeans;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.interceptor.Interceptors;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import javax.persistence.Query;
+
+import aspect.ContactAspect;
 
 import util.ServerUtils;
 
@@ -43,6 +46,7 @@ public class DAOContact implements IDAOContact {
 		return "";
 	}
 
+	@Interceptors(ContactAspect.class)
 	@Override
 	public String addContact(String firstName, String lastName, String email,
 			String street, String city, String zip, String country,
