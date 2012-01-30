@@ -159,9 +159,24 @@ public class DAOContact implements IDAOContact {
 	}
 
 	@Override
-	public String deleteContact(long id) {
-		// TODO Auto-generated method stub
-		return null;
+	public String deleteContact(long id) {//clear all
+		
+		String req = ("from Contact contact");
+
+//		   em.createQuery("DELETE FROM Contact")
+//	        .executeUpdate();
+		   
+		Query query = em.createQuery(req);
+
+		List<Contact> l = query.getResultList();
+		em.remove(l.get(0));
+//		for (Contact i : l) {
+//			em.remove(i);
+//		}
+		
+		
+		return ServerUtils.opTableRemoved;
+
 	}
 
 	@SuppressWarnings("rawtypes")

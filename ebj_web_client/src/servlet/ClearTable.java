@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 
+import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -25,6 +26,8 @@ import daoInterface.IDAOContact;
  */
 public class ClearTable extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	@EJB(name = "DAOContactBean")
+	private IDAOContact daoContact;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -45,11 +48,11 @@ public class ClearTable extends HttpServlet {
 //
 //		
 //
-//		String dbOutput = daoContact.clearTable();
-//		String responseUrl = "/" + "accueil.jsp" + ServerUtils.getNewParameter("dbOutput", dbOutput);
+		String dbOutput = daoContact.deleteContact(0);
+		String responseUrl = "/" + "accueil.jsp" + ServerUtils.getNewParameter("dbOutput", dbOutput);
 //		System.out.println("output=" + responseUrl);
-//		RequestDispatcher rd = getServletContext().getRequestDispatcher( responseUrl );
-//		rd.forward(request, response);
+		RequestDispatcher rd = getServletContext().getRequestDispatcher( responseUrl );
+		rd.forward(request, response);
 	}
 
 	/**
