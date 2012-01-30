@@ -164,17 +164,19 @@ public class DAOContact implements IDAOContact {
 		return null;
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public String getAllContacts() {
 		StringBuffer requeteS = new StringBuffer();
 		requeteS.append("from Contact contact")
 				.append(" left join contact.address as address")
 				.append(" left join contact.phoneNumbers as phoneNumber")
-				//.append(" left join contact.contactgroup as contactGroup")
+				.append(" left join contact.contactGroups as contactGroup")
 				;
 
 		Query query = em.createQuery(requeteS.toString());
-        List l = query.getResultList();
+       
+		List l = query.getResultList();
 		System.out.println("reslt size=" + l.size());
 
 		String rvalue = null;
