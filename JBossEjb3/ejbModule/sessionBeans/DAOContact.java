@@ -1,5 +1,6 @@
 package sessionBeans;
 
+import java.util.Iterator;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -15,6 +16,7 @@ import daoInterface.IDAOContact;
 
 import entityBeans.Address;
 import entityBeans.Contact;
+import entityBeans.ContactGroup;
 import entityBeans.PhoneNumber;
 
 
@@ -46,7 +48,7 @@ public class DAOContact implements IDAOContact {
 	@Override
 	public String addContact(String firstName, String lastName, String email,
 			String street, String city, String zip, String country,
-			String phoneKind, String phoneNumber) {
+			String phoneKind, String phoneNumber,String group) {
 		System.out.println("Server side, 9 params");
 		// TODO Auto-generated method stub
 			Contact contact=new Contact();
@@ -67,9 +69,49 @@ public class DAOContact implements IDAOContact {
 	  contact.getPhoneNumbers().add(phone);
 	  phone.setContact(contact);
 	    
+	  
+	  
+	  
+	  String request = "from ContactGroup contactGroup";
+	  Query query = em.createQuery(request);
+	  
+	  
+		List<ContactGroup> l = query.getResultList();
+		Iterator<ContactGroup> ite = l.iterator();
+		ContactGroup contactGroup = null;
+		String rvalue = null;
+		while (ite.hasNext())
+		{
+			contactGroup = ite.next();
+			if (contactGroup.getGroupName().equals(group))
+			{
+				contact.getContactGroups().add(contactGroup);
+				contactGroup.getContacts().add(contact);
+				em.persist(contact);
+				  em.persist(address);
+				  em.persist(phone);
+				em.persist(contactGroup);                                            
+				
+				rvalue = ServerUtils.opFait;
+				return rvalue;
+			}
+		}
+		
+		// If new contact Group
+		contactGroup = new ContactGroup();
+		contactGroup.setGroupName(group);
+		contact.getContactGroups().add(contactGroup);
+		contactGroup.getContacts().add(contact);
+		
+//		Query query = em.createQuery(requeteS.toString());
+//        List l = query.getResultList();
+//		System.out.println("reslt size=" + l.size());
+		
+	  
 		  em.persist(contact);
 		  em.persist(address);
 		  em.persist(phone);
+		  em.persist(contactGroup);   
 		  
 		return "success";
 	}

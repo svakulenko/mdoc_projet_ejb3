@@ -101,7 +101,7 @@
                 <td valign="top"> <input type="text"  name="phonenumber" size="25" value="010203040506 " > </td>
             </tr>
             <tr>
-                <td style="width: 140px;">*Contact Group:</td>
+                <td style="width: 140px;" name="group">*Contact Group:</td>
                 <td style="width: 140px;">
                 <select>
                     <option>Work</option>

@@ -72,8 +72,8 @@ public class AddContact extends HttpServlet
 		String country = request.getParameter("country");
 		String phoneKind = request.getParameter("phonekind");
 		String phoneNumber = request.getParameter("phoneNumber");
-		
-
+		String group = request.getParameter("group");
+		group = "test";
 		
 		//TODO
 //		ApplicationContext  appCtx =	
@@ -113,7 +113,8 @@ public class AddContact extends HttpServlet
 													zip, 
 													country, 
 													phoneKind, 
-													phoneNumber);
+													phoneNumber,
+													group);
 			//daoContact.addContact("first", "last");
 			
 			String responseUrl = "/addContact.jsp" + ServerUtils.getNewParameter("dbOutput", dbOutput);
