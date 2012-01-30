@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 
+import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -25,6 +26,9 @@ import daoInterface.IDAOEntreprise;
 public class ShowAllContact extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	@EJB(name = "DAOContactBean")
+	private IDAOContact daoContact;
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -39,7 +43,7 @@ public class ShowAllContact extends HttpServlet {
 		System.out.println("SContactShowAll::doGet");
 		
 		//TODO
-		IDAOContact daoContact = null;
+
 //		ApplicationContext  ac =	WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 //		IDAOContact daoContact = (IDAOContact) ac.getBean("daoContactProperty");
 		
@@ -48,8 +52,9 @@ public class ShowAllContact extends HttpServlet {
 		IDAOEntreprise daoEntreprise = null;
 		//TODO
 		//IDAOEntreprise daoEntreprise = (IDAOEntreprise) ac.getBean("daoEntrepriseProperty");
-		dbOutput += "<p></p>";
-		dbOutput += daoEntreprise.getAllEntreprise();
+		//dbOutput += "<p></p>";
+		//dbOutput += daoEntreprise.getAllEntreprise();
+		
 		String responseUrl = "/" + "accueil.jsp" + ServerUtils.getNewParameter("dbOutputRaw", dbOutput);
 		
 		RequestDispatcher rd = getServletContext().getRequestDispatcher( responseUrl );

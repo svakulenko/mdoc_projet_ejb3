@@ -1,10 +1,14 @@
 package sessionBeans;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import javax.persistence.Query;
+
+import util.ServerUtils;
 
 import daoInterface.IDAOContact;
 
@@ -120,11 +124,20 @@ public class DAOContact implements IDAOContact {
 		requeteS.append("from Contact contact")
 				.append(" left join contact.address as address")
 				.append(" left join contact.phoneNumbers as phoneNumber")
-				.append(" left join contact.contactgroup as contactGroup");
+				//.append(" left join contact.contactgroup as contactGroup")
+				;
 
 		Query query = em.createQuery(requeteS.toString());
-		System.out.println("reslt size=" + query.getResultList().size());
-		return null;
+        List l = query.getResultList();
+		System.out.println("reslt size=" + l.size());
+
+		String rvalue = null;
+        if (l.size() == 0)
+            rvalue = ServerUtils.opNoRecods;
+        else
+            rvalue = ServerUtils.generateContactTable(l, "Contact table");
+
+		return rvalue;
 	}
 }
 
