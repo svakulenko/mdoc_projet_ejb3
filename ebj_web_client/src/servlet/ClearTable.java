@@ -40,17 +40,16 @@ public class ClearTable extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("SContactClearTable::doGet");
 		
-		//TODO
-		IDAOContact daoContact = null;
-//		ApplicationContext  ac =	WebApplicationContextUtils.getWebApplicationContext(getServletContext());
-//		IDAOContact daoContact = (IDAOContact) ac.getBean("daoContactProperty");
-		
-		//DAOContact daoContact = new DAOContact();
-		String dbOutput = daoContact.clearTable();
-		String responseUrl = "/" + "accueil.jsp" + ServerUtils.getNewParameter("dbOutput", dbOutput);
-		System.out.println("output=" + responseUrl);
-		RequestDispatcher rd = getServletContext().getRequestDispatcher( responseUrl );
-		rd.forward(request, response);
+//		//TODO
+//		IDAOContact daoContact = null;
+//
+//		
+//
+//		String dbOutput = daoContact.clearTable();
+//		String responseUrl = "/" + "accueil.jsp" + ServerUtils.getNewParameter("dbOutput", dbOutput);
+//		System.out.println("output=" + responseUrl);
+//		RequestDispatcher rd = getServletContext().getRequestDispatcher( responseUrl );
+//		rd.forward(request, response);
 	}
 
 	/**

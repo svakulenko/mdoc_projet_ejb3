@@ -4,6 +4,10 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import javax.persistence.Query;
+
+import daoInterface.IDAOContact;
+
 
 import entityBeans.Address;
 import entityBeans.Contact;
@@ -65,6 +69,63 @@ public class DAOContact implements IDAOContact {
 		  
 		return "success";
 	}
+
+	@Override
+	public String addContact(String firstName, String lastName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String updateContact(long id, String firstName, String lastName,
+			String email, String street, String city, String zip,
+			String country, String phoneKind, String phoneNumber) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String searchContactSimple(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String searchContact(long id, String firstName, String lastName,
+			String email, String street, String city, String zip,
+			String country, String phoneKind, String phoneNumber,
+			String numSiret) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String deleteContact(long id, String firstName, String lastName,
+			String email, String street, String city, String zip,
+			String country, String phoneKind, String phoneNumber,
+			String numSiret) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String deleteContact(long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getAllContacts() {
+		StringBuffer requeteS = new StringBuffer();
+		requeteS.append("from Contact contact")
+				.append(" left join contact.address as address")
+				.append(" left join contact.phoneNumbers as phoneNumber")
+				.append(" left join contact.contactgroup as contactGroup");
+
+		Query query = em.createQuery(requeteS.toString());
+		System.out.println("reslt size=" + query.getResultList().size());
+		return null;
+	}
 }
 
 
@@ -86,3 +147,4 @@ public class DAOContact implements IDAOContact {
 //phone.setPhoneNumber(phoneNumber);
 //contact.getPhoneNumbers().add(phone);
 //phone.setContact(contact);
+

@@ -31,8 +31,8 @@ import sessionBeans.*;
  */
 public class AddContact extends HttpServlet 
 {
-	@EJB(name = "ContactBean")
-	private GestionContactRemote myBean;
+	@EJB(name = "DAOContactBean")
+	private IDAOContact daoContact;
 	
 	private static final long serialVersionUID = 1L;
 	public static final String ENTREPRISE = "entreprise";
@@ -57,9 +57,9 @@ public class AddContact extends HttpServlet
 	{
 		System.out.println("AddContact::doPost Adding contact info into database....");
 		System.out.println("AddContact::doPost Adding contact info into database....#2");
-		System.out.println("myBean=" + myBean);
-		String res = myBean.coucouContact("Mon Premier Client EJB3");
-		System.out.println("AddContact::doPost Adding contact info into database....#2.5 res=" + res);
+		//System.out.println("myBean=" + myBean);
+		//String res = myBean.coucouContact("Mon Premier Client EJB3");
+		//System.out.println("AddContact::doPost Adding contact info into database....#2.5 res=" + res);
 		System.out.println("AddContact::doPost Adding contact info into database....#3");
 		
 		
@@ -82,7 +82,7 @@ public class AddContact extends HttpServlet
 		
 		// CHECK EJB 
     	//Context context;
-		try {
+
 //			context = new InitialContext();
 //
 //        
@@ -99,14 +99,30 @@ public class AddContact extends HttpServlet
 //         beanRemote2.addContact("Edmon", "Dantès", "Dantes@montecristo.com");
 //         //Check that the Contact was added to the DB
 //         System.out.println("le nom du contact ajouté dans la base de données: "+ beanRemote2.findContactNameById(1));
-		} catch (Exception e) {
-			System.out.println("exception");
-			e.printStackTrace();
-		}
+			
+			
+			//IDAOContact daoContact = (IDAOContact) appCtx.getBean("daoContactProperty");
+//			String dbOutput = daoContact.addContact(daoContact.getContact());
+			
+			
+			String dbOutput = daoContact.addContact(firstName, 
+													lastName, 
+													email, 
+													street, 
+													city, 
+													zip, 
+													country, 
+													phoneKind, 
+													phoneNumber);
+			//daoContact.addContact("first", "last");
+			
+			String responseUrl = "/addContact.jsp" + ServerUtils.getNewParameter("dbOutput", dbOutput);
+
 		//
 		
 		//need to set responseUrl
-		RequestDispatcher rd = getServletContext().getRequestDispatcher( "/addContact.jsp" );
+		RequestDispatcher rd = getServletContext().getRequestDispatcher( responseUrl );
+
 		rd.forward(request, response);
 	}
 
