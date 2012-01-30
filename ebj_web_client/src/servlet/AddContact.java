@@ -73,7 +73,7 @@ public class AddContact extends HttpServlet
 		String phoneKind = request.getParameter("phonekind");
 		String phoneNumber = request.getParameter("phoneNumber");
 		
-		IDAOContact daoContact = null;
+
 		
 		//TODO
 //		ApplicationContext  appCtx =	
