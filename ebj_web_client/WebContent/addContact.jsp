@@ -121,11 +121,7 @@
 
             <tr>
                 <td style="width: 140px;">First Name:</td>
-<<<<<<< HEAD
                 <td valign="top"> <input type="text"  name="firstName" size="25" value="Wayne"> </td>
-=======
-                <td valign="top"> <input type="text"  name="firstname" size="25" value="first name value"> </td>
->>>>>>> 61d1e8a58dd6da9f2c30b062b4aa0ec75461ab94
             </tr>
 
             <tr>
