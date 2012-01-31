@@ -71,9 +71,12 @@ public class AddContact extends HttpServlet
 		String zip = request.getParameter("zip");
 		String country = request.getParameter("country");
 		String phoneKind = request.getParameter("phonekind");
-		String phoneNumber = request.getParameter("phoneNumber");
-		String group = request.getParameter("group");
-		group = "test";
+		String phoneNumber = request.getParameter("phonenumber");
+		String[] groups = request.getParameterValues("group");
+		String group = groups[0];
+		System.out.println("AddContact::doPost group=" + group + ", phoneNumber=" + phoneNumber);
+
+		
 		
 		//TODO
 //		ApplicationContext  appCtx =	
