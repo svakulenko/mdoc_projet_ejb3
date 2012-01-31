@@ -22,43 +22,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Contact")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "DISCRIMINATOR", discriminatorType = DiscriminatorType.STRING)
-@DiscriminatorValue("Contact")
+@Inheritance(strategy=InheritanceType.JOINED)	
 public class Contact
 {
-	
-//	private long id;   
-//	  private String firstName;
-//	  private String lastName;
-//	  private String email;
-//	
-//	@Id@GeneratedValue(strategy=GenerationType.AUTO)
-//	  public long getId() {return id;}
-//
-//	  public void setId(long l) {id = l;}
-//	  public String getEmail() {return email;}
-//
-//	  public String getFirstName() {return firstName; }
-//
-//	  public String getLastName() {return lastName; }
-//
-//	  public void setEmail(String string) {email = string; }
-//
-//	  public void setFirstName(String string) {firstName = string; }
-//
-//	  public void setLastName(String string) {lastName = string; }
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	private String firstName;
 	private String lastName;

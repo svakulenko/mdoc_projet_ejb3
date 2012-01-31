@@ -4,7 +4,6 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.ejb.Stateless;
-import javax.interceptor.Interceptors;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -25,98 +24,85 @@ import entityBeans.PhoneNumber;
 
 @Stateless(mappedName="DAOContactBean")
 public class DAOContact implements IDAOContact {
-	
-	 @PersistenceContext
-	   EntityManager em;
-	
-	
+
+	@PersistenceContext
+	EntityManager em;
+
 	public String coucouContact(String nomContact) {
-		return "Coucou, "+nomContact;
+		return "Coucou, " + nomContact;
 	}
 
 	public void addContact(String fname, String lname, String email) {
 		System.out.println("******************************************");
-	      Contact contact=new Contact();
-	      contact.setFirstName(fname);
-	      contact.setLastName(lname);
-	      contact.setEmail(email);
-		  em.persist(contact);
-	   }
+		Contact contact = new Contact();
+		contact.setFirstName(fname);
+		contact.setLastName(lname);
+		contact.setEmail(email);
+		em.persist(contact);
+	}
 
 	@Override
 	public String findContactNameById(long id) {
 		return "";
 	}
 
-//	@Interceptors(ContactAspect.class)
+	// @Interceptors(ContactAspect.class)
 	@Override
 	public String addContact(String firstName, String lastName, String email,
 			String street, String city, String zip, String country,
-			String phoneKind, String phoneNumber,String group) {
+			String phoneKind, String phoneNumber, String group) {
 		System.out.println("Server side, 9 params");
 		// TODO Auto-generated method stub
-			Contact contact=new Contact();
-	      contact.setFirstName(firstName);
-	      contact.setLastName(lastName);
-	      contact.setEmail(email);
-	      
-	    Address address = new Address();
-	    address.setStreet(street);
-	    address.setCity(city);
-	    address.setZip(zip);
-	    address.setCountry(country);
-	    contact.setAddress(address); // Uni birectionnel
-	    
-	  PhoneNumber phone = new PhoneNumber();
-	  phone.setPhoneKind(phoneKind);
-	  phone.setPhoneNumber(phoneNumber);
-	  contact.getPhoneNumbers().add(phone);
-	  phone.setContact(contact);
-	    
-	  
-	  
-	  
-	  String request = "from ContactGroup contactGroup";
-	  Query query = em.createQuery(request);
-	  
-	  
+		Contact contact = new Contact();
+		contact.setFirstName(firstName);
+		contact.setLastName(lastName);
+		contact.setEmail(email);
+
+		Address address = new Address();
+		address.setStreet(street);
+		address.setCity(city);
+		address.setZip(zip);
+		address.setCountry(country);
+		contact.setAddress(address); // Uni birectionnel
+
+		PhoneNumber phone = new PhoneNumber();
+		phone.setPhoneKind(phoneKind);
+		phone.setPhoneNumber(phoneNumber);
+		contact.getPhoneNumbers().add(phone);
+		phone.setContact(contact);
+
+		String request = "from ContactGroup contactGroup";
+		Query query = em.createQuery(request);
 		List<ContactGroup> l = query.getResultList();
 		Iterator<ContactGroup> ite = l.iterator();
 		ContactGroup contactGroup = null;
 		String rvalue = null;
-		while (ite.hasNext())
-		{
+		while (ite.hasNext()) {
 			contactGroup = ite.next();
-			if (contactGroup.getGroupName().equals(group))
-			{
+			if (contactGroup.getGroupName().equals(group)) {
 				contact.getContactGroups().add(contactGroup);
 				contactGroup.getContacts().add(contact);
 				em.persist(contact);
-//				  em.persist(address);
-//				  em.persist(phone);
-//				em.persist(contactGroup);                                            
-				
 				rvalue = ServerUtils.opFait;
 				return rvalue;
 			}
 		}
-		
+
 		// If new contact Group
 		contactGroup = new ContactGroup();
 		contactGroup.setGroupName(group);
 		contact.getContactGroups().add(contactGroup);
 		contactGroup.getContacts().add(contact);
-		
-//		Query query = em.createQuery(requeteS.toString());
-//        List l = query.getResultList();
-//		System.out.println("reslt size=" + l.size());
-		
-	  
-		  em.persist(contact);
-//		  em.persist(address);
-//		  em.persist(phone);
-//		  em.persist(contactGroup);   
-		  
+
+		// Query query = em.createQuery(requeteS.toString());
+		// List l = query.getResultList();
+		// System.out.println("reslt size=" + l.size());
+
+		em.persist(contact);
+		// em.persist(address);
+		// em.persist(phone);
+		// em.persist(contactGroup);
+
 		return "success";
 	}
 
