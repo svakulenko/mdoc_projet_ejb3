@@ -16,14 +16,12 @@ import util.ServerUtils;
 
 import daoInterface.IDAOContact;
 
-
 import entityBeans.Address;
 import entityBeans.Contact;
 import entityBeans.ContactGroup;
 import entityBeans.PhoneNumber;
 
-
-@Stateless(mappedName="DAOContactBean")
+@Stateless(mappedName = "DAOContactBean")
 public class DAOContact implements IDAOContact {
 
 	@PersistenceContext
@@ -129,18 +127,14 @@ public class DAOContact implements IDAOContact {
 			String country, String phoneKind, String phoneNumber,
 			String numSiret) {
 		String rvalue = null;
-		
-		
-		
-		Query q = em.createQuery( "from Contact contact " +
-				"WHERE contact.firstName LIKE :firstName"
-				);
+
+		Query q = em.createQuery("from Contact contact "
+				+ "WHERE contact.firstName LIKE :firstName");
 		q.setParameter("firstName", firstName + "%");
-		
-				
+
 		@SuppressWarnings("unchecked")
 		List<Contact> l = q.getResultList();
-		
+
 		if (l.size() != 0)
 			rvalue = ServerUtils.generateTable(l, "Contact table");
 		else
@@ -159,15 +153,15 @@ public class DAOContact implements IDAOContact {
 	}
 
 	@Override
-	public String deleteContact(long id) {//clear all
-		
+	public String deleteContact(long id) {// clear all
+
 		String req = "from Contact contact";
 
-//		   em.createQuery("DELETE FROM Contact")
-//	        .executeUpdate();
-		   
+		// em.createQuery("DELETE FROM Contact")
+		// .executeUpdate();
+
 		Query query = em.createQuery(req);
-//		em.remove(l.get(0));
+		// em.remove(l.get(0));
 		List<Contact> l = query.getResultList();
 		for (Contact i : l) {
 			em.remove(i);
@@ -184,19 +178,18 @@ public class DAOContact implements IDAOContact {
 		requeteS.append("from Contact contact")
 				.append(" left join contact.address as address")
 				.append(" left join contact.phoneNumbers as phoneNumber")
-				.append(" left join contact.contactGroups as contactGroup")
-				;
+				.append(" left join contact.contactGroups as contactGroup");
 
 		Query query = em.createQuery(requeteS.toString());
-       
+
 		List l = query.getResultList();
 		System.out.println("reslt size=" + l.size());
 
 		String rvalue = null;
-        if (l.size() == 0)
-            rvalue = ServerUtils.opNoRecods;
-        else
-            rvalue = ServerUtils.generateContactTable(l, "Contact table");
+		if (l.size() == 0)
+			rvalue = ServerUtils.opNoRecods;
+		else
+			rvalue = ServerUtils.generateContactTable(l, "Contact table");
 
 		return rvalue;
 	}
@@ -206,23 +199,13 @@ public class DAOContact implements IDAOContact {
 		// TODO Auto-generated method stub
 		String req = ("from Contact contact");
 
-//		   em.createQuery("DELETE FROM Contact")
-//	        .executeUpdate();
-		   
 		Query query = em.createQuery(req);
 
 		List<Contact> l = query.getResultList();
-//		em.remove(l.get(0));
 		for (Contact i : l) {
 			em.remove(i);
 		}
-		
-//		req = "from ContactGroup_Contact cg";
-//		query = em.createQuery(req);
-//		List list = query.getResultList();
-//		for (Object i : list) {
-//			em.remove(i);
-//		}
+
 		req = "from ContactGroup group";
 		query = em.createQuery(req);
 		List<ContactGroup> listGroup = query.getResultList();
@@ -234,5 +217,3 @@ public class DAOContact implements IDAOContact {
 		return ServerUtils.opTableRemoved;
 	}
 }
-
-
