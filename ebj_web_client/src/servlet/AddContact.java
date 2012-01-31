@@ -63,7 +63,7 @@ public class AddContact extends HttpServlet
 		System.out.println("AddContact::doPost Adding contact info into database....#3");
 		
 		
-		String firstName = request.getParameter("firstName");
+		String firstName = request.getParameter("firstname");
 		String lastName = request.getParameter("lastname");
 		String email    = request.getParameter("email");
 		String street = request.getParameter("street");	
