@@ -1,5 +1,6 @@
 package sessionBeans;
 
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
@@ -94,10 +95,6 @@ public class DAOContact implements IDAOContact {
 		contact.getContactGroups().add(contactGroup);
 		contactGroup.getContacts().add(contact);
 
-		// Query query = em.createQuery(requeteS.toString());
-		// List l = query.getResultList();
-		// System.out.println("reslt size=" + l.size());
-
 		em.persist(contact);
 		// em.persist(address);
 		// em.persist(phone);
@@ -164,20 +161,18 @@ public class DAOContact implements IDAOContact {
 	@Override
 	public String deleteContact(long id) {//clear all
 		
-		String req = ("from Contact contact");
+		String req = "from Contact contact";
 
 //		   em.createQuery("DELETE FROM Contact")
 //	        .executeUpdate();
 		   
 		Query query = em.createQuery(req);
-
-		List<Contact> l = query.getResultList();
 //		em.remove(l.get(0));
+		List<Contact> l = query.getResultList();
 		for (Contact i : l) {
 			em.remove(i);
 		}
-		
-		
+
 		return ServerUtils.opTableRemoved;
 
 	}
@@ -204,6 +199,39 @@ public class DAOContact implements IDAOContact {
             rvalue = ServerUtils.generateContactTable(l, "Contact table");
 
 		return rvalue;
+	}
+
+	@Override
+	public String clearTable() {
+		// TODO Auto-generated method stub
+		String req = ("from Contact contact");
+
+//		   em.createQuery("DELETE FROM Contact")
+//	        .executeUpdate();
+		   
+		Query query = em.createQuery(req);
+
+		List<Contact> l = query.getResultList();
+//		em.remove(l.get(0));
+		for (Contact i : l) {
+			em.remove(i);
+		}
+		
+//		req = "from ContactGroup_Contact cg";
+//		query = em.createQuery(req);
+//		List list = query.getResultList();
+//		for (Object i : list) {
+//			em.remove(i);
+//		}
+		req = "from ContactGroup group";
+		query = em.createQuery(req);
+		List<ContactGroup> listGroup = query.getResultList();
+
+		for (ContactGroup i : listGroup) {
+			i.setContacts(new HashSet<Contact>());
+			em.persist(i);
+		}
+		return ServerUtils.opTableRemoved;
 	}
 }
 

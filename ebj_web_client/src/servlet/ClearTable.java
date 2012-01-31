@@ -48,7 +48,7 @@ public class ClearTable extends HttpServlet {
 //
 //		
 //
-		String dbOutput = daoContact.deleteContact(0);
+		String dbOutput = daoContact.clearTable();
 		String responseUrl = "/" + "accueil.jsp" + ServerUtils.getNewParameter("dbOutput", dbOutput);
 //		System.out.println("output=" + responseUrl);
 		RequestDispatcher rd = getServletContext().getRequestDispatcher( responseUrl );

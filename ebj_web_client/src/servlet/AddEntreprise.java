@@ -59,7 +59,6 @@ public class AddEntreprise extends HttpServlet
 		String phoneNumber = request.getParameter("phoneNumber");
 		String numSiret = request.getParameter("numsiret");
 		String group = request.getParameter("group");
-		group = "entrepsire";
 		
 		//TODO
 //		ApplicationContext  appCtx =	
