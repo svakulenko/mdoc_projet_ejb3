@@ -21,14 +21,14 @@ public class BaseServlet extends HttpServlet {
 
     
     
-	String getHeader(String header){
+	protected String getHeader(String header){
 		
 		return new T_jspHeader().generate(header);
 	}
-	String getFooter(){
+	protected String getFooter(){
 		return new T_jspfooter().generate(null);
 	}
-	String getBody(String pageName){
+	protected String getBody(String pageName){
 		return new T_jspBody().generate(pageName);
 	}
        
