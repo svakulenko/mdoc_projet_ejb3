@@ -28,6 +28,8 @@ public class ShowAllContact extends HttpServlet {
        
 	@EJB(name = "DAOContactBean")
 	private IDAOContact daoContact;
+	@EJB(name = "DAOEntrepriseBean")
+	private IDAOEntreprise daoEntreprise;
 	
     /**
      * @see HttpServlet#HttpServlet()
@@ -48,12 +50,9 @@ public class ShowAllContact extends HttpServlet {
 //		IDAOContact daoContact = (IDAOContact) ac.getBean("daoContactProperty");
 		
 		//DAOContact daoContact = new DAOContact();
-		String dbOutput = daoContact.getAllContacts();
-		IDAOEntreprise daoEntreprise = null;
-		//TODO
-		//IDAOEntreprise daoEntreprise = (IDAOEntreprise) ac.getBean("daoEntrepriseProperty");
-		//dbOutput += "<p></p>";
-		//dbOutput += daoEntreprise.getAllEntreprise();
+		String dbOutput = daoContact.getAllContacts();		
+		dbOutput += "<p></p>";
+		dbOutput += daoEntreprise.getAllEntreprise();
 		
 		String responseUrl = "/" + "accueil.jsp" + ServerUtils.getNewParameter("dbOutputRaw", dbOutput);
 		
