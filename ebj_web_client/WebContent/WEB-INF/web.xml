@@ -57,7 +57,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>RemoveContact</servlet-name>
-    <url-pattern>/RemoveContact/*</url-pattern>
+    <url-pattern>/RemoveContact</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -148,5 +148,15 @@
   <servlet-mapping>
     <servlet-name>menuRemoveClient</servlet-name>
     <url-pattern>/menuRemoveClient</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>removeEntreprise</display-name>
+    <servlet-name>removeEntreprise</servlet-name>
+    <servlet-class>servlet.removeEntreprise</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>removeEntreprise</servlet-name>
+    <url-pattern>/removeEntreprise</url-pattern>
   </servlet-mapping>
 </web-app>

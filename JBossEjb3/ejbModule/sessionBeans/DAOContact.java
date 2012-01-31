@@ -126,50 +126,44 @@ public class DAOContact implements IDAOContact {
 			String email, String street, String city, String zip,
 			String country, String phoneKind, String phoneNumber,
 			String numSiret) {
+		
 		String rvalue = null;
 		
 		String s_q = "from Contact contact "
 				+ " left join contact.address as address"
 				+ " left join contact.phoneNumbers as phoneNumber"
 				+ " left join contact.contactGroups as contactGroup"
+//				+  numSiret == null ? "" : " left join entreprise as Entreprise"
 				+ " WHERE contact.firstName LIKE :firstName"
 				+ " AND contact.lastName LIKE :lastName"
 				+ " AND contact.email LIKE :email"
-//				+ " AND contact.street LIKE :street"
-//				+ " AND contact.city LIKE :city"
-//				+ " AND contact.zip LIKE :zip"
-//				+ " AND contact.country LIKE :country"
-//				+ " AND contact.phoneKind LIKE :phoneKind"
-//				+ " AND contact.phoneNumber LIKE :phoneNumber"
+				+ " AND address.street LIKE :street"
+				+ " AND address.city LIKE :city"
+				+ " AND address.zip LIKE :zip"
+				+ " AND address.country LIKE :country"
+				+ " AND phonenumber.phoneKind LIKE :phoneKind"
+				+ " AND phonenumber.phoneNumber LIKE :phoneNumber"
+//				+ numSiret == null ? "" : " AND Entreprise.numSiret LIKE :numSiret"
 				;
-		//s_q = numSiret == null ? "" : " AND contact.numSiret LIKE :numSiret";
+		;
 		
 		Query q = em.createQuery(s_q);
 		q.setParameter("firstName", firstName + "%");
 		q.setParameter("lastName", lastName + "%");
 		q.setParameter("email", email + "%");
-//		q.setParameter("street", street + "%");
-//		q.setParameter("city", city + "%");
-//		q.setParameter("zip", zip + "%");
-//		q.setParameter("country", country + "%");
-//		q.setParameter("phoneKind", phoneKind + "%");
-//		q.setParameter("phoneNumber", phoneNumber + "%");
+		q.setParameter("street", street + "%");
+		q.setParameter("city", city + "%");
+		q.setParameter("zip", zip + "%");
+		q.setParameter("country", country + "%");
+		q.setParameter("phoneKind", phoneKind + "%");
+		q.setParameter("phoneNumber", phoneNumber + "%");
 //		if (numSiret != null)
 //			q.setParameter("numSiret", numSiret + "%");
 		
 				
 
 		List l  = q.getResultList();
-//		//List<Contact> l = q.getResultList();
-//		
-//
-//		Query q = em.createQuery("from Contact contact "
-//				+ "WHERE contact.firstName LIKE :firstName");
-//		q.setParameter("firstName", firstName + "%");
-//
-//		@SuppressWarnings("unchecked")
-//		List<Contact> l = q.getResultList();
-
+		
 		System.out.println("list size=" + l.size());
 		if (l.size() != 0)
 			rvalue = ServerUtils.generateContactTable(l, "Contact table");
@@ -184,8 +178,51 @@ public class DAOContact implements IDAOContact {
 			String email, String street, String city, String zip,
 			String country, String phoneKind, String phoneNumber,
 			String numSiret) {
-		// TODO Auto-generated method stub
-		return null;
+		String rvalue = null;
+		
+		String s_q = "from Contact contact "
+				+ " left join contact.address as address"
+				+ " left join contact.phoneNumbers as phoneNumber"
+				+ " left join contact.contactGroups as contactGroup"
+//				+  numSiret == null ? "" : " left join entreprise as Entreprise"
+				+ " WHERE contact.firstName LIKE :firstName"
+				+ " AND contact.lastName LIKE :lastName"
+				+ " AND contact.email LIKE :email"
+				+ " AND address.street LIKE :street"
+				+ " AND address.city LIKE :city"
+				+ " AND address.zip LIKE :zip"
+				+ " AND address.country LIKE :country"
+				+ " AND phonenumber.phoneKind LIKE :phoneKind"
+				+ " AND phonenumber.phoneNumber LIKE :phoneNumber"
+				//+ numSiret == null ? "" : " AND Entreprise.numSiret LIKE :numSiret"
+				;
+		;
+		
+		Query q = em.createQuery(s_q);
+		q.setParameter("firstName", firstName + "%");
+		q.setParameter("lastName", lastName + "%");
+		q.setParameter("email", email + "%");
+		q.setParameter("street", street + "%");
+		q.setParameter("city", city + "%");
+		q.setParameter("zip", zip + "%");
+		q.setParameter("country", country + "%");
+		q.setParameter("phoneKind", phoneKind + "%");
+		q.setParameter("phoneNumber", phoneNumber + "%");
+//		if (numSiret != null)
+//			q.setParameter("numSiret", numSiret + "%");
+		
+		
+
+		List<Object[]> l = q.getResultList();
+
+		for (Object[] objs: l){
+			Contact c =   (Contact) objs[0];
+			em.remove(c);
+		}
+		
+
+		
+		return ServerUtils.opTableRemoved;
 	}
 
 	@Override

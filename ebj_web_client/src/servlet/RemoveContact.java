@@ -1,6 +1,9 @@
 package servlet;
 
+import generator.website.T_AddContactFull;
+
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,7 +24,7 @@ import daoInterface.IDAOEntreprise;
 /**
  * Servlet implementation class SContactRemoveContact
  */
-public class RemoveContact extends HttpServlet {
+public class RemoveContact extends BaseServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -66,7 +69,7 @@ public class RemoveContact extends HttpServlet {
 		
 		//TODO
 		IDAOContact daoContact = null;
-		IDAOEntreprise daoEntreprise = null;
+//		IDAOEntreprise daoEntreprise = null;
 //		ApplicationContext  ac =	WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 //		IDAOContact daoContact = (IDAOContact) ac.getBean("daoContactProperty");
 //		IDAOEntreprise daoEntreprise = (IDAOEntreprise) ac.getBean("daoEntrepriseProperty");
@@ -74,24 +77,30 @@ public class RemoveContact extends HttpServlet {
 		
 		String dbOutput = null;
 
-		if (reqUrl.matches(".*/ContactCriteria")){
-			System.out.println(".*/ContactCriteria");
+//		if (reqUrl.matches(".*/ContactCriteria")){
+//			System.out.println(".*/ContactCriteria");
 			dbOutput = daoContact.deleteContact(0, firstName, lastName, email, street, city, zip, country, phoneKind, phoneNumber, numSiret);
-		}
-		else if (reqUrl.matches(".*/EntrepriseCriteria")){
-			System.out.println(".*/EntrepriseCriteria");
-			dbOutput = daoEntreprise.deleteEntreprise(0, firstName, lastName, email, street, city, zip, country, phoneKind, phoneNumber, numSiret);
-		}
-		else
-			System.out.println("no of if/else of criteria, warning");
+//		}
+//		else if (reqUrl.matches(".*/EntrepriseCriteria")){
+//			System.out.println(".*/EntrepriseCriteria");
+//			dbOutput = daoEntreprise.deleteEntreprise(0, firstName, lastName, email, street, city, zip, country, phoneKind, phoneNumber, numSiret);
+//		}
+//		else
+//			System.out.println("no of if/else of criteria, warning");
 		 
-		
+		      PrintWriter out = response.getWriter() ;
+		      out.println (getHeader(null));
+		      out.println (getBody("Remove Contact"));
+		      out.println (dbOutput);
+		      String[] inputFormsID = {"removeEntreprise","removeContact"};
+		      out.println (new T_AddContactFull().generate(inputFormsID));
+		      out.println (getFooter());
 
-
-		String responseUrl = "/" + "removeContact.jsp" + ServerUtils.getNewParameter("dbOutputRaw", dbOutput);
-		System.out.println("::doPost responseUrl=" + responseUrl);
-
-		response.sendRedirect(request.getContextPath() + responseUrl); 
+//
+//		String responseUrl = "/" + "removeContact.jsp" + ServerUtils.getNewParameter("dbOutputRaw", dbOutput);
+//		System.out.println("::doPost responseUrl=" + responseUrl);
+//
+//		response.sendRedirect(request.getContextPath() + responseUrl); 
 
 		
 		

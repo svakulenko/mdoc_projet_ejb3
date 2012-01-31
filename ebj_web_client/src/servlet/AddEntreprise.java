@@ -1,6 +1,9 @@
 package servlet;
 
+import generator.website.T_AddContactFull;
+
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
@@ -20,7 +23,7 @@ import daoInterface.IDAOEntreprise;
 /**
  * Servlet implementation class AddEntreprise
  */
-public class AddEntreprise extends HttpServlet 
+public class AddEntreprise extends BaseServlet 
 {
 	@EJB(name = "DAOEntrepriseBean")
 	private IDAOEntreprise daoEntreprise;
@@ -56,17 +59,11 @@ public class AddEntreprise extends HttpServlet
 		String zip = request.getParameter("zip");
 		String country = request.getParameter("country");
 		String phoneKind = request.getParameter("phonekind");
-		String phoneNumber = request.getParameter("phoneNumber");
+		String phoneNumber = request.getParameter("phonenumber");
 		String numSiret = request.getParameter("numsiret");
 		String group = request.getParameter("group");
 		
 		//TODO
-//		ApplicationContext  appCtx =	
-//		WebApplicationContextUtils.getWebApplicationContext(getServletContext());
-//		IDAOEntreprise daoEntreprise = (IDAOEntreprise) appCtx.getBean("daoEntrepriseProperty");
-		
-		
-//		String dbOutput = daoEntreprise.addEntreprise(daoEntreprise.getEntreprise()); 
 		String dbOutput = daoEntreprise.addEntreprise(firstName, 
 				lastName, 
 				email, 
@@ -79,11 +76,23 @@ public class AddEntreprise extends HttpServlet
 				new Long(numSiret),
 				group
 		);
-		String responseUrl = "/addContact.jsp" + ServerUtils.getNewParameter("dbOutput", dbOutput);
-		System.out.println("::doPost responseUrl=" + responseUrl);
-
-		RequestDispatcher rd = getServletContext().getRequestDispatcher( responseUrl );
-		rd.forward(request, response);
+		
+	      PrintWriter out = response.getWriter() ;
+	      out.println (getHeader(null));
+	      out.println (getBody("Add Contact"));
+	      
+	      out.println (dbOutput); //add dynamic content (response from daoContact)
+	      String[] inputFormsID = {"AddEntreprise","AddContact"};
+	      out.println (new T_AddContactFull().generate(inputFormsID)); // add dynamic content
+	      
+	      out.println (getFooter()); //add footer
+	      
+		
+//		String responseUrl = "/addContact.jsp" + ServerUtils.getNewParameter("dbOutput", dbOutput);
+//		System.out.println("::doPost responseUrl=" + responseUrl);
+//
+//		RequestDispatcher rd = getServletContext().getRequestDispatcher( responseUrl );
+//		rd.forward(request, response);
 	}
 
 }

@@ -4,7 +4,7 @@ import generator.website.T_AddContactFull;
 import generator.website.T_jspBody;
 import generator.website.T_jspHeader;
 import generator.website.T_jspfooter;
-import generator.website.Template_addContact;
+
 
 
 import java.io.IOException;
@@ -134,18 +134,11 @@ public class AddContact extends BaseServlet
 
 			
 		      PrintWriter out = response.getWriter() ;
-
-		      
 		      out.println (getHeader(null));
 		      out.println (getBody("Add Contact"));
-		      
-		      
-
 		      out.println (dbOutput);
 		      String[] inputFormsID = {"AddEntreprise","AddContact"};
-		      String addContactMenuStr = new T_AddContactFull().generate(inputFormsID);
-		      out.println (addContactMenuStr);
-		      
+		      out.println (new T_AddContactFull().generate(inputFormsID));
 		      out.println (getFooter());
 			
 		//

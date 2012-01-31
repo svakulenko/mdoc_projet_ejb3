@@ -1,6 +1,6 @@
 <%@ jet
 package="generator.website" 
-class="Template_addContact" 
+class="T_addContact" 
 startTag="<$"
 endTag="$>"
 imports = ""%>
@@ -9,13 +9,32 @@ imports = ""%>
 <$ String input1 = (String)obj[0];  $>
 <$ String input2 = (String)obj[1];  $>
 
+<script>
+    function toggle(arg){
+	var div1 = document.getElementById('div1')
+	var div2 = document.getElementById('div2')
+        if (arg == 'contact'){
+            if (div1.style.display == 'none') {
+                div1.style.display = 'block'
+                div2.style.display = 'none'
+                } 
+            } else {
+            if (div1.style.display == 'block') {
+                div1.style.display = 'none'
+                div2.style.display = 'block'
+                } 
+
+        }
+}
+</script>
+
 <form>
 <input type="radio" name="type" value="contact" CHECKED onclick="toggle('contact')" /> Contact
 <input type="radio" name="type" value="entreprise" onclick="toggle('entreprise')"/> Entreprise
 </form> 
 <div id='div2' style='display:none'>
 <form name="myForm" method="post" action="<$=input1$>" onsubmit="return checkInputFormStop()">
-    <br/>  <input type="submit" value="Save"> <input type="reset"  value="Clear">
+    <br/>  <input type="submit" value="Send"> <input type="reset"  value="Clear">
 
 	
 
@@ -84,7 +103,7 @@ imports = ""%>
 </div>
 <div id='div1' style='display:block'>
 <form name="myForm" method="post" action="<$=input2$>" onsubmit="return checkInputFormStop()">
-    <br/>  <input type="submit" value="Save"> <input type="reset"  value="Clear">
+    <br/>  <input type="submit" value="Send"> <input type="reset"  value="Clear">
 
     <table><tbody>
 
