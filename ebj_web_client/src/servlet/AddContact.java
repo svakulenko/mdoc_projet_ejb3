@@ -1,6 +1,12 @@
 package servlet;
 
+import generator.website.T_jspBody;
+import generator.website.T_jspHeader;
+import generator.website.T_jspfooter;
+import generator.website.Template_addContact;
+
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.ejb.EJB;
 import javax.naming.Context;
@@ -29,8 +35,10 @@ import sessionBeans.*;
 /**
  * Servlet implementation class SContactAddContact
  */
-public class AddContact extends HttpServlet 
+public class AddContact extends BaseServlet 
 {
+
+	
 	@EJB(name = "DAOContactBean")
 	private IDAOContact daoContact;
 	
@@ -120,14 +128,30 @@ public class AddContact extends HttpServlet
 													group);
 			//daoContact.addContact("first", "last");
 			
-			String responseUrl = "/addContact.jsp" + ServerUtils.getNewParameter("dbOutput", dbOutput);
+			//String responseUrl = "/addContact.jsp" + ServerUtils.getNewParameter("dbOutput", dbOutput);
 
+			
+		      PrintWriter out = response.getWriter() ;
+
+		      
+		      out.println (getHeader(null));
+		      out.println (getBody("Add Contact"));
+		      
+		      
+
+		      out.println (dbOutput);
+		      String[] inputFormsID = {"AddEntreprise","AddContact"};
+		      String addContactMenuStr = new Template_addContact().generate(inputFormsID);
+		      out.println (addContactMenuStr);
+		      
+		      out.println (getFooter());
+			
 		//
 		
 		//need to set responseUrl
-		RequestDispatcher rd = getServletContext().getRequestDispatcher( responseUrl );
-
-		rd.forward(request, response);
+//		RequestDispatcher rd = getServletContext().getRequestDispatcher( responseUrl );
+//
+//		rd.forward(request, response);
 	}
 
 }

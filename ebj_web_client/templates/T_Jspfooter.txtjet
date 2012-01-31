@@ -1,0 +1,19 @@
+<%@ jet
+package="generator.website" 
+class="T_jspfooter" 
+startTag="<$"
+endTag="$>"
+imports = ""%>
+<$$>
+
+  </div>
+  
+  <jsp:include page="/commonPages/footer.jsp" />
+
+</div>
+
+
+
+</body>
+
+</html>

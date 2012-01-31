@@ -1,70 +1,28 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="cssStyle.css" rel="stylesheet" type="text/css">
-<title>Search Page</title>
+<%@ jet
+package="generator.website" 
+class="Template_addContact" 
+startTag="<$"
+endTag="$>"
+imports = ""%>
 
-</head>
-<body>
-
-<h1>Search contact</h1>
-<h4>Please enter one of search criteria :</h4>
-<jsp:include page="/commonPages/header.jsp" />
-<jsp:include page="/commonPages/checkInput.jsp" />
-
- 
- 
-
-<jsp:include page="/commonPages/dbdataOutput.jsp" />
-
-<script>
-    function toggle(arg){
-	var div1 = document.getElementById('div1')
-	var div2 = document.getElementById('div2')
-        if (arg == 'contact'){
-            if (div1.style.display == 'none') {
-                div1.style.display = 'block'
-                div2.style.display = 'none'
-                } 
-            } else {
-            if (div1.style.display == 'block') {
-                div1.style.display = 'none'
-                div2.style.display = 'block'
-                } 
-
-        }
-}
-</script>
-
-
-
-
+<$ Object[] obj = (Object[]) argument;  $>
+<$ String input1 = (String)obj[0];  $>
+<$ String input2 = (String)obj[1];  $>
 
 <form>
 <input type="radio" name="type" value="contact" CHECKED onclick="toggle('contact')" /> Contact
 <input type="radio" name="type" value="entreprise" onclick="toggle('entreprise')"/> Entreprise
 </form> 
-
-
-
-
-
 <div id='div2' style='display:none'>
-<form name="myForm" method="post" action="SearchContact/EntrepriseCriteria" onsubmit="">
-    <br/>
-    <input type="submit" value="Search"> 
-    <input type="reset"  value="Clear">
-    <label for="lab">search by Criteria (with like)</label>
+<form name="myForm" method="post" action="<$=input1$>" onsubmit="return checkInputFormStop()">
+    <br/>  <input type="submit" value="Save"> <input type="reset"  value="Clear">
 
 	
 
     <table><tbody>
             <tr>
                 <td style="width: 140px;">NumSiret:</td>
-                <td valign="top"> <input type="text"  name="numsiret" size="25" value="1234" > </td>
+                <td valign="top"> <input type="text"  name="numsiret" size="25" value="" > </td>
             </tr>
 
             <tr>
@@ -109,7 +67,7 @@
 
             <tr>
                 <td style="width: 140px;">*PhoneNumber:</td>
-                <td valign="top"> <input type="text"  name="phonenumber" size="25" value="" > </td>
+                <td valign="top"> <input type="text"  name="phoneNumber" size="25" value="" > </td>
             </tr>
             <tr>
                 <td style="width: 140px;" >*Contact Group:</td>
@@ -125,17 +83,14 @@
 
 </div>
 <div id='div1' style='display:block'>
-<form name="myForm" method="post" action="SearchContact/ContactCriteria" onsubmit="">
-    <br/>
-    <input type="submit" value="Search"> 
-    <input type="reset"  value="Clear">
-    <label for="lab">search by Criteria (with like)</label>
+<form name="myForm" method="post" action="<$=input2$>" onsubmit="return checkInputFormStop()">
+    <br/>  <input type="submit" value="Save"> <input type="reset"  value="Clear">
 
     <table><tbody>
 
             <tr>
                 <td style="width: 140px;">First Name:</td>
-                <td valign="top"> <input type="text"  name="firstname" size="25" value=""> </td>
+                <td valign="top"> <input type="text"  name="firstName" size="25" value=""> </td>
             </tr>
 
             <tr>
@@ -175,7 +130,7 @@
 
             <tr>
                 <td style="width: 140px;">*PhoneNumber:</td>
-                <td valign="top"> <input type="text"  name="phonenumber" size="25" value="" > </td>
+                <td valign="top"> <input type="text"  name="phoneNumber" size="25" value="" > </td>
             </tr>
             
             <tr>
@@ -186,20 +141,7 @@
                     <option value="Home" >Home</option>
                     </select>
             </tr>
-
+            
 
     </tbody></table>
 </form>
-
-
-</div>
-
-
-
-
-
-
-
-
-</body>
-</html>

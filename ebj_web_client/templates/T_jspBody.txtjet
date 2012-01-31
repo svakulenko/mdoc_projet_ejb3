@@ -1,0 +1,28 @@
+<%@ jet
+package="generator.website" 
+class="T_jspBody" 
+startTag="<$"
+endTag="$>"
+imports = ""%>
+
+<$ Object obj = argument;  $>
+<$ String header = (String)obj;  $>
+
+<div class="MainDiv">
+
+  <div class="header">
+    <div align="center"><h4>MDOC Projet: <$=header$></h4></div>
+  </div>
+  
+  <div class="sidebar">
+<a href="menuAddContact">add contact</a><br>
+<a href="removeContact.jsp">remove contact</a><br>
+<a href="menuSearchPage">search contact</a><br>
+<a href="updateContact.jsp">update contact</a><br>
+<a href="ClearTable">clear table</a><br>
+<a href="ShowAllContact">showTable</a><br>
+  </div>
+  
+  <div class="mainBody" style="overflow:auto">
+  <%=request.getParameter("dbOutput")  == null ? "" : request.getParameter("dbOutput")%>
+  <%=request.getParameter("dbOutputRaw")  == null ? "" : request.getParameter("dbOutputRaw")%>

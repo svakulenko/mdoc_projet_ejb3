@@ -163,7 +163,7 @@ public class DAOContact implements IDAOContact {
 //			q.setParameter("numSiret", numSiret + "%");
 		
 				
-		@SuppressWarnings("unchecked")
+
 		List l  = q.getResultList();
 		//List<Contact> l = q.getResultList();
 		

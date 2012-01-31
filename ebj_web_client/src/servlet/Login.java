@@ -70,7 +70,7 @@ public class Login extends HttpServlet {
 		//jsp variant
 		//on ajoute le parameter supplementaire pour g�n�rer dynamiquement link dans error page
 		String[] errorPage = {"indexPage", getServletContext().getContextPath() + "/index.html"};
-		String[] successPage = {"acceuil", getServletContext().getContextPath() + "/accueil.jsp"};
+		String[] successPage = {"acceuil", getServletContext().getContextPath() + "/menuMainPage"};
 		
 		if (loginName.isEmpty()| !loginName.equals(password) )
 			path = "/loginError.jsp" + ServerUtils.getNewParameter(errorPage[0],errorPage[1]);

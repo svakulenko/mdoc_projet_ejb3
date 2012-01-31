@@ -4,8 +4,7 @@ tp3_spring/build/
 Servers/
 JBoss_test_client/build/
 ebj_web_client/build/
-<<<<<<< HEAD
 ebj_web_client/bin/
-=======
+bak/
+ebj_web_client/WebContent/Depricated/
 ebj_web_client/.classpath
->>>>>>> 61d1e8a58dd6da9f2c30b062b4aa0ec75461ab94

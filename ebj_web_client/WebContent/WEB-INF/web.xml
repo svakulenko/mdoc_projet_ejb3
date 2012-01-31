@@ -67,7 +67,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>SearchContact</servlet-name>
-    <url-pattern>/SearchContact/*</url-pattern>
+    <url-pattern>/SearchContact</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -88,5 +88,55 @@
   <servlet-mapping>
     <servlet-name>AddEntreprise</servlet-name>
     <url-pattern>/AddEntreprise</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>menuAddContact</display-name>
+    <servlet-name>menuAddContact</servlet-name>
+    <servlet-class>servlet.menuAddContact</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>menuAddContact</servlet-name>
+    <url-pattern>/menuAddContact</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BaseServlet</display-name>
+    <servlet-name>BaseServlet</servlet-name>
+    <servlet-class>servlet.BaseServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BaseServlet</servlet-name>
+    <url-pattern>/BaseServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>menuSearchPage</display-name>
+    <servlet-name>menuSearchPage</servlet-name>
+    <servlet-class>servlet.menuSearchPage</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>menuSearchPage</servlet-name>
+    <url-pattern>/menuSearchPage</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>menuMainPage</display-name>
+    <servlet-name>menuMainPage</servlet-name>
+    <servlet-class>servlet.menuMainPage</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>menuMainPage</servlet-name>
+    <url-pattern>/menuMainPage</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SearchEntreprise</display-name>
+    <servlet-name>SearchEntreprise</servlet-name>
+    <servlet-class>servlet.SearchEntreprise</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchEntreprise</servlet-name>
+    <url-pattern>/SearchEntreprise</url-pattern>
   </servlet-mapping>
 </web-app>
