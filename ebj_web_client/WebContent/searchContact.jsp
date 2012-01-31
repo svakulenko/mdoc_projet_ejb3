@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="cssStyle.css" rel="stylesheet" type="text/css">
-<title>Insert title here</title>
+<title>Search Page</title>
 
 </head>
 <body>
@@ -62,7 +62,10 @@
 	
 
     <table><tbody>
-
+            <tr>
+                <td style="width: 140px;">NumSiret:</td>
+                <td valign="top"> <input type="text"  name="numsiret" size="25" value="1234" > </td>
+            </tr>
 
             <tr>
                 <td style="width: 140px;">First Name:</td>
@@ -98,9 +101,23 @@
                 <td style="width: 140px;">*Country:</td>
                 <td valign="top"> <input type="text"  name="country" size="25" value="" > </td>
             </tr>
+
             <tr>
-                <td style="width: 140px;">NumSiret:</td>
-                <td valign="top"> <input type="text"  name="numsiret" size="25" value="" > </td>
+                <td style="width: 140px;">*PhoneKind:</td>
+                <td valign="top"> <input type="text"  name="phonekind" size="25" value="" > </td>
+            </tr>
+
+            <tr>
+                <td style="width: 140px;">*PhoneNumber:</td>
+                <td valign="top"> <input type="text"  name="phonenumber" size="25" value="" > </td>
+            </tr>
+            <tr>
+                <td style="width: 140px;" >*Contact Group:</td>
+                <td style="width: 140px;">
+                <select name="group">
+                    <option value="Work" >Work</option>
+                    <option value="Home" >Home</option>
+                    </select>
             </tr>
 
     </tbody></table>
@@ -149,6 +166,25 @@
             <tr>
                 <td style="width: 140px;">*Country:</td>
                 <td valign="top"> <input type="text"  name="country" size="25" value="" > </td>
+            </tr>
+
+            <tr>
+                <td style="width: 140px;">*PhoneKind:</td>
+                <td valign="top"> <input type="text"  name="phonekind" size="25" value="" > </td>
+            </tr>
+
+            <tr>
+                <td style="width: 140px;">*PhoneNumber:</td>
+                <td valign="top"> <input type="text"  name="phonenumber" size="25" value="" > </td>
+            </tr>
+            
+            <tr>
+                <td style="width: 140px;" >*Contact Group:</td>
+                <td style="width: 140px;">
+                <select name="group">
+                    <option value="Work" >Work</option>
+                    <option value="Home" >Home</option>
+                    </select>
             </tr>
 
 

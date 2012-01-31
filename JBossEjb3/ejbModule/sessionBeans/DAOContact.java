@@ -131,8 +131,25 @@ public class DAOContact implements IDAOContact {
 			String email, String street, String city, String zip,
 			String country, String phoneKind, String phoneNumber,
 			String numSiret) {
-		// TODO Auto-generated method stub
-		return null;
+		String rvalue = null;
+		
+		
+		
+		Query q = em.createQuery( "from Contact contact " +
+				"WHERE contact.firstName LIKE :firstName"
+				);
+		q.setParameter("firstName", firstName + "%");
+		
+				
+		@SuppressWarnings("unchecked")
+		List<Contact> l = q.getResultList();
+		
+		if (l.size() != 0)
+			rvalue = ServerUtils.generateTable(l, "Contact table");
+		else
+			rvalue = ServerUtils.opNoRecods;
+
+		return rvalue;
 	}
 
 	@Override

@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 
+import javax.ejb.EJB;
 import javax.naming.Context;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -24,6 +25,8 @@ import util.*;
  */
 public class SearchContact extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	@EJB(name = "DAOContactBean")
+	private IDAOContact daoContact;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -64,7 +67,7 @@ public class SearchContact extends HttpServlet {
 		ServerUtils.showParameters(firstName, lastName, email, street, city, zip, country, phoneKind, phoneNumber, numSiret);
 		
 		//TODO
-		IDAOContact daoContact= null;
+//		IDAOContact daoContact= null;
 		IDAOEntreprise daoEntreprise = null;
 //		ApplicationContext  ac =	WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 //		IDAOContact daoContact = (IDAOContact) ac.getBean("daoContactProperty");

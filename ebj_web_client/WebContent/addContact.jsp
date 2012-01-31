@@ -101,11 +101,11 @@
                 <td valign="top"> <input type="text"  name="phonenumber" size="25" value="010203040506 " > </td>
             </tr>
             <tr>
-                <td style="width: 140px;" name="group">*Contact Group:</td>
+                <td style="width: 140px;" >*Contact Group:</td>
                 <td style="width: 140px;">
-                <select>
-                    <option>Work</option>
-                    <option>Home</option>
+                <select name="group">
+                    <option value="Work" >Work</option>
+                    <option value="Home" >Home</option>
                     </select>
             </tr>
 
@@ -121,7 +121,7 @@
 
             <tr>
                 <td style="width: 140px;">First Name:</td>
-                <td valign="top"> <input type="text"  name="firstName" size="25" value="first name value"> </td>
+                <td valign="top"> <input type="text"  name="firstname" size="25" value="first name value"> </td>
             </tr>
 
             <tr>
@@ -165,11 +165,11 @@
             </tr>
             
             <tr>
-                <td style="width: 140px;">*Contact Group:</td>
+                <td style="width: 140px;" >*Contact Group:</td>
                 <td style="width: 140px;">
-                <select>
-                    <option>Work</option>
-                    <option>Home</option>
+                <select name="group">
+                    <option value="Work" >Work</option>
+                    <option value="Home" >Home</option>
                     </select>
             </tr>
             
@@ -179,6 +179,8 @@
 
 
 </div>
+
+
 
 
 
