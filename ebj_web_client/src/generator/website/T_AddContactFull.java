@@ -1,12 +1,12 @@
 package generator.website;
 
-public class Template_addContactFull
+public class T_AddContactFull
 {
   protected static String nl;
-  public static synchronized Template_addContactFull create(String lineSeparator)
+  public static synchronized T_AddContactFull create(String lineSeparator)
   {
     nl = lineSeparator;
-    Template_addContactFull result = new Template_addContactFull();
+    T_AddContactFull result = new T_AddContactFull();
     nl = null;
     return result;
   }

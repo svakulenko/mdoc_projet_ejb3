@@ -28,6 +28,8 @@ public class menuSearchPage extends BaseServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		System.out.println("menuSearchPage::doGet");
 	      PrintWriter out = response.getWriter() ;
 
 	      
@@ -50,6 +52,7 @@ public class menuSearchPage extends BaseServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println("menuSearchPage::doPost");
 	}
 
 }

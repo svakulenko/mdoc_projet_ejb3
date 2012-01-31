@@ -109,17 +109,7 @@
     <servlet-name>BaseServlet</servlet-name>
     <url-pattern>/BaseServlet</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>menuSearchPage</display-name>
-    <servlet-name>menuSearchPage</servlet-name>
-    <servlet-class>servlet.menuSearchPage</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>menuSearchPage</servlet-name>
-    <url-pattern>/menuSearchPage</url-pattern>
-  </servlet-mapping>
-  <servlet>
+   <servlet>
     <description></description>
     <display-name>menuMainPage</display-name>
     <servlet-name>menuMainPage</servlet-name>
@@ -128,6 +118,17 @@
   <servlet-mapping>
     <servlet-name>menuMainPage</servlet-name>
     <url-pattern>/menuMainPage</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  
+      <description></description>
+    <display-name>menuSearchPage</display-name>
+    <servlet-name>menuSearchPage</servlet-name>
+    <servlet-class>servlet.menuSearchPage</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>menuSearchPage</servlet-name>
+    <url-pattern>/menuSearchPage</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>

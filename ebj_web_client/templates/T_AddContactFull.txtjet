@@ -1,6 +1,6 @@
 <%@ jet
 package="generator.website" 
-class="Template_addContactFull" 
+class="T_AddContactFull" 
 startTag="<$"
 endTag="$>"
 imports = ""%>
