@@ -6,6 +6,9 @@ import java.util.List;
 import entityBeans.*;
 
 
+import entityBeans.*;
+
+
 
 
 
@@ -36,6 +39,7 @@ public class ServerUtils {
 		generatedHtml += "<td style=\"width: 50px;\"  >" + hId + "</td>";
 		generatedHtml += "<td style=\"width: 100px;\" >" + hFN + "</td>";
 		generatedHtml += "<td style=\"width: 100px;\" >" + hLN + "</td>";
+		generatedHtml += "<td style=\"width: 100px;\" >" + E + "</td>";
 		generatedHtml += "<td style=\"width: 100px;\" >" + street + "</td>";
 		generatedHtml += "<td style=\"width: 100px;\" >" + city + "</td>";
 		generatedHtml += "<td style=\"width: 100px;\" >" + zip + "</td>";
@@ -53,9 +57,10 @@ public class ServerUtils {
 		generatedHtml += "<td style=\"width: 50px;\"  >" + siret + "</td>";
 		generatedHtml += "<td style=\"width: 100px;\" >" + hFN + "</td>";
 		generatedHtml += "<td style=\"width: 100px;\" >" + hLN + "</td>";
+		generatedHtml += "<td style=\"width: 100px;\" >" + E + "</td>";
 		generatedHtml += "<td style=\"width: 100px;\" >" + street + "</td>";
-		generatedHtml += "<td style=\"width: 100px;\" >" + city + "</td>";
 		generatedHtml += "<td style=\"width: 100px;\" >" + zip + "</td>";
+		generatedHtml += "<td style=\"width: 100px;\" >" + city + "</td>";
 		generatedHtml += "<td style=\"width: 100px;\" >" + country + "</td>";
 		generatedHtml += "<td style=\"width: 100px;\" >" + pk + "</td>";
 		generatedHtml += "<td style=\"width: 100px;\" >" + pn + "</td>";
@@ -101,7 +106,7 @@ public class ServerUtils {
 		generatedHtml += "<td style=\"width: 100px;\" >" + "<B>Street</B>"      + "</td>";
 		generatedHtml += "<td style=\"width: 100px;\" >" + "<B>City</B>"      + "</td>";
 		generatedHtml += "<td style=\"width: 100px;\" >" + "<B>zip</B>"      + "</td>";
-		generatedHtml += "<td style=\"width: 100px;\" >" + "<B>Country</B>"      + "</td>";
+		generatedHtml += "<td style=\"width: 100px;\" >" + "<B>Country </B>"      + "</td>";
 		//generatedHtml += "<td style=\"width: 100px;\" >" + "PhoneKind"      + "</td>";
 		//generatedHtml += "<td style=\"width: 100px;\" >" + "PhoneNumber"    + "</td>";
 		generatedHtml += "</tr>";
@@ -262,6 +267,7 @@ public class ServerUtils {
 		System.out.println("gen html" + generatedHtml);
 		if (!hasContact)
 			generatedHtml = "";
+		hasContact = false;
 		return generatedHtml;
 	}
 	static public String generateEntrepriseTable(List<Object[]> list, String header) {

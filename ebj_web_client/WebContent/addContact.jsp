@@ -58,47 +58,47 @@
 
             <tr>
                 <td style="width: 140px;">First Name:</td>
-                <td valign="top"> <input type="text"  name="firstname" size="25" value="first name value"> </td>
+                <td valign="top"> <input type="text"  name="firstname" size="25" value="Lionel"> </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">Last Name:</td>
-                <td valign="top"> <input type="text"  name="lastname" size="25" value="last name value"> </td>
+                <td valign="top"> <input type="text"  name="lastname" size="25" value="Messi"> </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">Email:</td>
-                <td valign="top"> <input type="text"  name="email" size="25" value="email value " > </td>
+                <td valign="top"> <input type="text"  name="email" size="25" value="messi@barca.com " > </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">*Street:</td>
-                <td valign="top"> <input type="text"  name="street" size="25" value="email value " > </td>
+                <td valign="top"> <input type="text"  name="street" size="25" value="Camp Nou" > </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">*City:</td>
-                <td valign="top"> <input type="text"  name="city" size="25" value="City value " > </td>
+                <td valign="top"> <input type="text"  name="city" size="25" value="Barcelone" > </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">*zip:</td>
-                <td valign="top"> <input type="text"  name="zip" size="25" value="email value " > </td>
+                <td valign="top"> <input type="text"  name="zip" size="25" value="12345" > </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">*Country:</td>
-                <td valign="top"> <input type="text"  name="country" size="25" value="Country value " > </td>
+                <td valign="top"> <input type="text"  name="country" size="25" value="Spain" > </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">*PhoneKind:</td>
-                <td valign="top"> <input type="text"  name="phonekind" size="25" value="Nokia value " > </td>
+                <td valign="top"> <input type="text"  name="phonekind" size="25" value="Mobile" > </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">*PhoneNumber:</td>
-                <td valign="top"> <input type="text"  name="phonenumber" size="25" value="010203040506 " > </td>
+                <td valign="top"> <input type="text"  name="phoneNumber" size="25" value="010203040506 " > </td>
             </tr>
             <tr>
                 <td style="width: 140px;" >*Contact Group:</td>
@@ -121,47 +121,51 @@
 
             <tr>
                 <td style="width: 140px;">First Name:</td>
+<<<<<<< HEAD
+                <td valign="top"> <input type="text"  name="firstName" size="25" value="Wayne"> </td>
+=======
                 <td valign="top"> <input type="text"  name="firstname" size="25" value="first name value"> </td>
+>>>>>>> 61d1e8a58dd6da9f2c30b062b4aa0ec75461ab94
             </tr>
 
             <tr>
                 <td style="width: 140px;">Last Name:</td>
-                <td valign="top"> <input type="text"  name="lastname" size="25" value="last name value"> </td>
+                <td valign="top"> <input type="text"  name="lastname" size="25" value="Rooney"> </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">Email:</td>
-                <td valign="top"> <input type="text"  name="email" size="25" value="email value " > </td>
+                <td valign="top"> <input type="text"  name="email" size="25" value="rooney@mu.com" > </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">*Street:</td>
-                <td valign="top"> <input type="text"  name="street" size="25" value="email value " > </td>
+                <td valign="top"> <input type="text"  name="street" size="25" value="Mu street" > </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">*City:</td>
-                <td valign="top"> <input type="text"  name="city" size="25" value="City value " > </td>
+                <td valign="top"> <input type="text"  name="city" size="25" value="Mancherter" > </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">*zip:</td>
-                <td valign="top"> <input type="text"  name="zip" size="25" value="email value " > </td>
+                <td valign="top"> <input type="text"  name="zip" size="25" value="54321" > </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">*Country:</td>
-                <td valign="top"> <input type="text"  name="country" size="25" value="Country value " > </td>
+                <td valign="top"> <input type="text"  name="country" size="25" value="English" > </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">*PhoneKind:</td>
-                <td valign="top"> <input type="text"  name="phonekind" size="25" value="Nokia value " > </td>
+                <td valign="top"> <input type="text"  name="phonekind" size="25" value="Mobile" > </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">*PhoneNumber:</td>
-                <td valign="top"> <input type="text"  name="phonenumber" size="25" value="010203040506 " > </td>
+                <td valign="top"> <input type="text"  name="phoneNumber" size="25" value="010203040506 " > </td>
             </tr>
             
             <tr>
