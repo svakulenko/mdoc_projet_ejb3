@@ -77,7 +77,7 @@ public class SearchContact extends BaseServlet {
 		//dbOutput = daoEntreprise.searchEntreprise(0, firstName, lastName, email, street, city, zip, country, phoneKind, phoneNumber, numSiret);
 		 
 		
-
+		System.out.println("SearchContact::doPost dbOutput=" + dbOutput);
 
 	      
 	      PrintWriter out = response.getWriter() ;
