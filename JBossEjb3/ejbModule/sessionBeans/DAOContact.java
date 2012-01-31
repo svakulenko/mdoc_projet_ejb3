@@ -147,19 +147,42 @@ public class DAOContact implements IDAOContact {
 			String numSiret) {
 		String rvalue = null;
 		
+		String s_q = "from Contact contact "
+				+ " left join contact.address as address"
+				+ " left join contact.phoneNumbers as phoneNumber"
+				+ " left join contact.contactGroups as contactGroup"
+				+ " WHERE contact.firstName LIKE :firstName"
+				+ " AND contact.lastName LIKE :lastName"
+				+ " AND contact.email LIKE :email"
+//				+ " AND contact.street LIKE :street"
+//				+ " AND contact.city LIKE :city"
+//				+ " AND contact.zip LIKE :zip"
+//				+ " AND contact.country LIKE :country"
+//				+ " AND contact.phoneKind LIKE :phoneKind"
+//				+ " AND contact.phoneNumber LIKE :phoneNumber"
+				;
+		//s_q = numSiret == null ? "" : " AND contact.numSiret LIKE :numSiret";
 		
-		
-		Query q = em.createQuery( "from Contact contact " +
-				"WHERE contact.firstName LIKE :firstName"
-				);
+		Query q = em.createQuery(s_q);
 		q.setParameter("firstName", firstName + "%");
+		q.setParameter("lastName", lastName + "%");
+		q.setParameter("email", email + "%");
+//		q.setParameter("street", street + "%");
+//		q.setParameter("city", city + "%");
+//		q.setParameter("zip", zip + "%");
+//		q.setParameter("country", country + "%");
+//		q.setParameter("phoneKind", phoneKind + "%");
+//		q.setParameter("phoneNumber", phoneNumber + "%");
+//		if (numSiret != null)
+//			q.setParameter("numSiret", numSiret + "%");
 		
 				
 		@SuppressWarnings("unchecked")
-		List<Contact> l = q.getResultList();
+		List l  = q.getResultList();
+		//List<Contact> l = q.getResultList();
 		
 		if (l.size() != 0)
-			rvalue = ServerUtils.generateTable(l, "Contact table");
+			rvalue = ServerUtils.generateContactTable(l, "Contact table");
 		else
 			rvalue = ServerUtils.opNoRecods;
 
