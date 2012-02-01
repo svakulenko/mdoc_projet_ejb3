@@ -5,6 +5,7 @@ import generator.website.T_AddContactFull;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -26,7 +27,8 @@ import daoInterface.IDAOEntreprise;
  */
 public class RemoveContact extends BaseServlet {
 	private static final long serialVersionUID = 1L;
-       
+	@EJB(name = "DAOContactBean")
+	private IDAOContact daoContact;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -68,7 +70,7 @@ public class RemoveContact extends BaseServlet {
 		ServerUtils.showParameters(firstName, lastName, email, street, city, zip, country, phoneKind, phoneNumber, numSiret);
 		
 		//TODO
-		IDAOContact daoContact = null;
+
 //		IDAOEntreprise daoEntreprise = null;
 //		ApplicationContext  ac =	WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 //		IDAOContact daoContact = (IDAOContact) ac.getBean("daoContactProperty");
@@ -92,7 +94,7 @@ public class RemoveContact extends BaseServlet {
 		      out.println (getHeader(null));
 		      out.println (getBody("Remove Contact"));
 		      out.println (dbOutput);
-		      String[] inputFormsID = {"removeEntreprise","removeContact"};
+		      String[] inputFormsID = {"removeEntreprise","RemoveContact"};
 		      out.println (new T_AddContactFull().generate(inputFormsID));
 		      out.println (getFooter());
 

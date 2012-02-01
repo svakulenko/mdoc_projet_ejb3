@@ -38,7 +38,7 @@ public class menuRemoveClient extends BaseServlet {
 	      out.println (getBody("Remove Contact"));
 	      
 	      
-	      String[] inputFormsID = {"removeEntreprise","removeContact"};
+	      String[] inputFormsID = {"removeEntreprise","RemoveContact"};
 	      
 	      String addContactMenuStr = new T_addContact().generate(inputFormsID);
 	      out.println (addContactMenuStr);
