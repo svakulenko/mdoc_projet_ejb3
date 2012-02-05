@@ -14,6 +14,8 @@ imports = ""%>
     <div align="center"><h4>MDOC Projet: <$=header$></h4></div>
   </div>
   
+
+  
   <div class="sidebar">
 <a href="menuAddContact">add contact</a><br>
 <a href="menuRemoveClient">remove contact</a><br>

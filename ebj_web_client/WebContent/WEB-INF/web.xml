@@ -159,4 +159,24 @@
     <servlet-name>removeEntreprise</servlet-name>
     <url-pattern>/removeEntreprise</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>showFullContact</display-name>
+    <servlet-name>showFullContact</servlet-name>
+    <servlet-class>servlet.showFullContact</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>showFullContact</servlet-name>
+    <url-pattern>/showFullContact</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>showFullEntreprise</display-name>
+    <servlet-name>showFullEntreprise</servlet-name>
+    <servlet-class>servlet.showFullEntreprise</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>showFullEntreprise</servlet-name>
+    <url-pattern>/showFullEntreprise</url-pattern>
+  </servlet-mapping>
 </web-app>

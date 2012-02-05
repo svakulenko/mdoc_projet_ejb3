@@ -19,6 +19,7 @@ import daoInterface.IDAOContact;
 import entityBeans.Address;
 import entityBeans.Contact;
 import entityBeans.ContactGroup;
+import entityBeans.Entreprise;
 import entityBeans.PhoneNumber;
 
 @Stateless(mappedName = "DAOContactBean")
@@ -117,8 +118,36 @@ public class DAOContact implements IDAOContact {
 
 	@Override
 	public String searchContactSimple(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		StringBuffer requeteS = new StringBuffer();
+		requeteS.append("from Contact contact")
+				.append(" left join contact.address as address")
+				.append(" left join contact.phoneNumbers as phoneNumber")
+				.append(" left join contact.contactGroups as contactGroup")
+				.append(" WHERE contact.contactId = :id");
+		
+		Long idInt = new Long(id);
+
+		Query query = em.createQuery(requeteS.toString());
+		query.setParameter("id", idInt);
+
+		List<Object[]> l = query.getResultList();
+		System.out.println("reslt size=" + l.size());
+
+		String rvalue = null;
+		if (l.size() == 1){
+			Contact c = (Contact) l.get(0)[0];
+			if (!(c instanceof Entreprise)){
+				Address a = (Address) l.get(0)[1];
+				PhoneNumber p = (PhoneNumber)l.get(0)[2];
+				ContactGroup cg = (ContactGroup)l.get(0)[3];
+				rvalue = ServerUtils.generateFullContactRow(c, a, p, cg);
+			}
+		}
+		else{
+			rvalue = ServerUtils.opNoRecods;
+		}
+
+		return rvalue;
 	}
 
 	@Override
