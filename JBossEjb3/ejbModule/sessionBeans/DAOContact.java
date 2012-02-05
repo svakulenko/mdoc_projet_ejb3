@@ -1,5 +1,6 @@
 package sessionBeans;
 
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
@@ -15,14 +16,12 @@ import util.ServerUtils;
 
 import daoInterface.IDAOContact;
 
-
 import entityBeans.Address;
 import entityBeans.Contact;
 import entityBeans.ContactGroup;
 import entityBeans.PhoneNumber;
 
-
-@Stateless(mappedName="DAOContactBean")
+@Stateless(mappedName = "DAOContactBean")
 public class DAOContact implements IDAOContact {
 
 	@PersistenceContext
@@ -94,10 +93,6 @@ public class DAOContact implements IDAOContact {
 		contact.getContactGroups().add(contactGroup);
 		contactGroup.getContacts().add(contact);
 
-		// Query query = em.createQuery(requeteS.toString());
-		// List l = query.getResultList();
-		// System.out.println("reslt size=" + l.size());
-
 		em.persist(contact);
 		// em.persist(address);
 		// em.persist(phone);
@@ -131,21 +126,47 @@ public class DAOContact implements IDAOContact {
 			String email, String street, String city, String zip,
 			String country, String phoneKind, String phoneNumber,
 			String numSiret) {
+		
 		String rvalue = null;
 		
+		String s_q = "from Contact contact "
+				+ " left join contact.address as address"
+				+ " left join contact.phoneNumbers as phoneNumber"
+				+ " left join contact.contactGroups as contactGroup"
+//				+  numSiret == null ? "" : " left join entreprise as Entreprise"
+				+ " WHERE contact.firstName LIKE :firstName"
+				+ " AND contact.lastName LIKE :lastName"
+				+ " AND contact.email LIKE :email"
+				+ " AND address.street LIKE :street"
+				+ " AND address.city LIKE :city"
+				+ " AND address.zip LIKE :zip"
+				+ " AND address.country LIKE :country"
+				+ " AND phonenumber.phoneKind LIKE :phoneKind"
+				+ " AND phonenumber.phoneNumber LIKE :phoneNumber"
+//				+ numSiret == null ? "" : " AND Entreprise.numSiret LIKE :numSiret"
+				;
+		;
 		
-		
-		Query q = em.createQuery( "from Contact contact " +
-				"WHERE contact.firstName LIKE :firstName"
-				);
+		Query q = em.createQuery(s_q);
 		q.setParameter("firstName", firstName + "%");
+		q.setParameter("lastName", lastName + "%");
+		q.setParameter("email", email + "%");
+		q.setParameter("street", street + "%");
+		q.setParameter("city", city + "%");
+		q.setParameter("zip", zip + "%");
+		q.setParameter("country", country + "%");
+		q.setParameter("phoneKind", phoneKind + "%");
+		q.setParameter("phoneNumber", phoneNumber + "%");
+//		if (numSiret != null)
+//			q.setParameter("numSiret", numSiret + "%");
 		
 				
-		@SuppressWarnings("unchecked")
-		List<Contact> l = q.getResultList();
+
+		List l  = q.getResultList();
 		
+		System.out.println("list size=" + l.size());
 		if (l.size() != 0)
-			rvalue = ServerUtils.generateTable(l, "Contact table");
+			rvalue = ServerUtils.generateContactTable(l, "Contact table");
 		else
 			rvalue = ServerUtils.opNoRecods;
 
@@ -157,27 +178,68 @@ public class DAOContact implements IDAOContact {
 			String email, String street, String city, String zip,
 			String country, String phoneKind, String phoneNumber,
 			String numSiret) {
-		// TODO Auto-generated method stub
-		return null;
+		String rvalue = null;
+		
+		String s_q = "from Contact contact "
+				+ " left join contact.address as address"
+				+ " left join contact.phoneNumbers as phoneNumber"
+				+ " left join contact.contactGroups as contactGroup"
+//				+  numSiret == null ? "" : " left join entreprise as Entreprise"
+				+ " WHERE contact.firstName LIKE :firstName"
+				+ " AND contact.lastName LIKE :lastName"
+				+ " AND contact.email LIKE :email"
+				+ " AND address.street LIKE :street"
+				+ " AND address.city LIKE :city"
+				+ " AND address.zip LIKE :zip"
+				+ " AND address.country LIKE :country"
+				+ " AND phonenumber.phoneKind LIKE :phoneKind"
+				+ " AND phonenumber.phoneNumber LIKE :phoneNumber"
+				//+ numSiret == null ? "" : " AND Entreprise.numSiret LIKE :numSiret"
+				;
+		;
+		
+		Query q = em.createQuery(s_q);
+		q.setParameter("firstName", firstName + "%");
+		q.setParameter("lastName", lastName + "%");
+		q.setParameter("email", email + "%");
+		q.setParameter("street", street + "%");
+		q.setParameter("city", city + "%");
+		q.setParameter("zip", zip + "%");
+		q.setParameter("country", country + "%");
+		q.setParameter("phoneKind", phoneKind + "%");
+		q.setParameter("phoneNumber", phoneNumber + "%");
+//		if (numSiret != null)
+//			q.setParameter("numSiret", numSiret + "%");
+		
+		
+
+		List<Object[]> l = q.getResultList();
+
+		for (Object[] objs: l){
+			Contact c =   (Contact) objs[0];
+			em.remove(c);
+		}
+		
+
+		
+		return ServerUtils.opTableRemoved;
 	}
 
 	@Override
-	public String deleteContact(long id) {//clear all
-		
-		String req = ("from Contact contact");
+	public String deleteContact(long id) {// clear all
 
-//		   em.createQuery("DELETE FROM Contact")
-//	        .executeUpdate();
-		   
+		String req = "from Contact contact";
+
+		// em.createQuery("DELETE FROM Contact")
+		// .executeUpdate();
+
 		Query query = em.createQuery(req);
-
+		// em.remove(l.get(0));
 		List<Contact> l = query.getResultList();
-//		em.remove(l.get(0));
 		for (Contact i : l) {
 			em.remove(i);
 		}
-		
-		
+
 		return ServerUtils.opTableRemoved;
 
 	}
@@ -189,22 +251,41 @@ public class DAOContact implements IDAOContact {
 		requeteS.append("from Contact contact")
 				.append(" left join contact.address as address")
 				.append(" left join contact.phoneNumbers as phoneNumber")
-				.append(" left join contact.contactGroups as contactGroup")
-				;
+				.append(" left join contact.contactGroups as contactGroup");
 
 		Query query = em.createQuery(requeteS.toString());
-       
+
 		List l = query.getResultList();
 		System.out.println("reslt size=" + l.size());
 
 		String rvalue = null;
-        if (l.size() == 0)
-            rvalue = ServerUtils.opNoRecods;
-        else
-            rvalue = ServerUtils.generateContactTable(l, "Contact table");
+		if (l.size() == 0)
+			rvalue = ServerUtils.opNoRecods;
+		else
+			rvalue = ServerUtils.generateContactTable(l, "Contact table");
 
 		return rvalue;
 	}
+
+	public String clearTable() {
+		// TODO Auto-generated method stub
+		String req = ("from Contact contact");
+
+		Query query = em.createQuery(req);
+
+		List<Contact> l = query.getResultList();
+		for (Contact i : l) {
+			em.remove(i);
+		}
+
+		req = "from ContactGroup group";
+		query = em.createQuery(req);
+		List<ContactGroup> listGroup = query.getResultList();
+
+		for (ContactGroup i : listGroup) {
+			i.setContacts(new HashSet<Contact>());
+			em.persist(i);
+		}
+		return ServerUtils.opTableRemoved;
+	}
 }
-
-

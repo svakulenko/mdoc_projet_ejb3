@@ -5,50 +5,33 @@ import generator.website.T_AddContactFull;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.ejb.EJB;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-/*import org.springframework.context.ApplicationContext;
-import org.springframework.web.context.support.WebApplicationContextUtils;*/
-
 import util.ServerUtils;
-
 import daoInterface.IDAOContact;
 import daoInterface.IDAOEntreprise;
 
-
 /**
- * Servlet implementation class SContactRemoveContact
+ * Servlet implementation class removeEntreprise
  */
-public class RemoveContact extends BaseServlet {
+public class removeEntreprise extends BaseServlet {
 	private static final long serialVersionUID = 1L;
-	@EJB(name = "DAOContactBean")
-	private IDAOContact daoContact;
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RemoveContact() {
+    public removeEntreprise() {
         super();
-
+        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		
 		String reqUrl =  request.getRequestURL().toString();
 		System.out.println("RemoveContact::doPost reqUrl='" + reqUrl + "'");
@@ -70,8 +53,8 @@ public class RemoveContact extends BaseServlet {
 		ServerUtils.showParameters(firstName, lastName, email, street, city, zip, country, phoneKind, phoneNumber, numSiret);
 		
 		//TODO
-
-//		IDAOEntreprise daoEntreprise = null;
+//		IDAOContact daoContact = null;
+		IDAOEntreprise daoEntreprise = null;
 //		ApplicationContext  ac =	WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 //		IDAOContact daoContact = (IDAOContact) ac.getBean("daoContactProperty");
 //		IDAOEntreprise daoEntreprise = (IDAOEntreprise) ac.getBean("daoEntrepriseProperty");
@@ -81,11 +64,11 @@ public class RemoveContact extends BaseServlet {
 
 //		if (reqUrl.matches(".*/ContactCriteria")){
 //			System.out.println(".*/ContactCriteria");
-			dbOutput = daoContact.deleteContact(0, firstName, lastName, email, street, city, zip, country, phoneKind, phoneNumber, numSiret);
+//			dbOutput = daoContact.deleteContact(0, firstName, lastName, email, street, city, zip, country, phoneKind, phoneNumber, numSiret);
 //		}
 //		else if (reqUrl.matches(".*/EntrepriseCriteria")){
 //			System.out.println(".*/EntrepriseCriteria");
-//			dbOutput = daoEntreprise.deleteEntreprise(0, firstName, lastName, email, street, city, zip, country, phoneKind, phoneNumber, numSiret);
+			dbOutput = daoEntreprise.deleteEntreprise(0, firstName, lastName, email, street, city, zip, country, phoneKind, phoneNumber, numSiret);
 //		}
 //		else
 //			System.out.println("no of if/else of criteria, warning");
@@ -94,7 +77,7 @@ public class RemoveContact extends BaseServlet {
 		      out.println (getHeader(null));
 		      out.println (getBody("Remove Contact"));
 		      out.println (dbOutput);
-		      String[] inputFormsID = {"removeEntreprise","RemoveContact"};
+		      String[] inputFormsID = {"removeEntreprise","removeContact"};
 		      out.println (new T_AddContactFull().generate(inputFormsID));
 		      out.println (getFooter());
 
@@ -103,11 +86,13 @@ public class RemoveContact extends BaseServlet {
 //		System.out.println("::doPost responseUrl=" + responseUrl);
 //
 //		response.sendRedirect(request.getContextPath() + responseUrl); 
+	}
 
-		
-		
-		
-
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 	}
 
 }

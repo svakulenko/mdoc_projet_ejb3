@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
@@ -23,7 +24,7 @@ import daoInterface.IDAOEntreprise;
 /**
  * Servlet implementation class SContactShowAll
  */
-public class ShowAllContact extends HttpServlet {
+public class ShowAllContact extends BaseServlet {
 	private static final long serialVersionUID = 1L;
        
 	@EJB(name = "DAOContactBean")
@@ -54,10 +55,19 @@ public class ShowAllContact extends HttpServlet {
 		dbOutput += "<p></p>";
 		dbOutput += daoEntreprise.getAllEntreprise();
 		
-		String responseUrl = "/" + "accueil.jsp" + ServerUtils.getNewParameter("dbOutputRaw", dbOutput);
+	      PrintWriter out = response.getWriter() ;
+
+	      
+	      out.println (getHeader(null));
+	      out.println (getBody("Show Tables"));
+	      out.println (dbOutput);
+	         
+	      out.println (getFooter());
 		
-		RequestDispatcher rd = getServletContext().getRequestDispatcher( responseUrl );
-		rd.forward(request, response);
+//		String responseUrl = "/" + "accueil.jsp" + ServerUtils.getNewParameter("dbOutputRaw", dbOutput);
+//		
+//		RequestDispatcher rd = getServletContext().getRequestDispatcher( responseUrl );
+//		rd.forward(request, response);
 		
 	}
 
