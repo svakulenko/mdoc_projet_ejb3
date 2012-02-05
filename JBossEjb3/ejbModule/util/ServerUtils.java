@@ -1,6 +1,7 @@
 package util;
 
 
+import java.nio.Buffer;
 import java.util.List;
 
 import entityBeans.*;
@@ -284,7 +285,12 @@ public class ServerUtils {
 				Address address = (Address) objs[1];
 				PhoneNumber phoneNumber = (PhoneNumber)objs[2];
 				ContactGroup contactGroup = (ContactGroup)objs[3];
-				generatedHtml += generateSimpleContactRow("" + contact.getContactId(), contact.getFirstName(), contact.getLastName(), "Show more...", "Update", "Delete");
+				generatedHtml += generateSimpleContactRow("" + contact.getContactId(), 
+														  contact.getFirstName(), 
+														  contact.getLastName(), 
+														  "Show more...", 
+														  generateHyperlink("updateContact.jsp", "update", "?id=" + contact.getContactId()), 
+														  generateHyperlink("updateContact.jsp", "delete", "?id=" + contact.getContactId()));
 				System.out.println();
 				if (hasContact == false)
 					hasContact = true;
@@ -316,7 +322,13 @@ public class ServerUtils {
 				Address address = (Address) objs[1];
 				PhoneNumber phoneNumber = (PhoneNumber)objs[2];
 				ContactGroup contactGroup = (ContactGroup)objs[3];
-				generatedHtml += generateSimpleEntrepriseRow("" + entreprise.getContactId(),"" + entreprise.getNumSiret(), entreprise.getFirstName(), entreprise.getLastName(), "show more", "update", "delete");
+				generatedHtml += generateSimpleEntrepriseRow("" + entreprise.getContactId(),
+															 "" + entreprise.getNumSiret(), 
+															 entreprise.getFirstName(), 
+															 entreprise.getLastName(), 
+															 "show more", 
+															 generateHyperlink("updateContact.jsp", "update","?id=" + entreprise.getContactId()), 
+															 generateHyperlink("deleteContact.jsp", "delete","?id=" + entreprise.getContactId()));
 				System.out.println();
 			}
 			generatedHtml += "</tbody></table>";
@@ -324,6 +336,14 @@ public class ServerUtils {
 		}
 		System.out.println("gen html" + generatedHtml);
 		return generatedHtml;
+	}
+	static private String generateHyperlink(String hyperlink, String value, String urlTail)
+	{
+		StringBuffer result = new StringBuffer();
+//		<a href="addContact.jsp">add contact</a><br>
+		result.append("<a href=\"" + hyperlink + urlTail + "\">" + value + "</a>");
+	
+		return result.toString();
 	}
 	static public String generateTableEntreprise(List<Entreprise> lst, String header) {
 		String generatedHtml = "";
