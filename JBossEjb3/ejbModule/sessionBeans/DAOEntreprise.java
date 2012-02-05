@@ -118,9 +118,56 @@ public class DAOEntreprise implements IDAOEntreprise {
 	public String searchEntreprise(long id, String firstName, String lastName,
 			String email, String street, String city, String zip,
 			String country, String phoneKind, String phoneNumber,
-			String numSiret) {
-		// TODO Auto-generated method stub
-		return null;
+			String group, String numSiret) {
+	String rvalue = null;
+		
+		String s_q = "from Entreprise entreprise "
+				+ " left join entreprise.address as address"
+				+ " left join entreprise.phoneNumbers as phoneNumber"
+				+ " left join entreprise.contactGroups as contactGroup"
+				+ " WHERE entreprise.firstName LIKE :firstName"
+				+ " AND entreprise.lastName LIKE :lastName"
+				+ " AND entreprise.email LIKE :email"
+				+ " AND address.street LIKE :street"
+				+ " AND address.city LIKE :city"
+				+ " AND address.zip LIKE :zip"
+				+ " AND address.country LIKE :country"
+				+ " AND phonenumber.phoneKind LIKE :phoneKind"
+				+ " AND phonenumber.phoneNumber LIKE :phoneNumber"
+				+ " AND contactgroup.groupName LIKE :groupName"
+//				+ " AND entreprise.numSiret LIKE :numSiret"
+				;
+		
+		
+
+		//Long sir = new Long(numSiret);
+		Query q = em.createQuery(s_q);
+		q.setParameter("firstName", firstName + "%");
+		q.setParameter("lastName", lastName + "%");
+		q.setParameter("email", email + "%");
+		q.setParameter("street", street + "%");
+		q.setParameter("city", city + "%");
+		q.setParameter("zip", zip + "%");
+		q.setParameter("country", country + "%");
+		q.setParameter("phoneKind", phoneKind + "%");
+		q.setParameter("phoneNumber", phoneNumber + "%");
+		q.setParameter("groupName", group + "%");
+		
+//		q.setParameter("numSiret", sir );
+
+		
+				
+		
+
+		List l  = q.getResultList();
+		
+		System.out.println("list size=" + l.size());
+		if (l.size() != 0)
+			rvalue = ServerUtils.generateEntrepriseTable(l, "Contact table");
+		else
+			rvalue = ServerUtils.opNoRecods;
+
+		return rvalue;
 	}
 
 	@Override

@@ -52,26 +52,23 @@ public class SearchEntreprise extends BaseServlet {
 		String phoneKind = request.getParameter("phonekind");
 		String phoneNumber = request.getParameter("phonenumber");
 		String numSiret = request.getParameter("numsiret");
+		String[] groups = request.getParameterValues("group");
+		String group = groups[0];
 		
-		ServerUtils.showParameters(firstName, lastName, email, street, city, zip, country, phoneKind, phoneNumber, numSiret);
-
-		IDAOEntreprise daoEntreprise = null;
-
-		
-		
-		String dbOutput = null;
-		//dbOutput = daoContact.searchContact(0, firstName, lastName, email, street, city, zip, country, phoneKind, phoneNumber, numSiret);
-		dbOutput = daoEntreprise.searchEntreprise(0, firstName, lastName, email, street, city, zip, country, phoneKind, phoneNumber, numSiret);
+		ServerUtils.showParameters(firstName, lastName, email, street, city, zip, country, phoneKind, phoneNumber, numSiret, group);
+        String dbOutput = daoEntreprise.searchEntreprise(0, firstName, lastName, email, street, city, zip, country, phoneKind, phoneNumber, group, numSiret);
+		System.out.println("SearchEntreprise::doPost dbOutput=" + dbOutput);
 		 
 		
 
+	 
 
 	      
 	      PrintWriter out = response.getWriter() ;
 
 	      
 	      out.println (getHeader(null));
-	      out.println (getBody("Search Contact"));
+	      out.println (getBody("Search Entreprise"));
 	      out.println (dbOutput);
 	         
 	      out.println (getFooter());

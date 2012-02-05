@@ -25,8 +25,7 @@ import daoInterface.IDAOEntreprise;
  */
 public class AddEntreprise extends BaseServlet 
 {
-	@EJB(name = "DAOEntrepriseBean")
-	private IDAOEntreprise daoEntreprise;
+
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -61,7 +60,8 @@ public class AddEntreprise extends BaseServlet
 		String phoneKind = request.getParameter("phonekind");
 		String phoneNumber = request.getParameter("phonenumber");
 		String numSiret = request.getParameter("numsiret");
-		String group = request.getParameter("group");
+		String[] groups = request.getParameterValues("group");
+		String group = groups[0];
 		
 		//TODO
 		String dbOutput = daoEntreprise.addEntreprise(firstName, 

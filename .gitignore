@@ -8,3 +8,5 @@ ebj_web_client/bin/
 bak/
 ebj_web_client/WebContent/Depricated/
 ebj_web_client/.classpath
+testServlets/
+ebj_web_client/src/generator/

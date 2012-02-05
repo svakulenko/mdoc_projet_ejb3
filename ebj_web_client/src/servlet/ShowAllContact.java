@@ -27,10 +27,8 @@ import daoInterface.IDAOEntreprise;
 public class ShowAllContact extends BaseServlet {
 	private static final long serialVersionUID = 1L;
        
-	@EJB(name = "DAOContactBean")
-	private IDAOContact daoContact;
-	@EJB(name = "DAOEntrepriseBean")
-	private IDAOEntreprise daoEntreprise;
+
+
 	
     /**
      * @see HttpServlet#HttpServlet()

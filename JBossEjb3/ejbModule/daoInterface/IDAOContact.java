@@ -43,6 +43,7 @@ public interface IDAOContact {
 			String country,
 			String phoneKind,
 			String phoneNumber,
+			String group,
 			String numSiret
 		 );
 	public String deleteContact(long id,

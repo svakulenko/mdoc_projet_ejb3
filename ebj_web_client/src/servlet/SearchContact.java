@@ -28,8 +28,7 @@ import util.*;
  */
 public class SearchContact extends BaseServlet {
 	private static final long serialVersionUID = 1L;
-	@EJB(name = "DAOContactBean")
-	private IDAOContact daoContact;
+
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -65,18 +64,11 @@ public class SearchContact extends BaseServlet {
 		String phoneKind = request.getParameter("phonekind");
 		String phoneNumber = request.getParameter("phonenumber");
 		String numSiret = request.getParameter("numsiret");
-		
-		ServerUtils.showParameters(firstName, lastName, email, street, city, zip, country, phoneKind, phoneNumber, numSiret);
+		String[] groups = request.getParameterValues("group");
+		String group = groups[0];
 
-		IDAOEntreprise daoEntreprise = null;
-
-		
-		
-		String dbOutput = null;
-		dbOutput = daoContact.searchContact(0, firstName, lastName, email, street, city, zip, country, phoneKind, phoneNumber, numSiret);
-		//dbOutput = daoEntreprise.searchEntreprise(0, firstName, lastName, email, street, city, zip, country, phoneKind, phoneNumber, numSiret);
-		 
-		
+		ServerUtils.showParameters(firstName, lastName, email, street, city, zip, country, phoneKind, phoneNumber, numSiret, group);
+		String dbOutput = daoContact.searchContact(0, firstName, lastName, email, street, city, zip, country, phoneKind, phoneNumber, group, numSiret);
 		System.out.println("SearchContact::doPost dbOutput=" + dbOutput);
 
 	      
@@ -84,7 +76,7 @@ public class SearchContact extends BaseServlet {
 
 	      
 	      out.println (getHeader(null));
-	      out.println (getBody("Search Contact/Entreprise"));
+	      out.println (getBody("Search Contact"));
 	      out.println (dbOutput);
 	         
 	      out.println (getFooter());

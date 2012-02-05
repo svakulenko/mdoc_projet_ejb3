@@ -27,8 +27,7 @@ import daoInterface.IDAOContact;
  */
 public class ClearTable extends BaseServlet {
 	private static final long serialVersionUID = 1L;
-	@EJB(name = "DAOContactBean")
-	private IDAOContact daoContact;
+
        
     /**
      * @see HttpServlet#HttpServlet()

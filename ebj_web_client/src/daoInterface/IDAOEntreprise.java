@@ -1,21 +1,14 @@
 package daoInterface;
 
+import java.util.Set;
+
 import javax.ejb.Local;
+import javax.servlet.ServletContext;
 
-
-
-//import domain.Entreprise;
 
 @Local
 public interface IDAOEntreprise 
 {
-	
-	//TODO
-//	public Entreprise getEntreprise();
-//	public void setEntreprise(Entreprise entreprise);
-	//	public String addEntreprise(Entreprise entreprise);
-	
-	
 	
 	public String addEntreprise(	String firstName, 
 			String lastName,
@@ -43,6 +36,7 @@ public interface IDAOEntreprise
 			String country,
 			String phoneKind,
 			String phoneNumber,
+			String group,
 			String numSiret
 		 );
 	public String deleteEntreprise(long id,
@@ -58,16 +52,3 @@ public interface IDAOEntreprise
 			String numSiret
 		 );
 }
-
-
-/*
-
-public void setContact(Contact contact);
-	public Contact getContact();
-	public String hClearTable();
-	public String hAddContact(long id, String FirstName, String LastName,String Email);
-	public String hSearchContact(long id);
-	public String deleteContact(long id);
-	public String getAllContacts();
-
-*/

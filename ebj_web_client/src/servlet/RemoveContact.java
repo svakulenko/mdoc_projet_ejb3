@@ -27,8 +27,7 @@ import daoInterface.IDAOEntreprise;
  */
 public class RemoveContact extends BaseServlet {
 	private static final long serialVersionUID = 1L;
-	@EJB(name = "DAOContactBean")
-	private IDAOContact daoContact;
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -67,7 +66,9 @@ public class RemoveContact extends BaseServlet {
 		String phoneNumber = request.getParameter("phonenumber");
 		String numSiret = request.getParameter("numsiret");
 		
-		ServerUtils.showParameters(firstName, lastName, email, street, city, zip, country, phoneKind, phoneNumber, numSiret);
+		String[] groups = request.getParameterValues("group");
+		String group = groups[0];
+		ServerUtils.showParameters(firstName, lastName, email, street, city, zip, country, phoneKind, phoneNumber, numSiret, group);
 		
 		//TODO
 
