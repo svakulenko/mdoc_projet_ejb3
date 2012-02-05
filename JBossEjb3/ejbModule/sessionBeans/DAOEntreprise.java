@@ -108,7 +108,7 @@ public class DAOEntreprise implements IDAOEntreprise {
 
 		String rvalue = null;
         if (l.size() == 0)
-            rvalue = ServerUtils.opNoRecods;
+            rvalue = ServerUtils.opNoRecodsEntreprise;
         else
             rvalue = ServerUtils.generateEntrepriseTable(l, "Entreprise table");
 
@@ -166,7 +166,7 @@ public class DAOEntreprise implements IDAOEntreprise {
 		if (l.size() != 0)
 			rvalue = ServerUtils.generateEntrepriseTable(l, "Contact table");
 		else
-			rvalue = ServerUtils.opNoRecods;
+			rvalue = ServerUtils.opNoRecodsEntreprise;
 
 		return rvalue;
 	}
@@ -208,7 +208,7 @@ public class DAOEntreprise implements IDAOEntreprise {
 			}
 		}
 		else{
-			rvalue = ServerUtils.opNoRecods;
+			rvalue = ServerUtils.opNoRecodsEntreprise;
 		}
 
 		return rvalue;

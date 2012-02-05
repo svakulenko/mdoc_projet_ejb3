@@ -584,6 +584,7 @@ public class ServerUtils {
 	
 	
 	public static String opFait = "<i><b>operation est Fait</i></b>";
-	public static String opNoRecods = "<i><b>Pas de records dans base de donées</i></b>";
+	public static String opNoRecodsContact = "<i><b>Pas de records dans base de donées Contact</i></b>";
+	public static String opNoRecodsEntreprise = "<i><b>Pas de records dans base de donées Entreprise</i></b>";
 	public static String opTableRemoved  = "<i><b>Table est effacé</i></b>";
 }

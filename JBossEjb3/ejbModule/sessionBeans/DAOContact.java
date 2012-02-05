@@ -144,7 +144,7 @@ public class DAOContact implements IDAOContact {
 			}
 		}
 		else{
-			rvalue = ServerUtils.opNoRecods;
+			rvalue = ServerUtils.opNoRecodsContact;
 		}
 
 		return rvalue;
@@ -201,7 +201,7 @@ public class DAOContact implements IDAOContact {
 		if (l.size() != 0)
 			rvalue = ServerUtils.generateContactTable(l, "Contact table");
 		else
-			rvalue = ServerUtils.opNoRecods;
+			rvalue = ServerUtils.opNoRecodsContact;
 
 		return rvalue;
 	}
@@ -293,7 +293,7 @@ public class DAOContact implements IDAOContact {
 
 		String rvalue = null;
 		if (l.size() == 0)
-			rvalue = ServerUtils.opNoRecods;
+			rvalue = ServerUtils.opNoRecodsContact;
 		else
 			rvalue = ServerUtils.generateContactTable(l, "Contact table");
 
