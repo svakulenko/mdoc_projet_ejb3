@@ -50,7 +50,9 @@ public class removeEntreprise extends BaseServlet {
 		String phoneNumber = request.getParameter("phonenumber");
 		String numSiret = request.getParameter("numsiret");
 		
-		ServerUtils.showParameters(firstName, lastName, email, street, city, zip, country, phoneKind, phoneNumber, numSiret);
+		String[] groups = request.getParameterValues("group");
+		String group = groups[0];
+		ServerUtils.showParameters(firstName, lastName, email, street, city, zip, country, phoneKind, phoneNumber, numSiret, group);
 		
 		//TODO
 //		IDAOContact daoContact = null;

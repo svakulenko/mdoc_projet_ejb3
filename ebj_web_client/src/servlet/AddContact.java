@@ -41,8 +41,7 @@ public class AddContact extends BaseServlet
 {
 
 	
-	@EJB(name = "DAOContactBean")
-	private IDAOContact daoContact;
+
 	
 	private static final long serialVersionUID = 1L;
 	public static final String ENTREPRISE = "entreprise";

@@ -26,6 +26,7 @@ public class ServerUtils {
 			, String phoneKind
 			, String phoneNumber
 			, String numSiret
+			, String group
 			){
 		
 		System.out.println("firstname="+ firstName);
@@ -37,6 +38,7 @@ public class ServerUtils {
 		System.out.println("country="+ country);
 		System.out.println("phonekind="+ phoneKind);
 		System.out.println("phonenumber="+ phoneNumber);
+		System.out.println("group="+ group);
 		System.out.println("numSiret="+ numSiret);
 	}    
 

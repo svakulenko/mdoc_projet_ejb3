@@ -125,7 +125,7 @@ public class DAOContact implements IDAOContact {
 	public String searchContact(long id, String firstName, String lastName,
 			String email, String street, String city, String zip,
 			String country, String phoneKind, String phoneNumber,
-			String numSiret) {
+			String group, String numSiret) {
 		
 		String rvalue = null;
 		
@@ -143,9 +143,12 @@ public class DAOContact implements IDAOContact {
 				+ " AND address.country LIKE :country"
 				+ " AND phonenumber.phoneKind LIKE :phoneKind"
 				+ " AND phonenumber.phoneNumber LIKE :phoneNumber"
+				+ " AND contactgroup.groupName LIKE :groupName"
 //				+ numSiret == null ? "" : " AND Entreprise.numSiret LIKE :numSiret"
 				;
-		;
+		
+//		if (numSiret != null)
+//			s_q += ""
 		
 		Query q = em.createQuery(s_q);
 		q.setParameter("firstName", firstName + "%");
@@ -157,6 +160,7 @@ public class DAOContact implements IDAOContact {
 		q.setParameter("country", country + "%");
 		q.setParameter("phoneKind", phoneKind + "%");
 		q.setParameter("phoneNumber", phoneNumber + "%");
+		q.setParameter("groupName", group + "%");
 //		if (numSiret != null)
 //			q.setParameter("numSiret", numSiret + "%");
 		

@@ -36,6 +36,7 @@ public interface IDAOEntreprise
 			String country,
 			String phoneKind,
 			String phoneNumber,
+			String group,
 			String numSiret
 		 );
 	public String deleteEntreprise(long id,
