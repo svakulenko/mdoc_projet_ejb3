@@ -288,9 +288,9 @@ public class ServerUtils {
 				generatedHtml += generateSimpleContactRow("" + contact.getContactId(), 
 														  contact.getFirstName(), 
 														  contact.getLastName(), 
-														  "Show more...", 
+														  generateHyperlink("showFullContact.jsp", "Show more...", "?id=" + contact.getContactId()), 
 														  generateHyperlink("updateContact.jsp", "update", "?id=" + contact.getContactId()), 
-														  generateHyperlink("updateContact.jsp", "delete", "?id=" + contact.getContactId()));
+														  generateHyperlink("deleteContact.jsp", "delete", "?id=" + contact.getContactId()));
 				System.out.println();
 				if (hasContact == false)
 					hasContact = true;
