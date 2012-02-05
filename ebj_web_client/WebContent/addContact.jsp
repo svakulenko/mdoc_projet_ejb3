@@ -121,7 +121,7 @@
 
             <tr>
                 <td style="width: 140px;">First Name:</td>
-                <td valign="top"> <input type="text"  name="firstName" size="25" value="Wayne"> </td>
+                <td valign="top"> <input type="text"  name="firstname" size="25" value="Wayne"> </td>
             </tr>
 
             <tr>
