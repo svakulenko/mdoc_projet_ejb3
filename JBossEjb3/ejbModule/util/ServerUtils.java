@@ -50,6 +50,19 @@ public class ServerUtils {
 		generatedHtml += "</tr>";
 		return generatedHtml;
 	}
+	
+	static public String generateSimpleContactRow(String id, String firstName, String lastName, String showMore,String update, String delete) {
+		String generatedHtml = "";
+		generatedHtml += "<tr>";
+		generatedHtml += "<td style=\"width: 50px;\"  >" + id + "</td>";
+		generatedHtml += "<td style=\"width: 100px;\" >" + firstName + "</td>";
+		generatedHtml += "<td style=\"width: 100px;\" >" + lastName + "</td>";
+		generatedHtml += "<td style=\"width: 100px;\" >" + showMore + "</td>";
+		generatedHtml += "<td style=\"width: 100px;\" >" + update + "</td>";
+		generatedHtml += "<td style=\"width: 100px;\" >" + delete + "</td>";
+		generatedHtml += "</tr>";
+		return generatedHtml;
+	}
 	static public String generateEntrepriseRow(String hId,String siret, String hFN, String hLN, String E,String street, String city, String zip, String country, String pk, String pn, String gn) {
 		String generatedHtml = "";
 		generatedHtml += "<tr>";
@@ -65,6 +78,19 @@ public class ServerUtils {
 		generatedHtml += "<td style=\"width: 100px;\" >" + pk + "</td>";
 		generatedHtml += "<td style=\"width: 100px;\" >" + pn + "</td>";
 		generatedHtml += "<td style=\"width: 100px;\" >" + gn + "</td>";
+		generatedHtml += "</tr>";
+		return generatedHtml;
+	}
+	static public String generateSimpleEntrepriseRow(String id,String siret, String firstName, String lastName, String showMore,String update, String delete) {
+		String generatedHtml = "";
+		generatedHtml += "<tr>";
+		generatedHtml += "<td style=\"width: 50px;\"  >" + id + "</td>";
+		generatedHtml += "<td style=\"width: 50px;\"  >" + siret + "</td>";
+		generatedHtml += "<td style=\"width: 100px;\" >" + firstName + "</td>";
+		generatedHtml += "<td style=\"width: 100px;\" >" + lastName + "</td>";
+		generatedHtml += "<td style=\"width: 100px;\" >" + showMore + "</td>";
+		generatedHtml += "<td style=\"width: 100px;\" >" + update + "</td>";
+		generatedHtml += "<td style=\"width: 100px;\" >" + delete + "</td>";
 		generatedHtml += "</tr>";
 		return generatedHtml;
 	}
@@ -238,6 +264,8 @@ public class ServerUtils {
 		generatedHtml += "</tr>";
 		return generatedHtml;
 	}
+	
+	
 	static public String generateContactTable(List<Object[]> list, String header) {
 		String generatedHtml = "";
 		if (list.size() != 0) {
@@ -247,7 +275,7 @@ public class ServerUtils {
 			generatedHtml += "<table><tbody>";
 			//generatedHtml += "<TABLE BORDER=\"1\">";
 			generatedHtml += "<CAPTION><B>" + header + "</B> </CAPTION>";
-			generatedHtml += generateContactRow("<B>ID</B>", "<B>First Name</B>", "<B>Last Name</B>", "<B>Email</B>", "<B>Street</B>", "<B>City</B>", "<B>Zip</B>", "<B>Country</B>", "<B>PhoneKind</B>", "<B>PhoneNumber</B>", "<B>GroupName</B>");
+			generatedHtml += generateSimpleContactRow("<B>ID</B>", "<B>First Name</B>", "<B>Last Name</B>", "<B> Show more...</B>", "<B>Update</B>", "<B>Delete</B>");
 			for (Object[] objs: list)
 			{
 				Contact contact = (Contact) objs[0];
@@ -256,7 +284,7 @@ public class ServerUtils {
 				Address address = (Address) objs[1];
 				PhoneNumber phoneNumber = (PhoneNumber)objs[2];
 				ContactGroup contactGroup = (ContactGroup)objs[3];
-				generatedHtml += generateContactRow(contact, address, phoneNumber, contactGroup);
+				generatedHtml += generateSimpleContactRow("" + contact.getContactId(), contact.getFirstName(), contact.getLastName(), "Show more...", "Update", "Delete");
 				System.out.println();
 				if (hasContact == false)
 					hasContact = true;
@@ -270,6 +298,8 @@ public class ServerUtils {
 		hasContact = false;
 		return generatedHtml;
 	}
+	
+	
 	static public String generateEntrepriseTable(List<Object[]> list, String header) {
 		String generatedHtml = "";
 		if (list.size() != 0) {
@@ -279,14 +309,14 @@ public class ServerUtils {
 			generatedHtml += "<table><tbody>";
 			//generatedHtml += "<TABLE BORDER=\"1\">";
 			generatedHtml += "<CAPTION><B>" + header + "</B> </CAPTION>";
-			generatedHtml += generateEntrepriseRow("<B>ID</B>","<B>SiretNumber</B>", "<B>First Name</B>", "<B>Last Name</B>", "<B>Email</B>", "<B>Street</B>", "<B>City</B>", "<B>Zip</B>", "<B>Country</B>", "<B>PhoneKind</B>", "<B>PhoneNumber</B>", "<B>GroupName</B>");
+			generatedHtml += generateSimpleEntrepriseRow("<B>ID</B>","<B>SiretNumber</B>", "<B>First Name</B>", "<B>Last Name</B>", "<B>Show more...</B>", "<B>Update</B>", "<B>Delete</B>");
 			for (Object[] objs: list)
 			{
 				Entreprise entreprise = (Entreprise) objs[0];
 				Address address = (Address) objs[1];
 				PhoneNumber phoneNumber = (PhoneNumber)objs[2];
 				ContactGroup contactGroup = (ContactGroup)objs[3];
-				generatedHtml += generateEntrepriseRow(entreprise, address, phoneNumber, contactGroup);
+				generatedHtml += generateSimpleEntrepriseRow("" + entreprise.getContactId(),"" + entreprise.getNumSiret(), entreprise.getFirstName(), entreprise.getLastName(), "show more", "update", "delete");
 				System.out.println();
 			}
 			generatedHtml += "</tbody></table>";
