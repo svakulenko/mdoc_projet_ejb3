@@ -98,7 +98,7 @@
 
             <tr>
                 <td style="width: 140px;">*PhoneNumber:</td>
-                <td valign="top"> <input type="text"  name="phoneNumber" size="25" value="010203040506 " > </td>
+                <td valign="top"> <input type="text"  name="phonenumber" size="25" value="010203040506 " > </td>
             </tr>
             <tr>
                 <td style="width: 140px;" >*Contact Group:</td>
@@ -161,7 +161,7 @@
 
             <tr>
                 <td style="width: 140px;">*PhoneNumber:</td>
-                <td valign="top"> <input type="text"  name="phoneNumber" size="25" value="010203040506 " > </td>
+                <td valign="top"> <input type="text"  name="phonenumber" size="25" value="010203040506 " > </td>
             </tr>
             
             <tr>

@@ -56,10 +56,9 @@ public class AddEntreprise extends HttpServlet
 		String zip = request.getParameter("zip");
 		String country = request.getParameter("country");
 		String phoneKind = request.getParameter("phonekind");
-		String phoneNumber = request.getParameter("phoneNumber");
+		String phoneNumber = request.getParameter("phonenumber");
 		String numSiret = request.getParameter("numsiret");
 		String group = request.getParameter("group");
-		group = "entrepsire";
 		
 		//TODO
 //		ApplicationContext  appCtx =	
