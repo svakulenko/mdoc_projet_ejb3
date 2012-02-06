@@ -196,6 +196,178 @@ public class ServerUtils {
 //		generatedHtml += "</tr>";
 		return generatedHtml;
 	}
+	static public String generateFullContactRow(Contact c,Address a, PhoneNumber p, ContactGroup cg)
+	{
+
+		
+		String generatedHtml = "";
+
+		generatedHtml += "<br><br>";
+		generatedHtml += "<table><tbody>";
+		
+		generatedHtml += "<CAPTION><B>" + "Detailled Information:" + "</B> </CAPTION>";
+
+		
+		if (c != null)
+		{
+			generatedHtml += "<tr>";
+			generatedHtml += "<td style=\"width: 100px;\" >" + "First Name" + "</td>";
+			generatedHtml += "<td valign=\"top\">" + c.getFirstName() + "</td>";
+			generatedHtml += "</tr>";
+			
+			generatedHtml += "<tr>";
+			generatedHtml += "<td style=\"width: 100px;\" >" + "Last Name" + "</td>";
+			generatedHtml += "<td valign=\"top\">" + c.getLastName() + "</td>";
+			generatedHtml += "</tr>";
+			
+			
+			generatedHtml += "<tr>";
+			generatedHtml += "<td style=\"width: 100px;\" >" + "Email" + "</td>";
+			generatedHtml += "<td valign=\"top\">" + c.getEmail() + "</td>";
+			generatedHtml += "</tr>";
+		}
+		if (a != null)
+		{
+			generatedHtml += "<tr>";
+			generatedHtml += "<td style=\"width: 100px;\" >" + "Street" + "</td>";
+			generatedHtml += "<td valign=\"top\">" + a.getStreet() + "</td>";
+			generatedHtml += "</tr>";
+			
+			generatedHtml += "<tr>";
+			generatedHtml += "<td style=\"width: 100px;\" >" + "City" + "</td>";
+			generatedHtml += "<td valign=\"top\">" + a.getCity() + "</td>";
+			generatedHtml += "</tr>";
+	
+			generatedHtml += "<tr>";
+			generatedHtml += "<td style=\"width: 100px;\" >" + "Zip" + "</td>";
+			generatedHtml += "<td valign=\"top\">" + a.getZip() + "</td>";
+			generatedHtml += "</tr>";
+
+			generatedHtml += "<tr>";
+			generatedHtml += "<td style=\"width: 100px;\" >" + "Country" + "</td>";
+			generatedHtml += "<td valign=\"top\">" + a.getCountry()+ "</td>";
+			generatedHtml += "</tr>";
+			
+			
+		}
+		if (p != null)
+		{
+			
+			generatedHtml += "<tr>";
+			generatedHtml += "<td style=\"width: 100px;\" >" + "Phone Kind" + "</td>";
+			generatedHtml += "<td valign=\"top\">" + p.getPhoneKind() + "</td>";
+			generatedHtml += "</tr>";
+			
+			generatedHtml += "<tr>";
+			generatedHtml += "<td style=\"width: 100px;\" >" + "Phone Number" + "</td>";
+			generatedHtml += "<td valign=\"top\">" + p.getPhoneNumber() + "</td>";
+			generatedHtml += "</tr>";		
+			
+			
+		}
+		if (cg != null)
+		{
+			generatedHtml += "<tr>";
+			generatedHtml += "<td style=\"width: 100px;\" >" + "Group" + "</td>";
+			generatedHtml += "<td valign=\"top\">" + cg.getGroupName() + "</td>";
+			generatedHtml += "</tr>";	
+		}
+//		generatedHtml += "</tr>";
+		
+		generatedHtml += "</tbody></table>";
+		System.out.println("gen html" + generatedHtml);
+		return generatedHtml;
+	}
+	static public String generateFullEntrepriseRow(Entreprise c,Address a, PhoneNumber p, ContactGroup cg)
+	{
+
+		
+		String generatedHtml = "";
+
+		generatedHtml += "<br><br>";
+		generatedHtml += "<table><tbody>";
+		
+		generatedHtml += "<CAPTION><B>" + "Detailled Information:" + "</B> </CAPTION>";
+
+		
+		if (c != null)
+		{
+			generatedHtml += "<tr>";
+			generatedHtml += "<td style=\"width: 100px;\" >" + "Siret" + "</td>";
+			generatedHtml += "<td valign=\"top\">" + c.getNumSiret() + "</td>";
+			generatedHtml += "</tr>";
+			
+			generatedHtml += "<tr>";
+			generatedHtml += "<td style=\"width: 100px;\" >" + "First Name" + "</td>";
+			generatedHtml += "<td valign=\"top\">" + c.getFirstName() + "</td>";
+			generatedHtml += "</tr>";
+			
+			generatedHtml += "<tr>";
+			generatedHtml += "<td style=\"width: 100px;\" >" + "Last Name" + "</td>";
+			generatedHtml += "<td valign=\"top\">" + c.getLastName() + "</td>";
+			generatedHtml += "</tr>";
+			
+			
+			generatedHtml += "<tr>";
+			generatedHtml += "<td style=\"width: 100px;\" >" + "Email" + "</td>";
+			generatedHtml += "<td valign=\"top\">" + c.getEmail() + "</td>";
+			generatedHtml += "</tr>";
+			
+
+		}
+		if (a != null)
+		{
+			generatedHtml += "<tr>";
+			generatedHtml += "<td style=\"width: 100px;\" >" + "Street" + "</td>";
+			generatedHtml += "<td valign=\"top\">" + a.getStreet() + "</td>";
+			generatedHtml += "</tr>";
+			
+			generatedHtml += "<tr>";
+			generatedHtml += "<td style=\"width: 100px;\" >" + "City" + "</td>";
+			generatedHtml += "<td valign=\"top\">" + a.getCity() + "</td>";
+			generatedHtml += "</tr>";
+	
+			generatedHtml += "<tr>";
+			generatedHtml += "<td style=\"width: 100px;\" >" + "Zip" + "</td>";
+			generatedHtml += "<td valign=\"top\">" + a.getZip() + "</td>";
+			generatedHtml += "</tr>";
+
+			generatedHtml += "<tr>";
+			generatedHtml += "<td style=\"width: 100px;\" >" + "Country" + "</td>";
+			generatedHtml += "<td valign=\"top\">" + a.getCountry()+ "</td>";
+			generatedHtml += "</tr>";
+			
+			
+		}
+		if (p != null)
+		{
+			
+			generatedHtml += "<tr>";
+			generatedHtml += "<td style=\"width: 100px;\" >" + "Phone Kind" + "</td>";
+			generatedHtml += "<td valign=\"top\">" + p.getPhoneKind() + "</td>";
+			generatedHtml += "</tr>";
+			
+			generatedHtml += "<tr>";
+			generatedHtml += "<td style=\"width: 100px;\" >" + "Phone Number" + "</td>";
+			generatedHtml += "<td valign=\"top\">" + p.getPhoneNumber() + "</td>";
+			generatedHtml += "</tr>";		
+			
+			
+		}
+		if (cg != null)
+		{
+			generatedHtml += "<tr>";
+			generatedHtml += "<td style=\"width: 100px;\" >" + "Group" + "</td>";
+			generatedHtml += "<td valign=\"top\">" + cg.getGroupName() + "</td>";
+			generatedHtml += "</tr>";	
+		}
+//		generatedHtml += "</tr>";
+		
+		generatedHtml += "</tbody></table>";
+		System.out.println("gen html" + generatedHtml);
+		return generatedHtml;
+	}
+	
 	static public String generateContactRow(Contact c,Address a, PhoneNumber p, ContactGroup cg) 
 	{
 		
@@ -304,6 +476,7 @@ public class ServerUtils {
 														  generateHyperlink("showFullContact.jsp", "Show more...", "?id=" + contact.getContactId()), 
 														  generateHyperlink("updateContact.jsp", "update", urlParams.toString()), 
 														  generateHyperlink("RemoveContact", "delete", "?id=" + contact.getContactId()));
+
 				System.out.println();
 				if (hasContact == false)
 					hasContact = true;
@@ -442,6 +615,7 @@ public class ServerUtils {
 	
 	
 	public static String opFait = "<i><b>operation est Fait</i></b>";
-	public static String opNoRecods = "<i><b>Pas de records dans base de donées</i></b>";
+	public static String opNoRecodsContact = "<i><b>Pas de records dans base de donées Contact</i></b>";
+	public static String opNoRecodsEntreprise = "<i><b>Pas de records dans base de donées Entreprise</i></b>";
 	public static String opTableRemoved  = "<i><b>Table est effacé</i></b>";
 }

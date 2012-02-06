@@ -3,51 +3,36 @@ package servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.ejb.EJB;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/*import org.springframework.context.ApplicationContext;
-import org.springframework.web.context.support.WebApplicationContextUtils;*/
-
-import util.ServerUtils;
-
-import daoInterface.IDAOContact;
-import daoInterface.IDAOEntreprise;
-
-
-
-
 /**
- * Servlet implementation class SContactShowAll
+ * Servlet implementation class showFullEntreprise
  */
-public class ShowAllContact extends BaseServlet {
+public class showFullEntreprise extends BaseServlet {
 	private static final long serialVersionUID = 1L;
        
-
-
-	
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ShowAllContact() {
+    public showFullEntreprise() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("SContactShowAll::doGet");
-		
+		System.out.println("showFullEntreprise::doGet");
+		String id = request.getParameter("id"); 
+		String dbOutput = daoEntreprise.searchContactSimple(id);		
+//		dbOutput += "<p></p>";
 
-		String dbOutput = daoContact.getAllContacts();		
-		dbOutput += "<p></p>";
-		dbOutput += daoEntreprise.getAllEntreprise();
-		
+	
+				
 	      PrintWriter out = response.getWriter() ;
 
 	      
@@ -56,16 +41,13 @@ public class ShowAllContact extends BaseServlet {
 	      out.println (dbOutput);
 	         
 	      out.println (getFooter());
-		
-
-		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("SContactShowAll::doPost");
+		// TODO Auto-generated method stub
 	}
 
 }

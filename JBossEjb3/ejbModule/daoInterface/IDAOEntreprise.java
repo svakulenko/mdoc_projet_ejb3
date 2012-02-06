@@ -51,4 +51,5 @@ public interface IDAOEntreprise
 			String phoneNumber,
 			String numSiret
 		 );
+	public String searchContactSimple(String id );
 }
