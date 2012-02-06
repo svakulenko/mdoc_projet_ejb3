@@ -84,11 +84,6 @@
                 <td style="width: 140px;">*PhoneNumber:</td>
                 <td valign="top"> <input type="text"  name="phoneNumber" size="25" value="<%= request.getParameter("phoneNumber")%>"> </td>
             </tr>
-
-			<tr id='tr1' style= 'display:none'>
-                <td style="width:140px">NumSiret:</td>
-                <td valign="top"> <input type="text"  name="numsiret" size="25" value="12345"> </td>
-            </tr>
             
     </tbody></table>
     <table>
