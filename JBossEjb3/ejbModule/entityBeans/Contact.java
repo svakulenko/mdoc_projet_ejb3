@@ -5,9 +5,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -80,7 +77,7 @@ public class Contact
 		this.phoneNumbers = phoneNumbers;
 	}
 	
-	@ManyToMany(mappedBy = "contacts", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	@ManyToMany(mappedBy = "contacts", cascade = CascadeType.PERSIST)
 	public Set<ContactGroup> getContactGroups() {
 		return contactGroups;
 	}

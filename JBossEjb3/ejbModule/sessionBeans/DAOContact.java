@@ -112,7 +112,49 @@ public class DAOContact implements IDAOContact {
 			String email, String street, String city, String zip,
 			String country, String phoneKind, String phoneNumber) {
 		// TODO Auto-generated method stub
-		return null;
+		String rvalue = null;
+		StringBuffer requeteS = new StringBuffer();
+		requeteS.append("from Contact contact")
+				.append(" left join contact.address as address")
+				.append(" left join contact.phoneNumbers as phoneNumber")
+				.append(" left join contact.contactGroups as contactGroup where contact.id="+id);
+		Query query = em.createQuery(requeteS.toString());
+		List<Object[]> l = query.getResultList();
+		if (l.size() == 0)
+		{
+			rvalue = "Contact dont exist!";
+			return rvalue;
+		}
+		Contact contact = (Contact) l.get(0)[0];	
+		if (firstName != null)
+			contact.setFirstName(firstName);
+		if (lastName != null)
+			contact.setLastName(lastName);
+		if (email != null)
+			contact.setEmail(email);
+
+		Address address = (Address) l.get(0)[1];
+		if (street != null)
+			address.setStreet(street);
+		if (city != null)
+			address.setCity(city);
+		if (zip != null)
+			address.setZip(zip);
+		if (country != null)
+			address.setCountry(country);
+		contact.setAddress(address); // Uni birectionnel
+
+		PhoneNumber phone = (PhoneNumber) l.get(0)[2];
+		if (phoneKind != null)
+			phone.setPhoneKind(phoneKind);
+		if (phoneNumber != null)
+			phone.setPhoneNumber(phoneNumber);
+		
+//		ContactGroup cg = (ContactGroup)l.get(0)[3];
+//		if ()
+		em.merge(contact);
+		rvalue = ServerUtils.opFait;
+		return rvalue;
 	}
 
 	@Override
@@ -230,20 +272,28 @@ public class DAOContact implements IDAOContact {
 	}
 
 	@Override
-	public String deleteContact(long id) {// clear all
+	public String deleteContact(long id) 
+	{
 
-		String req = "from Contact contact";
+		StringBuffer requeteContact = new StringBuffer();
+		requeteContact.append("FROM Contact contact")
+						.append(" WHERE contact.id = " + id);
 
-		// em.createQuery("DELETE FROM Contact")
-		// .executeUpdate();
-
-		Query query = em.createQuery(req);
-		// em.remove(l.get(0));
-		List<Contact> l = query.getResultList();
-		for (Contact i : l) {
-			em.remove(i);
+		Query queryContact = em.createQuery(requeteContact.toString());
+		Contact contact = (Contact) queryContact.getResultList().get(0);
+		Query queryCg = em.createQuery("select cg from ContactGroup cg JOIN FETCH cg.contacts c where c.contactId = :id");
+		queryCg.setParameter("id", id);
+		List<ContactGroup> cgList = queryCg.getResultList();
+		for (ContactGroup cg : cgList)
+		{
+			Query q = em
+			        .createNativeQuery( "DELETE FROM ContactGroup_Contact " +
+			        					"WHERE contacts_contactId = :cid and contactGroups_contactGpoupId = :gid");
+			        q.setParameter("gid", cg.getContactGpoupId());
+			        q.setParameter("cid", contact.getContactId());
+			        q.executeUpdate();       
 		}
-
+		 em.remove(contact);
 		return ServerUtils.opTableRemoved;
 
 	}
@@ -270,7 +320,8 @@ public class DAOContact implements IDAOContact {
 
 		return rvalue;
 	}
-
+	
+	
 	public String clearTable() {
 		// TODO Auto-generated method stub
 		String req = ("from Contact contact");
@@ -291,5 +342,11 @@ public class DAOContact implements IDAOContact {
 			em.persist(i);
 		}
 		return ServerUtils.opTableRemoved;
+	}
+
+	@Override
+	public String updateContact(long id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

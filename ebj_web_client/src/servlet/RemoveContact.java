@@ -40,7 +40,12 @@ public class RemoveContact extends BaseServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		String id 		 = request.getParameter("id");
+		System.out.println(id);
+		daoContact.deleteContact(new Long(id));
+		RequestDispatcher rd = null;
+		rd = getServletContext().getRequestDispatcher("/ShowAllContact");
+		rd.forward(request, response);
 	}
 
 	/**

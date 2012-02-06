@@ -60,6 +60,7 @@ public interface IDAOContact {
 		 );
 	//public String searchContact(long id);
 	public String deleteContact(long id);
+	public String updateContact(long id);
 	public String getAllContacts();
 	String findContactNameById(long id);
 	public String clearTable();

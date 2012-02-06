@@ -19,7 +19,7 @@ import daoInterface.IDAOEntreprise;
 /**
  * Servlet implementation class UpdateContact
  */
-public class UpdateContact extends HttpServlet {
+public class UpdateContact extends BaseServlet {
 	private static final long serialVersionUID = 1L;
 	public static final String ENTREPRISE = "entreprise";
 	public static final String CONTACT = "contact";
@@ -37,6 +37,35 @@ public class UpdateContact extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String id = request.getParameter("id");
+		System.out.println("Updating contact " +  id + "....");
+		String firstName = request.getParameter("firstName");
+		String lastName = request.getParameter("lastName");
+		String email    = request.getParameter("email");
+		String street = request.getParameter("street");	
+		String city = request.getParameter("city");
+		String zip = request.getParameter("zip");
+		String country = request.getParameter("country");
+		String phoneKind = request.getParameter("phoneKind");
+		String phoneNumber = request.getParameter("phoneNumber");
+//		String numSiret = request.getParameter("numsiret");
+//		
+//		String contactType = request.getParameter("typeBtn");
+		
+//		ApplicationContext  appCtx =	
+//				WebApplicationContextUtils.getWebApplicationContext(getServletContext());		
+		String dbOutput = "";
+	
+//			daoContact = (IDAOContact) appCtx.getBean("daoContactProperty");
+			dbOutput = daoContact.updateContact(new Long(id), firstName, lastName, email, street, city, zip, country, phoneKind, phoneNumber);
+
+		
+		
+		String responseUrl = "/updateContact.jsp" + ServerUtils.getNewParameter("dbOutput", dbOutput);
+		System.out.println("::doPost responseUrl=" + responseUrl);
+
+		RequestDispatcher rd = getServletContext().getRequestDispatcher( responseUrl );
+		rd.forward(request, response);
 	}
 
 	/**
@@ -46,24 +75,22 @@ public class UpdateContact extends HttpServlet {
 		// TODO Auto-generated method stub
 		String id = request.getParameter("id");
 		System.out.println("Updating contact " +  id + "....");
-		String firstName = request.getParameter("firstname");
-		String lastName = request.getParameter("lastname");
+		String firstName = request.getParameter("firstName");
+		String lastName = request.getParameter("lastName");
 		String email    = request.getParameter("email");
 		String street = request.getParameter("street");	
 		String city = request.getParameter("city");
 		String zip = request.getParameter("zip");
 		String country = request.getParameter("country");
-		String phoneKind = request.getParameter("phonekind");
+		String phoneKind = request.getParameter("phoneKind");
 		String phoneNumber = request.getParameter("phoneNumber");
-		String numSiret = request.getParameter("numsiret");
-		
-		String contactType = request.getParameter("typeBtn");
+//		String numSiret = request.getParameter("numsiret");
+//		
+//		String contactType = request.getParameter("typeBtn");
 		
 //		ApplicationContext  appCtx =	
 //				WebApplicationContextUtils.getWebApplicationContext(getServletContext());		
 		String dbOutput = "";
-		IDAOContact daoContact = null;
-		IDAOEntreprise daoEntreprise = null;
 	
 //			daoContact = (IDAOContact) appCtx.getBean("daoContactProperty");
 			dbOutput = daoContact.updateContact(new Long(id), firstName, lastName, email, street, city, zip, country, phoneKind, phoneNumber);

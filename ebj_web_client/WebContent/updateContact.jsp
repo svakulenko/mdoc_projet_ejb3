@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="accueil.jsp"> back to Acceuil</a>
+<a href="menuMainPage"> back to Acceuil</a>
 <h1>Update contact:</h1>
 <jsp:include page="/commonPages/dbdataOutput.jsp" />
 
@@ -37,52 +37,52 @@
 			
 			<tr>
                 <td style="width: 140px;">Contact Id:</td>
-                <td valign="top"> <input type="text"  name="id" size="25" value="1" > </td>
+                <td valign="top"> <input type="hidden"  name="id" size="25" value="<%= request.getParameter("id")%>">  </td>
             </tr>
 			
             <tr>
                 <td style="width: 140px;">First Name:</td>
-                <td valign="top"> <input type="text"  name="firstname" size="25" value="Wayne"> </td>
+                <td valign="top"> <input type="text"  name="firstName" size="25" value="<%= request.getParameter("firstName")%>">  </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">Last Name:</td>
-                <td valign="top"> <input type="text"  name="lastname" size="25" value="Rooney"> </td>
+                <td valign="top"> <input type="text"  name="lastName" size="25" value="<%= request.getParameter("lastName")%>">  </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">Email:</td>
-                <td valign="top"> <input type="text"  name="email" size="25" value="update"> </td>
+                <td valign="top"> <input type="text"  name="email" size="25" value="<%= request.getParameter("email")%>">  </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">*Street:</td>
-                <td valign="top"> <input type="text"  name="street" size="25" value="Cuvier"> </td>
+                <td valign="top"> <input type="text"  name="street" size="25" value="<%= request.getParameter("street")%>"> </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">*City:</td>
-                <td valign="top"> <input type="text"  name="city" size="25" value="Paris"> </td>
+                <td valign="top"> <input type="text"  name="city" size="25" value="<%= request.getParameter("city")%>"> </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">*Zip:</td>
-                <td valign="top"> <input type="text"  name="zip" size="25" value="75000"> </td>
+                <td valign="top"> <input type="text"  name="zip" size="25" value="<%= request.getParameter("zip")%>"> </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">*Country:</td>
-                <td valign="top"> <input type="text"  name="country" size="25" value="Paris"> </td>
+                <td valign="top"> <input type="text"  name="country" size="25" value="<%= request.getParameter("country")%>"> </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">*PhoneKind:</td>
-                <td valign="top"> <input type="text"  name="phonekind" size="25" value="HomePhone"> </td>
+                <td valign="top"> <input type="text"  name="phoneKind" size="25" value="<%= request.getParameter("phoneKind")%>"> </td>
             </tr>
 
             <tr>
                 <td style="width: 140px;">*PhoneNumber:</td>
-                <td valign="top"> <input type="text"  name="phonenumber" size="25" value="11 22 33 44 55"> </td>
+                <td valign="top"> <input type="text"  name="phoneNumber" size="25" value="<%= request.getParameter("phoneNumber")%>"> </td>
             </tr>
 
 			<tr id='tr1' style= 'display:none'>

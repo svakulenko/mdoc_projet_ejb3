@@ -151,12 +151,12 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>removeEntreprise</display-name>
-    <servlet-name>removeEntreprise</servlet-name>
-    <servlet-class>servlet.removeEntreprise</servlet-class>
+    <display-name>RemoveEntreprise</display-name>
+    <servlet-name>RemoveEntreprise</servlet-name>
+    <servlet-class>servlet.RemoveEntreprise</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>removeEntreprise</servlet-name>
-    <url-pattern>/removeEntreprise</url-pattern>
+    <servlet-name>RemoveEntreprise</servlet-name>
+    <url-pattern>/RemoveEntreprise</url-pattern>
   </servlet-mapping>
 </web-app>

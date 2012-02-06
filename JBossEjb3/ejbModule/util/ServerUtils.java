@@ -4,6 +4,8 @@ package util;
 import java.nio.Buffer;
 import java.util.List;
 
+import com.arjuna.ats.internal.arjuna.objectstore.jdbc.accessors.apache_accessor;
+
 import entityBeans.*;
 
 
@@ -283,12 +285,25 @@ public class ServerUtils {
 				Address address = (Address) objs[1];
 				PhoneNumber phoneNumber = (PhoneNumber)objs[2];
 				ContactGroup contactGroup = (ContactGroup)objs[3];
+				StringBuffer urlParams = new StringBuffer();
+				urlParams.append("?")
+						 .append("id=" + contact.getContactId())
+						 .append("&firstName=" + contact.getFirstName())
+						 .append("&lastName=" + contact.getLastName())
+						 .append("&email=" + contact.getEmail())
+						 .append("&street=" + address.getStreet())
+						 .append("&city=" + address.getCity())
+						 .append("&zip=" + address.getZip())
+						 .append("&country=" + address.getCountry())
+						 .append("&phoneKind=" + phoneNumber.getPhoneKind())
+						 .append("&phoneNumber=" + phoneNumber.getPhoneNumber())
+						 .append("&group=" + contactGroup.getGroupName());
 				generatedHtml += generateSimpleContactRow(
 														  contact.getFirstName(), 
 														  contact.getLastName(), 
 														  generateHyperlink("showFullContact.jsp", "Show more...", "?id=" + contact.getContactId()), 
-														  generateHyperlink("updateContact.jsp", "update", "?id=" + contact.getContactId()), 
-														  generateHyperlink("deleteContact.jsp", "delete", "?id=" + contact.getContactId()));
+														  generateHyperlink("updateContact.jsp", "update", urlParams.toString()), 
+														  generateHyperlink("RemoveContact", "delete", "?id=" + contact.getContactId()));
 				System.out.println();
 				if (hasContact == false)
 					hasContact = true;
@@ -320,13 +335,28 @@ public class ServerUtils {
 				Address address = (Address) objs[1];
 				PhoneNumber phoneNumber = (PhoneNumber)objs[2];
 				ContactGroup contactGroup = (ContactGroup)objs[3];
+				StringBuffer urlParams = new StringBuffer();
+				urlParams.append("?")
+						 .append("id=" + entreprise.getContactId())
+						 .append("&firstName=" + entreprise.getFirstName())
+						 .append("&lastName=" + entreprise.getLastName())
+						 .append("&email=" + entreprise.getEmail())
+						 .append("&street=" + address.getStreet())
+						 .append("&city=" + address.getCity())
+						 .append("&zip=" + address.getZip())
+						 .append("&country=" + address.getCountry())
+						 .append("&phoneKind=" + phoneNumber.getPhoneKind())
+						 .append("&phoneNumber=" + phoneNumber.getPhoneNumber())
+						 .append("&group=" + contactGroup.getGroupName())
+						 
+				;
 				generatedHtml += generateSimpleEntrepriseRow(
 															 "" + entreprise.getNumSiret(), 
 															 entreprise.getFirstName(), 
 															 entreprise.getLastName(), 
 															 generateHyperlink("showFullContact.jsp", "Show more...", "?id=" + entreprise.getContactId()), 
-															 generateHyperlink("updateContact.jsp", "update","?id=" + entreprise.getContactId()), 
-															 generateHyperlink("deleteContact.jsp", "delete","?id=" + entreprise.getContactId()));
+															 generateHyperlink("updateContact.jsp", "update",urlParams.toString()), 
+															 generateHyperlink("RemoveEntreprise", "delete","?id=" + entreprise.getContactId()));
 				System.out.println();
 			}
 			generatedHtml += "</tbody></table>";
@@ -335,11 +365,11 @@ public class ServerUtils {
 		System.out.println("gen html" + generatedHtml);
 		return generatedHtml;
 	}
-	static private String generateHyperlink(String hyperlink, String value, String urlTail)
+	static private String generateHyperlink(String hyperlink, String value, String urlParams)
 	{
 		StringBuffer result = new StringBuffer();
 //		<a href="addContact.jsp">add contact</a><br>
-		result.append("<a href=\"" + hyperlink + urlTail + "\">" + value + "</a>");
+		result.append("<a href=\"" + hyperlink + urlParams + "\">" + value + "</a>");
 	
 		return result.toString();
 	}

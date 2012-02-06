@@ -15,6 +15,7 @@ import util.ServerUtils;
 
 import daoInterface.IDAOEntreprise;
 import entityBeans.Address;
+import entityBeans.Contact;
 import entityBeans.ContactGroup;
 import entityBeans.Entreprise;
 import entityBeans.PhoneNumber;
@@ -87,7 +88,32 @@ public class DAOEntreprise implements IDAOEntreprise {
 	@Override
 	public String deleteEntreprise(long id) {
 		// TODO Auto-generated method stub
-		return null;
+		String req = "from Entreprise entreprise where id = " + id;
+
+		// em.createQuery("DELETE FROM Contact")
+		// .executeUpdate();
+
+		StringBuffer requeteContact = new StringBuffer();
+		requeteContact.append("FROM Entreprise entreprise")
+						.append(" WHERE entreprise.id = " + id);
+
+		Query queryContact = em.createQuery(requeteContact.toString());
+		Entreprise entreprise = (Entreprise) queryContact.getResultList().get(0);
+		Query queryCg = em.createQuery("select cg from ContactGroup cg JOIN FETCH cg.contacts c where c.contactId = :id");
+		queryCg.setParameter("id", id);
+		List<ContactGroup> cgList = queryCg.getResultList();
+		for (ContactGroup cg : cgList)
+		{
+			Query q = em
+			        .createNativeQuery( "DELETE FROM ContactGroup_Contact " +
+			        					"WHERE contacts_contactId = :cid and contactGroups_contactGpoupId = :gid");
+			        q.setParameter("gid", cg.getContactGpoupId());
+			        q.setParameter("cid", entreprise.getContactId());
+			        q.executeUpdate();       
+		}
+		 em.remove(entreprise);
+		return ServerUtils.opTableRemoved;
+
 	}
 
 	@Override

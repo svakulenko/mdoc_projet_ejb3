@@ -84,39 +84,6 @@ public class AddContact extends BaseServlet
 		String[] groups = request.getParameterValues("group");
 		String group = groups[0];
 		System.out.println("AddContact::doPost group=" + group + ", phoneNumber=" + phoneNumber);
-
-		
-		
-		//TODO
-//		ApplicationContext  appCtx =	
-//		WebApplicationContextUtils.getWebApplicationContext(getServletContext());			
-//		IDAOCon 
-		
-		// CHECK EJB 
-    	//Context context;
-
-//			context = new InitialContext();
-//
-//        
-//    	//here, we use the name of the bean i.e. mappedName and not the class name
-//    	GestionContactRemote beanRemote = (GestionContactRemote)
-//        context.lookup("ContactBean");
-//        System.out.println(beanRemote.coucouContact("Mon Premier Client EJB3"));
-//      
-//         GestionContactRemote beanRemote2 = (GestionContactRemote)
-//         context.lookup("ContactBeanEntity");
-//         
-//         System.out.println(beanRemote2.coucouContact("Mon Premier Client EJB3"));
-//         //add a contact to the DB
-//         beanRemote2.addContact("Edmon", "Dantès", "Dantes@montecristo.com");
-//         //Check that the Contact was added to the DB
-//         System.out.println("le nom du contact ajouté dans la base de données: "+ beanRemote2.findContactNameById(1));
-			
-			
-			//IDAOContact daoContact = (IDAOContact) appCtx.getBean("daoContactProperty");
-//			String dbOutput = daoContact.addContact(daoContact.getContact());
-			
-			
 			String dbOutput = daoContact.addContact(firstName, 
 													lastName, 
 													email, 
