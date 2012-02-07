@@ -299,7 +299,108 @@ public class ServerUtils {
 		return generatedHtml;
 	}
 
-	
+	static public String generateUpdateForm(Contact c,Address a, PhoneNumber p, ContactGroup cg)
+	{						
+		String generatedHtml = "";
+		
+		generatedHtml += "<div style='display:block'>";
+		generatedHtml += "<form name=\"myForm\" method=\"post\" action=\"UpdateContact\">";
+		generatedHtml += "<br/>  <input type='submit' value='Save'> <input type='reset'  value='Clear'>";
+		generatedHtml += "<br><br>";
+		generatedHtml += "<table><tbody>";
+		
+		generatedHtml += "<CAPTION><B>" + "Detailled Information:" + "</B> </CAPTION>";
+		if (c != null)
+		{
+			
+			if (c.getContactId() != -1 ){
+				generatedHtml += "<td valign='top'> <input type='hidden'  name='id' size='25' value='" + c.getContactId() + "'>  </td>";
+				}
+			
+			if (c.getFirstName() != null ){
+			generatedHtml += "<tr>";
+			generatedHtml += "<td style='width: 140px;'>First Name:</td>";
+			generatedHtml += "<td valign='top'> <input type='text'  name='firstName' size='25' value='" + c.getFirstName() + "'>  </td>";
+			generatedHtml += "</tr>";
+			}
+			
+			if (c.getLastName() != null ){
+			generatedHtml += "<tr>";
+			generatedHtml += "<td style='width: 140px;'>Last Name:</td>";
+			generatedHtml += "<td valign='top'> <input type='text'  name='lastName' size='25' value='" + c.getLastName() + "'>  </td>";
+			generatedHtml += "</tr>";
+			}
+			
+			if (c.getEmail() != null ){
+			generatedHtml += "<tr>";
+			generatedHtml += "<td style='width: 140px;'>Email:</td>";
+			generatedHtml += "<td valign='top'> <input type='text'  name='email' size='25' value='" + c.getEmail() + "'>  </td>";
+			generatedHtml += "</tr>";
+			}
+		}
+		if (a != null)
+		{
+			if (a.getStreet() != null ){
+			generatedHtml += "<tr>";
+			generatedHtml += "<td style='width: 140px;'>Street:</td>";
+			generatedHtml += "<td valign='top'> <input type='text'  name='street' size='25' value='" + a.getStreet() + "'>  </td>";
+			generatedHtml += "</tr>";
+			}
+			
+			if (a.getCity() != null ){
+			generatedHtml += "<tr>";
+			generatedHtml += "<td style='width: 140px;'>City:</td>";
+			generatedHtml += "<td valign='top'> <input type='text'  name='firstName' size='25' value='" + a.getCity() + "'>  </td>";
+			generatedHtml += "</tr>";
+			}
+			
+			if (a.getZip() != null ){
+			generatedHtml += "<tr>";
+			generatedHtml += "<td style='width: 140px;'>Zip:</td>";
+			generatedHtml += "<td valign='top'> <input type='text'  name='zip' size='25' value='" + a.getZip() + "'>  </td>";
+			generatedHtml += "</tr>";
+			}
+			
+			if (a.getCountry() != null ){
+			generatedHtml += "<tr>";
+			generatedHtml += "<td style='width: 140px;'>Country:</td>";
+			generatedHtml += "<td valign='top'> <input type='text'  name='country' size='25' value='" + a.getCountry() + "'>  </td>";
+			generatedHtml += "</tr>";
+			}
+			
+		}
+		if (p != null)
+		{
+			if (p.getPhoneKind() != null ){
+			generatedHtml += "<tr>";
+			generatedHtml += "<td style='width: 140px;'>Phone Kind:</td>";
+			generatedHtml += "<td valign='top'> <input type='text'  name='phoneKind' size='25' value='" + p.getPhoneKind() + "'>  </td>";
+			generatedHtml += "</tr>";
+			}
+			
+			if (p.getPhoneNumber() != null ){
+			generatedHtml += "<tr>";
+			generatedHtml += "<td style='width: 140px;'>Phone Number:</td>";
+			generatedHtml += "<td valign='top'> <input type='text'  name='phoneNumber' size='25' value='" + p.getPhoneNumber() + "'>  </td>";
+			generatedHtml += "</tr>";		
+			}
+			
+		}
+		if (cg != null)
+		{
+			if (cg.getGroupName() != null ){
+			generatedHtml += "<tr>";
+			generatedHtml += "<td style='width: 140px;'>Contact Group:</td>";
+			generatedHtml += "<td valign='top'> <input type='text'  name='group' size='25' value='" + cg.getGroupName() + "'>  </td>";
+			generatedHtml += "</tr>";
+			}
+		}
+//		generatedHtml += "</tr>";
+		
+		generatedHtml += "</tbody></table></form></div>";
+		System.out.println("gen html" + generatedHtml);
+		return generatedHtml;
+	}
 	static public String generateContactRow(Contact c,Address a, PhoneNumber p, ContactGroup cg) 
 	{
 		
@@ -406,7 +507,7 @@ public class ServerUtils {
 														  contact.getFirstName(), 
 														  contact.getLastName(), 
 														  generateHyperlink("showFullContact", "Show more...", "?id=" + contact.getContactId()), 
-														  generateHyperlink("updateContact.jsp", "update", urlParams.toString()), 
+														  generateHyperlink("ShowUpdateForm", "update", "?id=" + contact.getContactId()), 
 														  generateHyperlink("RemoveContact", "delete", "?id=" + contact.getContactId()));
 
 				System.out.println();
@@ -460,7 +561,7 @@ public class ServerUtils {
 															 entreprise.getFirstName(), 
 															 entreprise.getLastName(), 
 															 generateHyperlink("showFullEntreprise", "Show more...", "?id=" + entreprise.getContactId()), 
-															 generateHyperlink("updateContact.jsp", "update",urlParams.toString()), 
+															 generateHyperlink("ShowUpdateForm", "update","?id=" + entreprise.getContactId()), 
 															 generateHyperlink("RemoveEntreprise", "delete","?id=" + entreprise.getContactId()));
 				System.out.println();
 			}

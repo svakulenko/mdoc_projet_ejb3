@@ -1,6 +1,9 @@
 package servlet;
 
+import generator.website.T_AddContactFull;
+
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -61,11 +64,9 @@ public class UpdateContact extends BaseServlet {
 
 		
 		
-		String responseUrl = "/updateContact.jsp" + ServerUtils.getNewParameter("dbOutput", dbOutput);
-		System.out.println("::doPost responseUrl=" + responseUrl);
-
-		RequestDispatcher rd = getServletContext().getRequestDispatcher( responseUrl );
-		rd.forward(request, response);
+			RequestDispatcher rd = null;
+			rd = getServletContext().getRequestDispatcher("/ShowAllContact");
+			rd.forward(request, response);
 	}
 
 	/**
@@ -95,13 +96,17 @@ public class UpdateContact extends BaseServlet {
 //			daoContact = (IDAOContact) appCtx.getBean("daoContactProperty");
 			dbOutput = daoContact.updateContact(new Long(id), firstName, lastName, email, street, city, zip, country, phoneKind, phoneNumber);
 
-		
-		
-		String responseUrl = "/updateContact.jsp" + ServerUtils.getNewParameter("dbOutput", dbOutput);
-		System.out.println("::doPost responseUrl=" + responseUrl);
 
-		RequestDispatcher rd = getServletContext().getRequestDispatcher( responseUrl );
-		rd.forward(request, response);
+			dbOutput += daoContact.getUpdateForm(new Integer(id));
+			PrintWriter out = response.getWriter() ;
+
+		      
+		      out.println (getHeader(null));
+		      out.println (getBody("Show Update Form"));
+		      out.println (dbOutput);
+		         
+		      out.println (getFooter());
+
 		
 		
 	}

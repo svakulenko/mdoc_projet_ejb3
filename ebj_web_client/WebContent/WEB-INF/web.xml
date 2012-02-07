@@ -189,4 +189,14 @@
     <servlet-name>ResetToDefault</servlet-name>
     <url-pattern>/ResetToDefault</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ShowUpdateForm</display-name>
+    <servlet-name>ShowUpdateForm</servlet-name>
+    <servlet-class>servlet.ShowUpdateForm</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowUpdateForm</servlet-name>
+    <url-pattern>/ShowUpdateForm</url-pattern>
+  </servlet-mapping>
 </web-app>
