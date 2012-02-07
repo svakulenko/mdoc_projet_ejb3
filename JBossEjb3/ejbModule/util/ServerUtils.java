@@ -48,11 +48,12 @@ public class ServerUtils {
 		return generatedHtml;
 	}
 	
-	static public String generateSimpleContactRow(String firstName, String lastName, String showMore,String update, String delete) {
+	static public String generateSimpleContactRow(String firstName, String lastName, String Group, String showMore,String update, String delete) {
 		String generatedHtml = "";
 		generatedHtml += "<tr>";
 		generatedHtml += "<td style=\"width: 100px;\" >" + firstName + "</td>";
 		generatedHtml += "<td style=\"width: 100px;\" >" + lastName + "</td>";
+		generatedHtml += "<td style=\"width: 100px;\" >" + Group + "</td>";
 		generatedHtml += "<td style=\"width: 100px;\" >" + showMore + "</td>";
 		generatedHtml += "<td style=\"width: 100px;\" >" + update + "</td>";
 		generatedHtml += "<td style=\"width: 100px;\" >" + delete + "</td>";
@@ -77,12 +78,13 @@ public class ServerUtils {
 		generatedHtml += "</tr>";
 		return generatedHtml;
 	}
-	static public String generateSimpleEntrepriseRow( String firstName, String lastName, String showMore,String update, String delete) {
+	static public String generateSimpleEntrepriseRow( String firstName, String lastName, String group, String showMore,String update, String delete) {
 		String generatedHtml = "";
 		generatedHtml += "<tr>";
 
 		generatedHtml += "<td style=\"width: 100px;\" >" + firstName + "</td>";
 		generatedHtml += "<td style=\"width: 100px;\" >" + lastName + "</td>";
+		generatedHtml += "<td style=\"width: 100px;\" >" + group + "</td>";
 		generatedHtml += "<td style=\"width: 100px;\" >" + showMore + "</td>";
 		generatedHtml += "<td style=\"width: 100px;\" >" + update + "</td>";
 		generatedHtml += "<td style=\"width: 100px;\" >" + delete + "</td>";
@@ -201,37 +203,37 @@ public class ServerUtils {
 		
 		generatedHtml += "<CAPTION><B>" + "Detailled Information:" + "</B> </CAPTION>";
 
-//		if (c instanceof Entreprise) {
-//			Entreprise e = (Entreprise) c;
-//			if (e.getNumSiret() != null ){
-//				generatedHtml += "<tr>";
-//				generatedHtml += "<td style=\"width: 100px;\" >" + "Siret" + "</td>";
-//				generatedHtml += "<td valign=\"top\">" + e.getNumSiret() + "</td>";
-//				generatedHtml += "</tr>";
-//			}
-//			
-//		}
+		if (c instanceof Entreprise) {
+			Entreprise e = (Entreprise) c;
+			if (e.getNumSiret() != null ){
+				generatedHtml += "<tr>";
+				generatedHtml += "<td style=\"width: 100px;\" >" + "Siret" + "</td>";
+				generatedHtml += "<td style=\"width: 150px;\" >"+ e.getNumSiret() + "</td>";
+				generatedHtml += "</tr>";
+			}
+			
+		}
 		
 		if (c != null)
 		{
 			if (c.getFirstName() != null ){
 			generatedHtml += "<tr>";
-			generatedHtml += "<td style=\"width: 100px;\" >" + "First Name" + "</td>";
-			generatedHtml += "<td valign=\"top\">" + c.getFirstName() + "</td>";
+			generatedHtml += "<td style=\"width: 150px;\" >" + "First Name" + "</td>";
+			generatedHtml += "<td style=\"width: 150px;\" >" + c.getFirstName() + "</td>";
 			generatedHtml += "</tr>";
 			}
 			
 			if (c.getLastName() != null ){
 			generatedHtml += "<tr>";
-			generatedHtml += "<td style=\"width: 100px;\" >" + "Last Name" + "</td>";
-			generatedHtml += "<td valign=\"top\">" + c.getLastName() + "</td>";
+			generatedHtml += "<td style=\"width: 150px;\" >" + "Last Name" + "</td>";
+			generatedHtml += "<td style=\"width: 150px;\" >" + c.getLastName() + "</td>";
 			generatedHtml += "</tr>";
 			}
 			
 			if (c.getEmail() != null ){
 			generatedHtml += "<tr>";
-			generatedHtml += "<td style=\"width: 100px;\" >" + "Email" + "</td>";
-			generatedHtml += "<td valign=\"top\">" + c.getEmail() + "</td>";
+			generatedHtml += "<td style=\"width: 150px;\" >" + "Email" + "</td>";
+			generatedHtml += "<td style=\"width: 150px;\" >" + c.getEmail() + "</td>";
 			generatedHtml += "</tr>";
 			}
 		}
@@ -239,29 +241,29 @@ public class ServerUtils {
 		{
 			if (a.getStreet() != null ){
 			generatedHtml += "<tr>";
-			generatedHtml += "<td style=\"width: 100px;\" >" + "Street" + "</td>";
-			generatedHtml += "<td valign=\"top\">" + a.getStreet() + "</td>";
+			generatedHtml += "<td style=\"width: 150px;\" >" + "Street" + "</td>";
+			generatedHtml += "<td style=\"width: 150px;\" >" + a.getStreet() + "</td>";
 			generatedHtml += "</tr>";
 			}
 			
 			if (a.getCity() != null ){
 			generatedHtml += "<tr>";
-			generatedHtml += "<td style=\"width: 100px;\" >" + "City" + "</td>";
-			generatedHtml += "<td valign=\"top\">" + a.getCity() + "</td>";
+			generatedHtml += "<td style=\"width: 150px;\" >" + "City" + "</td>";
+			generatedHtml += "<td style=\"width: 150px;\" >" + a.getCity() + "</td>";
 			generatedHtml += "</tr>";
 			}
 			
 			if (a.getZip() != null ){
 			generatedHtml += "<tr>";
-			generatedHtml += "<td style=\"width: 100px;\" >" + "Zip" + "</td>";
-			generatedHtml += "<td valign=\"top\">" + a.getZip() + "</td>";
+			generatedHtml += "<td style=\"width: 150px;\" >" + "Zip" + "</td>";
+			generatedHtml += "<td style=\"width: 150px;\" >" + a.getZip() + "</td>";
 			generatedHtml += "</tr>";
 			}
 			
 			if (a.getCountry() != null ){
 			generatedHtml += "<tr>";
-			generatedHtml += "<td style=\"width: 100px;\" >" + "Country" + "</td>";
-			generatedHtml += "<td valign=\"top\">" + a.getCountry()+ "</td>";
+			generatedHtml += "<td style=\"width: 150px;\" >" + "Country" + "</td>";
+			generatedHtml += "<td style=\"width: 150px;\" >" + a.getCountry()+ "</td>";
 			generatedHtml += "</tr>";
 			}
 			
@@ -270,15 +272,15 @@ public class ServerUtils {
 		{
 			if (p.getPhoneKind() != null ){
 			generatedHtml += "<tr>";
-			generatedHtml += "<td style=\"width: 100px;\" >" + "Phone Kind" + "</td>";
-			generatedHtml += "<td valign=\"top\">" + p.getPhoneKind() + "</td>";
+			generatedHtml += "<td style=\"width: 150px;\" >" + "Phone Kind" + "</td>";
+			generatedHtml += "<td style=\"width: 150px;\" >" + p.getPhoneKind() + "</td>";
 			generatedHtml += "</tr>";
 			}
 			
 			if (p.getPhoneNumber() != null ){
 			generatedHtml += "<tr>";
-			generatedHtml += "<td style=\"width: 100px;\" >" + "Phone Number" + "</td>";
-			generatedHtml += "<td valign=\"top\">" + p.getPhoneNumber() + "</td>";
+			generatedHtml += "<td style=\"width: 150px;\" >" + "Phone Number" + "</td>";
+			generatedHtml += "<td style=\"width: 150px;\" >" + p.getPhoneNumber() + "</td>";
 			generatedHtml += "</tr>";		
 			}
 			
@@ -287,8 +289,8 @@ public class ServerUtils {
 		{
 			if (cg.getGroupName() != null ){
 			generatedHtml += "<tr>";
-			generatedHtml += "<td style=\"width: 100px;\" >" + "Group" + "</td>";
-			generatedHtml += "<td valign=\"top\">" + cg.getGroupName() + "</td>";
+			generatedHtml += "<td style=\"width: 150px;\" >" + "Group" + "</td>";
+			generatedHtml += "<td style=\"width: 150px;\" >"+ cg.getGroupName() + "</td>";
 			generatedHtml += "</tr>";
 			}
 		}
@@ -481,7 +483,7 @@ public class ServerUtils {
 			generatedHtml += "<table><tbody>";
 			//generatedHtml += "<TABLE BORDER=\"1\">";
 			generatedHtml += "<CAPTION><B>" + header + "</B> </CAPTION>";
-			generatedHtml += generateSimpleContactRow("<B>First Name</B>", "<B>Last Name</B>", "<B> Show more...</B>", "<B>Update</B>", "<B>Delete</B>");
+			generatedHtml += generateSimpleContactRow("<B>First Name</B>", "<B>Last Name</B>", "<B>Group</B>",  "<B> Show more...</B>", "<B>Update</B>", "<B>Delete</B>");
 			for (Object[] objs: list)
 			{
 				Contact contact = (Contact) objs[0];
@@ -505,7 +507,8 @@ public class ServerUtils {
 						 .append("&group=" + contactGroup.getGroupName());
 				generatedHtml += generateSimpleContactRow(
 														  contact.getFirstName(), 
-														  contact.getLastName(), 
+														  contact.getLastName(),
+														  contactGroup.getGroupName(), 
 														  generateHyperlink("showFullContact", "Show more...", "?id=" + contact.getContactId()), 
 														  generateHyperlink("ShowUpdateForm", "update", "?id=" + contact.getContactId()), 
 														  generateHyperlink("RemoveContact", "delete", "?id=" + contact.getContactId()));
@@ -534,7 +537,7 @@ public class ServerUtils {
 			generatedHtml += "<table><tbody>";
 			//generatedHtml += "<TABLE BORDER=\"1\">";
 			generatedHtml += "<CAPTION><B>" + header + "</B> </CAPTION>";
-			generatedHtml += generateSimpleEntrepriseRow( "<B>First Name</B>", "<B>Last Name</B>", "<B>Show more...</B>", "<B>Update</B>", "<B>Delete</B>");
+			generatedHtml += generateSimpleEntrepriseRow( "<B>First Name</B>", "<B>Last Name</B>",  "<B>Group</B>", "<B>Show more...</B>", "<B>Update</B>", "<B>Delete</B>");
 			for (Object[] objs: list)
 			{
 				Entreprise entreprise = (Entreprise) objs[0];
@@ -560,6 +563,7 @@ public class ServerUtils {
 															
 															 entreprise.getFirstName(), 
 															 entreprise.getLastName(), 
+															 contactGroup.getGroupName(),
 															 generateHyperlink("showFullEntreprise", "Show more...", "?id=" + entreprise.getContactId()), 
 															 generateHyperlink("ShowUpdateForm", "update","?id=" + entreprise.getContactId()), 
 															 generateHyperlink("RemoveEntreprise", "delete","?id=" + entreprise.getContactId()));

@@ -1,6 +1,7 @@
 package servletMenus;
 
 import generator.website.T_AddContactFull;
+import generator.website.T_addContact;
 import generator.website.T_jspBody;
 import generator.website.T_jspHeader;
 import generator.website.T_jspfooter;
@@ -43,8 +44,9 @@ public class menuAddContact extends BaseServlet {
 	      out.println (getHeader(null));
 	      out.println (getBody("Add Contact"));
 	      
+	      
 	      String[] inputFormsID = {"AddEntreprise","AddContact"};
-	      String addContactMenuStr = new T_AddContactFull().generate(inputFormsID);
+	      String addContactMenuStr = new T_addContact().generate(inputFormsID);
 	      out.println (addContactMenuStr);
 	      
 	      

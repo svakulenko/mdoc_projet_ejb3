@@ -17,11 +17,15 @@ imports = ""%>
 
   
   <div class="sidebar">
-<a href="menuAddContact">add contact</a><br>
-<a href="menuSearchPage">search contact</a><br>
-<a href="ClearTable">clear table</a><br>
-<a href="ShowAllContact">showTable</a><br>
-<a href="ResetToDefault">Reset to default</a><br>
+<a class="button" href="menuAddContact" onclick="this.blur(); "><span>Add</span></a>
+<a class="button" href="menuSearchPage" onclick="this.blur(); "><span>Search</span></a>
+<a class="button" href="ClearTable" onclick="this.blur(); "><span>Clear</span></a>
+<a class="button" href="ShowAllContact" onclick="this.blur(); "><span>Show</span></a>
+<a class="button" href="ResetToDefault" onclick="this.blur(); "><span>Reset</span></a>
+
+
+
+
   </div>
   
   <div class="mainBody" style="overflow:auto">

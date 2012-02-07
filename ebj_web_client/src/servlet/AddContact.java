@@ -1,6 +1,7 @@
 package servlet;
 
 import generator.website.T_AddContactFull;
+import generator.website.T_addContact;
 import generator.website.T_jspBody;
 import generator.website.T_jspHeader;
 import generator.website.T_jspfooter;
@@ -62,19 +63,23 @@ public class AddContact extends BaseServlet
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		System.out.println("AddContact::doPost Adding contact info into database....");
-		System.out.println("AddContact::doPost Adding contact info into database....#2");
-		//System.out.println("myBean=" + myBean);
-		//String res = myBean.coucouContact("Mon Premier Client EJB3");
-		//System.out.println("AddContact::doPost Adding contact info into database....#2.5 res=" + res);
-		System.out.println("AddContact::doPost Adding contact info into database....#3");
-		
 		
 		String firstName = request.getParameter("firstname");
 		String lastName = request.getParameter("lastname");
 		String email    = request.getParameter("email");
+		
+
+		String dbOutput = null;
+		String inputFailedForm = checkInput(firstName, lastName, email,"skip");
+		
+		if (inputFailedForm == null){
+			
+		
 		String street = request.getParameter("street");	
 		String city = request.getParameter("city");
 		String zip = request.getParameter("zip");
@@ -84,7 +89,7 @@ public class AddContact extends BaseServlet
 		String[] groups = request.getParameterValues("group");
 		String group = groups[0];
 		System.out.println("AddContact::doPost group=" + group + ", phoneNumber=" + phoneNumber);
-			String dbOutput = daoContact.addContact(firstName, 
+		dbOutput = daoContact.addContact(firstName, 
 													lastName, 
 													email, 
 													street, 
@@ -99,14 +104,18 @@ public class AddContact extends BaseServlet
 			//String responseUrl = "/addContact.jsp" + ServerUtils.getNewParameter("dbOutput", dbOutput);
 
 			
-		      PrintWriter out = response.getWriter() ;
-		      out.println (getHeader(null));
-		      out.println (getBody("Add Contact"));
-		      out.println (dbOutput);
-		      String[] inputFormsID = {"AddEntreprise","AddContact"};
-		      out.println (new T_AddContactFull().generate(inputFormsID));
-		      out.println (getFooter());
-			
+
+		} else {
+			dbOutput = "Please check input for '" + inputFailedForm + "'";
+		}
+		
+	      PrintWriter out = response.getWriter() ;
+	      out.println (getHeader(null));
+	      out.println (getBody("Add Contact"));
+	      out.println (dbOutput);
+	      String[] inputFormsID = {"AddEntreprise","AddContact"};
+	      out.println (new T_addContact().generate(inputFormsID));
+	      out.println (getFooter());
 		//
 		
 		//need to set responseUrl

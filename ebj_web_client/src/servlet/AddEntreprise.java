@@ -1,6 +1,7 @@
 package servlet;
 
 import generator.website.T_AddContactFull;
+import generator.website.T_addContact;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -53,18 +54,26 @@ public class AddEntreprise extends BaseServlet
 		String firstName = request.getParameter("firstname");
 		String lastName = request.getParameter("lastname");
 		String email    = request.getParameter("email");
+		String numSiret = request.getParameter("numsiret");
+		
+		String dbOutput = null;
+		String inputFailedForm = checkInput(firstName, lastName, email,numSiret);
+		
+		if (inputFailedForm == null){
+		
+		
 		String street = request.getParameter("street");	
 		String city = request.getParameter("city");
 		String zip = request.getParameter("zip");
 		String country = request.getParameter("country");
 		String phoneKind = request.getParameter("phonekind");
 		String phoneNumber = request.getParameter("phonenumber");
-		String numSiret = request.getParameter("numsiret");
+		
 		String[] groups = request.getParameterValues("group");
 		String group = groups[0];
 		
-		//TODO
-		String dbOutput = daoEntreprise.addEntreprise(firstName, 
+		
+		dbOutput = daoEntreprise.addEntreprise(firstName, 
 				lastName, 
 				email, 
 				street, 
@@ -77,13 +86,18 @@ public class AddEntreprise extends BaseServlet
 				group
 		);
 		
+		
+	} else {
+		dbOutput = "Please check input for '" + inputFailedForm + "'";
+	}
+		
 	      PrintWriter out = response.getWriter() ;
 	      out.println (getHeader(null));
 	      out.println (getBody("Add Contact"));
 	      
 	      out.println (dbOutput); //add dynamic content (response from daoContact)
 	      String[] inputFormsID = {"AddEntreprise","AddContact"};
-	      out.println (new T_AddContactFull().generate(inputFormsID)); // add dynamic content
+	      out.println (new T_addContact().generate(inputFormsID)); // add dynamic content
 	      
 	      out.println (getFooter()); //add footer
 	      
