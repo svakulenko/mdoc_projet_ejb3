@@ -199,4 +199,24 @@
     <servlet-name>ShowUpdateForm</servlet-name>
     <url-pattern>/ShowUpdateForm</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>menuShowUpdateFormEntreprise</display-name>
+    <servlet-name>menuShowUpdateFormEntreprise</servlet-name>
+    <servlet-class>servletMenus.menuShowUpdateFormEntreprise</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>menuShowUpdateFormEntreprise</servlet-name>
+    <url-pattern>/menuShowUpdateFormEntreprise</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateEntreprise</display-name>
+    <servlet-name>UpdateEntreprise</servlet-name>
+    <servlet-class>servlet.UpdateEntreprise</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateEntreprise</servlet-name>
+    <url-pattern>/UpdateEntreprise</url-pattern>
+  </servlet-mapping>
 </web-app>

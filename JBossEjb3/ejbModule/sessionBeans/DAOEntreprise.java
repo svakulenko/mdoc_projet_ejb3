@@ -116,8 +116,9 @@ public class DAOEntreprise implements IDAOEntreprise {
 
 	}
 
-	public String getUpdateForm(long id)
+	public String getUpdateForm2(String id)
 	{
+		System.out.println("DAOEntreprise::getUpdateForm2");
 		StringBuffer requeteS = new StringBuffer();
 		requeteS.append("from Contact entreprise")
 				.append(" left join entreprise.address as address")
@@ -140,7 +141,42 @@ public class DAOEntreprise implements IDAOEntreprise {
 				Address a = (Address) l.get(0)[1];
 				PhoneNumber p = (PhoneNumber)l.get(0)[2];
 				ContactGroup cg = (ContactGroup)l.get(0)[3];
-				rvalue = ServerUtils.generateUpdateForm(c, a, p, cg);
+				rvalue = ServerUtils.generateUpdateForm(c, a, p, cg, "UpdateEntreprise");
+//			}
+		}
+		else{
+			rvalue = ServerUtils.opNoRecodsContact;
+		}
+
+		return rvalue;
+	}
+	
+	public String getUpdateForm(long id)
+	{
+		System.out.println("DAOEntreprise::getUpdateForm");
+		StringBuffer requeteS = new StringBuffer();
+		requeteS.append("from Contact entreprise")
+				.append(" left join entreprise.address as address")
+				.append(" left join entreprise.phoneNumbers as phoneNumber")
+				.append(" left join entreprise.contactGroups as contactGroup")
+				.append(" WHERE entreprise.contactId = :id");
+		
+		Long idInt = new Long(id);
+
+		Query query = em.createQuery(requeteS.toString());
+		query.setParameter("id", idInt);
+
+		List<Object[]> l = query.getResultList();
+		System.out.println("reslt size=" + l.size());
+
+		String rvalue = null;
+		if (l.size() == 1){
+			Contact c = (Contact) l.get(0)[0];
+//			if (!(c instanceof Entreprise)){
+				Address a = (Address) l.get(0)[1];
+				PhoneNumber p = (PhoneNumber)l.get(0)[2];
+				ContactGroup cg = (ContactGroup)l.get(0)[3];
+				rvalue = ServerUtils.generateUpdateForm(c, a, p, cg, "UpdateEntreprise");
 //			}
 		}
 		else{
@@ -275,5 +311,64 @@ public class DAOEntreprise implements IDAOEntreprise {
 	}
 	
 
+	@Override
+	public String updateEntreprise(long id, String firstName, String lastName,
+			String email, String street, String city, String zip,
+			String country, String phoneKind, String phoneNumber, String numSiret) {
+		// TODO Auto-generated method stub
+		String rvalue = null;
+		StringBuffer requeteS = new StringBuffer();
+		requeteS.append("from Entreprise entreprise")
+		.append(" left join entreprise.address as address")
+		.append(" left join entreprise.phoneNumbers as phoneNumber")
+		.append(" left join entreprise.contactGroups as contactGroup")
+		.append(" WHERE entreprise.contactId = :id");
+		
+		
+		Query query = em.createQuery(requeteS.toString());
+		query.setParameter("id", id);
+		List<Object[]> l = query.getResultList();
+		if (l.size() == 0)
+		{
+			rvalue = "Contact dont exist!";
+			return rvalue;
+		}
+		Entreprise contact = (Entreprise) l.get(0)[0];	
+		Address address = (Address) l.get(0)[1];
+		PhoneNumber phone = (PhoneNumber) l.get(0)[2];
+		
+		if (contact.getNumSiret() != null)
+			contact.setNumSiret(numSiret);
+		
+		if (firstName != null)
+			contact.setFirstName(firstName);
+		if (lastName != null)
+			contact.setLastName(lastName);
+		if (email != null)
+			contact.setEmail(email);
+
+		
+		if (street != null)
+			address.setStreet(street);
+		if (city != null)
+			address.setCity(city);
+		if (zip != null)
+			address.setZip(zip);
+		if (country != null)
+			address.setCountry(country);
+		contact.setAddress(address); // Uni birectionnel
+
+		
+		if (phoneKind != null)
+			phone.setPhoneKind(phoneKind);
+		if (phoneNumber != null)
+			phone.setPhoneNumber(phoneNumber);
+		
+//		ContactGroup cg = (ContactGroup)l.get(0)[3];
+//		if ()
+		em.merge(contact);
+		rvalue = ServerUtils.opFait;
+		return rvalue;
+	}
 
 }

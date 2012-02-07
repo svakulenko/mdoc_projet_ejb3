@@ -3,6 +3,9 @@ package util;
 
 
 import java.util.List;
+
+import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
+
 import entityBeans.*;
 
 
@@ -301,19 +304,32 @@ public class ServerUtils {
 		return generatedHtml;
 	}
 
-	static public String generateUpdateForm(Contact c,Address a, PhoneNumber p, ContactGroup cg)
+	static public String generateUpdateForm(Contact c,Address a, PhoneNumber p, ContactGroup cg, String action)
 	{						
 		String generatedHtml = "";
 		
 		generatedHtml += "<div style='display:block'>";
-		generatedHtml += "<form name=\"myForm\" method=\"post\" action=\"UpdateContact\">";
-		generatedHtml += "<br/>  <input type='submit' value='Save'> <input type='reset'  value='Clear'>";
+		generatedHtml += "<form name=\"myForm\" method=\"post\" action=\"" + action + "\">";
+		generatedHtml += "<br/>  <input type='submit' value='Save'>";
 		generatedHtml += "<br><br>";
 		generatedHtml += "<table><tbody>";
 		
 		generatedHtml += "<CAPTION><B>" + "Detailled Information:" + "</B> </CAPTION>";
 		if (c != null)
 		{
+			
+			if (c instanceof Entreprise) {
+				Entreprise e = (Entreprise) c;
+				if (e.getNumSiret() != null ){
+					generatedHtml += "<tr>";
+					generatedHtml += "<td style='width: 140px;'>Siret:</td>";
+					generatedHtml += "<td valign='top'> <input type='text'  name='numSiret' size='25' value='" + e.getNumSiret() + "'>  </td>";
+
+
+					generatedHtml += "</tr>";
+				}
+				
+			}
 			
 			if (c.getContactId() != -1 ){
 				generatedHtml += "<td valign='top'> <input type='hidden'  name='id' size='25' value='" + c.getContactId() + "'>  </td>";
@@ -342,6 +358,8 @@ public class ServerUtils {
 		}
 		if (a != null)
 		{
+			
+			if (c instanceof Entreprise)
 			if (a.getStreet() != null ){
 			generatedHtml += "<tr>";
 			generatedHtml += "<td style='width: 140px;'>Street:</td>";
@@ -565,7 +583,7 @@ public class ServerUtils {
 															 entreprise.getLastName(), 
 															 contactGroup.getGroupName(),
 															 generateHyperlink("showFullEntreprise", "Show more...", "?id=" + entreprise.getContactId()), 
-															 generateHyperlink("ShowUpdateForm", "update","?id=" + entreprise.getContactId() + "&type=e"), 
+															 generateHyperlink("menuShowUpdateFormEntreprise", "update","?id=" + entreprise.getContactId() + "&type=e"), 
 															 generateHyperlink("RemoveEntreprise", "delete","?id=" + entreprise.getContactId()));
 				System.out.println();
 			}

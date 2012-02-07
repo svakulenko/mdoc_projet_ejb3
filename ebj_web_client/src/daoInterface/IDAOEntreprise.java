@@ -53,4 +53,8 @@ public interface IDAOEntreprise
 		 );
 	public String searchContactSimple(String id );
 	public String getUpdateForm(long id);
+	public String getUpdateForm2(String id);
+	public String updateEntreprise(long id, String firstName, String lastName,
+			String email, String street, String city, String zip,
+			String country, String phoneKind, String phoneNumber, String numSiret) ;
 }

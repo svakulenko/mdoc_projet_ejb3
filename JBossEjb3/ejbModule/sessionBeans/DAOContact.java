@@ -131,7 +131,7 @@ public class DAOContact implements IDAOContact {
 				Address a = (Address) l.get(0)[1];
 				PhoneNumber p = (PhoneNumber)l.get(0)[2];
 				ContactGroup cg = (ContactGroup)l.get(0)[3];
-				rvalue = ServerUtils.generateUpdateForm(c, a, p, cg);
+				rvalue = ServerUtils.generateUpdateForm(c, a, p, cg,"UpdateContact");
 			}
 		}
 		else{
