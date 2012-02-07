@@ -91,7 +91,7 @@ public class ResetToDefault extends BaseServlet {
 					cn[i], 
 					pk[i], 
 					pn[i],
-					new Long(ns[i]),
+					ns[i],
 					gp[i]
 					);
 		}

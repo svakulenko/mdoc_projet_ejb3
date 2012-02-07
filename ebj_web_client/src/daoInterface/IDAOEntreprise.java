@@ -19,7 +19,7 @@ public interface IDAOEntreprise
 			String country,
 			String phoneKind,
 			String phoneNumber,
-			long siretNumber,
+			String siretNumber,
 			String group
 		 );
 	public String searchEntreprise(long id);
