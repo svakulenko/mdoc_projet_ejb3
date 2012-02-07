@@ -30,7 +30,7 @@ public class DAOEntreprise implements IDAOEntreprise {
 	public String addEntreprise(String firstName, String lastName,
 			String email, String street, String city, String zip,
 			String country, String phoneKind, String phoneNumber,
-			long siretNumber,String group) {
+			String siretNumber,String group) {
 		// TODO Auto-generated method stub
 		Entreprise entreprise = new Entreprise();
 		entreprise.setFirstName(firstName);

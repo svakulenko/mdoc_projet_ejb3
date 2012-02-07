@@ -73,7 +73,7 @@ public class AddEntreprise extends BaseServlet
 				country, 
 				phoneKind, 
 				phoneNumber,
-				new Long(numSiret),
+				numSiret,
 				group
 		);
 		

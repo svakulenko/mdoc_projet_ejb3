@@ -8,13 +8,13 @@ import javax.persistence.Table;
 @Table(name="Entreprise")
 public class Entreprise extends Contact{
 
-	long numSiret; //Syst�me d�Identification du R�pertoire des ETablissements
+	String numSiret; //Syst�me d�Identification du R�pertoire des ETablissements
 
-	public long getNumSiret() {
+	public String getNumSiret() {
 		return numSiret;
 	}
 
-	public void setNumSiret(long numSiret) {
+	public void setNumSiret(String numSiret) {
 		this.numSiret = numSiret;
 	}
 
