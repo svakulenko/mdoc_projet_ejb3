@@ -229,7 +229,7 @@ public class DAOEntreprise implements IDAOEntreprise {
 				Address a = (Address) l.get(0)[1];
 				PhoneNumber p = (PhoneNumber)l.get(0)[2];
 				ContactGroup cg = (ContactGroup)l.get(0)[3];
-				rvalue = ServerUtils.generateFullEntrepriseRow(c, a, p, cg);
+				rvalue = ServerUtils.generateFullContactRow(c, a, p, cg);
 			}
 		}
 		else{

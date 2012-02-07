@@ -18,9 +18,7 @@ imports = ""%>
   
   <div class="sidebar">
 <a href="menuAddContact">add contact</a><br>
-<a href="menuRemoveClient">remove contact</a><br>
 <a href="menuSearchPage">search contact</a><br>
-<a href="updateContact.jsp">update contact</a><br>
 <a href="ClearTable">clear table</a><br>
 <a href="ShowAllContact">showTable</a><br>
 <a href="ResetToDefault">Reset to default</a><br>
