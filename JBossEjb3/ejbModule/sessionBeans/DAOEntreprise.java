@@ -116,6 +116,41 @@ public class DAOEntreprise implements IDAOEntreprise {
 
 	}
 
+	public String getUpdateForm(long id)
+	{
+		StringBuffer requeteS = new StringBuffer();
+		requeteS.append("from Contact entreprise")
+				.append(" left join entreprise.address as address")
+				.append(" left join entreprise.phoneNumbers as phoneNumber")
+				.append(" left join entreprise.contactGroups as contactGroup")
+				.append(" WHERE entreprise.contactId = :id");
+		
+		Long idInt = new Long(id);
+
+		Query query = em.createQuery(requeteS.toString());
+		query.setParameter("id", idInt);
+
+		List<Object[]> l = query.getResultList();
+		System.out.println("reslt size=" + l.size());
+
+		String rvalue = null;
+		if (l.size() == 1){
+			Contact c = (Contact) l.get(0)[0];
+//			if (!(c instanceof Entreprise)){
+				Address a = (Address) l.get(0)[1];
+				PhoneNumber p = (PhoneNumber)l.get(0)[2];
+				ContactGroup cg = (ContactGroup)l.get(0)[3];
+				rvalue = ServerUtils.generateUpdateForm(c, a, p, cg);
+//			}
+		}
+		else{
+			rvalue = ServerUtils.opNoRecodsContact;
+		}
+
+		return rvalue;
+	}
+	
+	
 	@Override
 	public String getAllEntreprise() {
 		// TODO Auto-generated method stub

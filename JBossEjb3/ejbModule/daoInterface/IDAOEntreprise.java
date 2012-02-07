@@ -52,4 +52,5 @@ public interface IDAOEntreprise
 			String numSiret
 		 );
 	public String searchContactSimple(String id );
+	public String getUpdateForm(long id);
 }

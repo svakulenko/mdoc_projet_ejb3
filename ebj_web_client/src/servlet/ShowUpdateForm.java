@@ -28,8 +28,13 @@ public class ShowUpdateForm extends BaseServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String id = request.getParameter("id");
+		String type = request.getParameter("type");
 		System.out.println("Updating contact " +  id + "....");
-		String dbOutput = daoContact.getUpdateForm(new Integer(id));
+		String dbOutput = "";
+		if (type.equals("c"))
+			dbOutput = daoContact.getUpdateForm(new Integer(id));
+		else 
+			dbOutput = daoEntreprise.getUpdateForm(new Integer(id));
 		PrintWriter out = response.getWriter() ;
 
 	      

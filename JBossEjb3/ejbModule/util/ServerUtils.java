@@ -510,7 +510,7 @@ public class ServerUtils {
 														  contact.getLastName(),
 														  contactGroup.getGroupName(), 
 														  generateHyperlink("showFullContact", "Show more...", "?id=" + contact.getContactId()), 
-														  generateHyperlink("ShowUpdateForm", "update", "?id=" + contact.getContactId()), 
+														  generateHyperlink("ShowUpdateForm", "update", "?id=" + contact.getContactId() + "&type=c"), 
 														  generateHyperlink("RemoveContact", "delete", "?id=" + contact.getContactId()));
 
 				System.out.println();
@@ -565,7 +565,7 @@ public class ServerUtils {
 															 entreprise.getLastName(), 
 															 contactGroup.getGroupName(),
 															 generateHyperlink("showFullEntreprise", "Show more...", "?id=" + entreprise.getContactId()), 
-															 generateHyperlink("ShowUpdateForm", "update","?id=" + entreprise.getContactId()), 
+															 generateHyperlink("ShowUpdateForm", "update","?id=" + entreprise.getContactId() + "&type=e"), 
 															 generateHyperlink("RemoveEntreprise", "delete","?id=" + entreprise.getContactId()));
 				System.out.println();
 			}
