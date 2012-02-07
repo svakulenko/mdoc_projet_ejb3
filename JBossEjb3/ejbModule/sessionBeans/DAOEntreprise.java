@@ -161,7 +161,7 @@ public class DAOEntreprise implements IDAOEntreprise {
 				+ " AND phonenumber.phoneKind LIKE :phoneKind"
 				+ " AND phonenumber.phoneNumber LIKE :phoneNumber"
 				+ " AND contactgroup.groupName LIKE :groupName"
-//				+ " AND entreprise.numSiret LIKE :numSiret"
+				+ " AND entreprise.numSiret LIKE :numSiret"
 				;
 		
 		
@@ -179,7 +179,7 @@ public class DAOEntreprise implements IDAOEntreprise {
 		q.setParameter("phoneNumber", phoneNumber + "%");
 		q.setParameter("groupName", group + "%");
 		
-//		q.setParameter("numSiret", sir );
+		q.setParameter("numSiret", numSiret + "%" );
 
 		
 				

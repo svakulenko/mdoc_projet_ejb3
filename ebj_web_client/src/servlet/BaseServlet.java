@@ -29,6 +29,22 @@ public class BaseServlet extends HttpServlet {
 	@EJB(name = "DAOEntrepriseBean")
 	protected IDAOEntreprise daoEntreprise;
 	
+	public String checkInput(String fn, String ln, String em, String ns){
+		String rvalue = null;
+		
+		if (fn == null || fn.equals(""))
+			rvalue = "First Name";
+		else if (ln == null || ln.equals(""))
+			rvalue = "Last Name";
+		else if (em == null || em.equals(""))
+			rvalue = "Email";
+		else if ((ns == null || ns.equals("")) && !ns.equals("skip"))
+			rvalue = "numSiret";
+		
+		return rvalue;
+	}
+	
+	
 	protected String getHeader(String header){
 		
 		return new T_jspHeader().generate(header);
