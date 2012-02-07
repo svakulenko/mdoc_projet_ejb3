@@ -15,7 +15,7 @@ public class GestionContactBeanEntity implements GestionContactRemote {
 	public String coucouContact(String nomContact) {
 		return "Hello, "+nomContact;
 	}
-	@Override
+
 	  public void addContact(String fname, String lname, String email) {
 	      ContactSimple contact=new ContactSimple();
 	      contact.setFirstName(fname);
@@ -24,7 +24,7 @@ public class GestionContactBeanEntity implements GestionContactRemote {
 		  em.persist(contact);
 	   }
 
-	@Override
+
 	   public String findContactNameById(long id) {
 	      ContactSimple contact=em.find(ContactSimple.class, id);
 	      return contact.getLastName() +", "+contact.getFirstName();

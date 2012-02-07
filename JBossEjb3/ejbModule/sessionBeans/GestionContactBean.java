@@ -10,13 +10,13 @@ public class GestionContactBean implements GestionContactRemote {
 		return "Coucou, "+nomContact;
 	}
 
-	@Override
+
 	public void addContact(String fname, String lname, String email) {
 		
 		
 	}
 
-	@Override
+
 	public String findContactNameById(long id) {
 		return "";
 	}

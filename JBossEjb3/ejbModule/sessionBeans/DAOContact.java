@@ -41,13 +41,13 @@ public class DAOContact implements IDAOContact {
 		em.persist(contact);
 	}
 
-	@Override
+
 	public String findContactNameById(long id) {
 		return "";
 	}
 
 	// @Interceptors(ContactAspect.class)
-	@Override
+	
 	public String addContact(String firstName, String lastName, String email,
 			String street, String city, String zip, String country,
 			String phoneKind, String phoneNumber, String group) {
@@ -102,7 +102,7 @@ public class DAOContact implements IDAOContact {
 		return ServerUtils.opFait;
 	}
 
-	@Override
+
 	public String addContact(String firstName, String lastName) {
 		// TODO Auto-generated method stub
 		return null;
@@ -140,7 +140,7 @@ public class DAOContact implements IDAOContact {
 
 		return rvalue;
 	}
-	@Override
+
 	public String updateContact(long id, String firstName, String lastName,
 			String email, String street, String city, String zip,
 			String country, String phoneKind, String phoneNumber) {
@@ -190,7 +190,7 @@ public class DAOContact implements IDAOContact {
 		return rvalue;
 	}
 
-	@Override
+
 	public String searchContactSimple(String id) {
 		StringBuffer requeteS = new StringBuffer();
 		requeteS.append("from Contact contact")
@@ -224,7 +224,7 @@ public class DAOContact implements IDAOContact {
 		return rvalue;
 	}
 
-	@Override
+
 	public String searchContact(long id, String firstName, String lastName,
 			String email, String street, String city, String zip,
 			String country, String phoneKind, String phoneNumber,
@@ -280,7 +280,7 @@ public class DAOContact implements IDAOContact {
 		return rvalue;
 	}
 
-	@Override
+
 	public String deleteContact(long id, String firstName, String lastName,
 			String email, String street, String city, String zip,
 			String country, String phoneKind, String phoneNumber,
@@ -332,7 +332,7 @@ public class DAOContact implements IDAOContact {
 		return ServerUtils.opTableRemoved;
 	}
 
-	@Override
+
 	public String deleteContact(long id) 
 	{
 
@@ -360,7 +360,7 @@ public class DAOContact implements IDAOContact {
 	}
 
 	@SuppressWarnings("rawtypes")
-	@Override
+
 	public String getAllContacts() {
 		StringBuffer requeteS = new StringBuffer();
 		requeteS.append("from Contact contact")
@@ -405,7 +405,7 @@ public class DAOContact implements IDAOContact {
 		return ServerUtils.opTableRemoved;
 	}
 
-	@Override
+
 	public String updateContact(long id) {
 		// TODO Auto-generated method stub
 		return null;

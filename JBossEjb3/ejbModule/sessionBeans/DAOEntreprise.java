@@ -26,7 +26,7 @@ public class DAOEntreprise implements IDAOEntreprise {
 	@PersistenceContext
 	EntityManager em;
 
-	@Override
+
 	public String addEntreprise(String firstName, String lastName,
 			String email, String street, String city, String zip,
 			String country, String phoneKind, String phoneNumber,
@@ -79,13 +79,13 @@ public class DAOEntreprise implements IDAOEntreprise {
 		return rvalue;
 	}
 
-	@Override
+
 	public String searchEntreprise(long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
+
 	public String deleteEntreprise(long id) {
 		// TODO Auto-generated method stub
 		String req = "from Entreprise entreprise where id = " + id;
@@ -187,7 +187,7 @@ public class DAOEntreprise implements IDAOEntreprise {
 	}
 	
 	
-	@Override
+
 	public String getAllEntreprise() {
 		// TODO Auto-generated method stub
 		StringBuffer requeteS = new StringBuffer();
@@ -211,7 +211,7 @@ public class DAOEntreprise implements IDAOEntreprise {
 		return rvalue;
 	}
 
-	@Override
+
 	public String searchEntreprise(long id, String firstName, String lastName,
 			String email, String street, String city, String zip,
 			String country, String phoneKind, String phoneNumber,
@@ -267,7 +267,7 @@ public class DAOEntreprise implements IDAOEntreprise {
 		return rvalue;
 	}
 
-	@Override
+
 	public String deleteEntreprise(long id, String firstName, String lastName,
 			String email, String street, String city, String zip,
 			String country, String phoneKind, String phoneNumber,
@@ -276,7 +276,7 @@ public class DAOEntreprise implements IDAOEntreprise {
 		return null;
 	}
 
-	@Override
+
 	public String searchContactSimple(String id) {
 		StringBuffer requeteS = new StringBuffer();
 		requeteS.append("from Entreprise entreprise")
@@ -311,7 +311,7 @@ public class DAOEntreprise implements IDAOEntreprise {
 	}
 	
 
-	@Override
+
 	public String updateEntreprise(long id, String firstName, String lastName,
 			String email, String street, String city, String zip,
 			String country, String phoneKind, String phoneNumber, String numSiret) {

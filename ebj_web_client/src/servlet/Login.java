@@ -72,7 +72,7 @@ public class Login extends HttpServlet {
 		String[] errorPage = {"indexPage", getServletContext().getContextPath() + "/index.html"};
 		String[] successPage = {"acceuil", getServletContext().getContextPath() + "/menuMainPage"};
 		
-		if (loginName.isEmpty()| !loginName.equals(password) )
+		if (loginName.equals("")| !loginName.equals(password) )
 			path = "/loginError.jsp" + ServerUtils.getNewParameter(errorPage[0],errorPage[1]);
 		else
 			path = "/loginSuccess.jsp" + ServerUtils.getNewParameter(successPage[0],successPage[1]);
