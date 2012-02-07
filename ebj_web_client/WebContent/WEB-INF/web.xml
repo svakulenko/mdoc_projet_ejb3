@@ -179,4 +179,14 @@
     <servlet-name>showFullEntreprise</servlet-name>
     <url-pattern>/showFullEntreprise</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ResetToDefault</display-name>
+    <servlet-name>ResetToDefault</servlet-name>
+    <servlet-class>servlet.ResetToDefault</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ResetToDefault</servlet-name>
+    <url-pattern>/ResetToDefault</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -99,7 +99,7 @@ public class DAOContact implements IDAOContact {
 		// em.persist(phone);
 		// em.persist(contactGroup);
 
-		return "success";
+		return ServerUtils.opFait;
 	}
 
 	@Override

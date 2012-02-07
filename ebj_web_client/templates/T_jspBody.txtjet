@@ -23,6 +23,7 @@ imports = ""%>
 <a href="updateContact.jsp">update contact</a><br>
 <a href="ClearTable">clear table</a><br>
 <a href="ShowAllContact">showTable</a><br>
+<a href="ResetToDefault">Reset to default</a><br>
   </div>
   
   <div class="mainBody" style="overflow:auto">

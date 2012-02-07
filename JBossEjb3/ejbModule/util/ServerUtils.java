@@ -77,10 +77,10 @@ public class ServerUtils {
 		generatedHtml += "</tr>";
 		return generatedHtml;
 	}
-	static public String generateSimpleEntrepriseRow(String siret, String firstName, String lastName, String showMore,String update, String delete) {
+	static public String generateSimpleEntrepriseRow( String firstName, String lastName, String showMore,String update, String delete) {
 		String generatedHtml = "";
 		generatedHtml += "<tr>";
-		generatedHtml += "<td style=\"width: 50px;\"  >" + siret + "</td>";
+
 		generatedHtml += "<td style=\"width: 100px;\" >" + firstName + "</td>";
 		generatedHtml += "<td style=\"width: 100px;\" >" + lastName + "</td>";
 		generatedHtml += "<td style=\"width: 100px;\" >" + showMore + "</td>";
@@ -467,7 +467,7 @@ public class ServerUtils {
 				generatedHtml += generateSimpleContactRow(
 														  contact.getFirstName(), 
 														  contact.getLastName(), 
-														  generateHyperlink("showFullContact.jsp", "Show more...", "?id=" + contact.getContactId()), 
+														  generateHyperlink("showFullContact", "Show more...", "?id=" + contact.getContactId()), 
 														  generateHyperlink("updateContact.jsp", "update", urlParams.toString()), 
 														  generateHyperlink("RemoveContact", "delete", "?id=" + contact.getContactId()));
 
@@ -495,7 +495,7 @@ public class ServerUtils {
 			generatedHtml += "<table><tbody>";
 			//generatedHtml += "<TABLE BORDER=\"1\">";
 			generatedHtml += "<CAPTION><B>" + header + "</B> </CAPTION>";
-			generatedHtml += generateSimpleEntrepriseRow("<B>SiretNumber</B>", "<B>First Name</B>", "<B>Last Name</B>", "<B>Show more...</B>", "<B>Update</B>", "<B>Delete</B>");
+			generatedHtml += generateSimpleEntrepriseRow( "<B>First Name</B>", "<B>Last Name</B>", "<B>Show more...</B>", "<B>Update</B>", "<B>Delete</B>");
 			for (Object[] objs: list)
 			{
 				Entreprise entreprise = (Entreprise) objs[0];
@@ -518,10 +518,10 @@ public class ServerUtils {
 						 
 				;
 				generatedHtml += generateSimpleEntrepriseRow(
-															 "" + entreprise.getNumSiret(), 
+															
 															 entreprise.getFirstName(), 
 															 entreprise.getLastName(), 
-															 generateHyperlink("showFullContact.jsp", "Show more...", "?id=" + entreprise.getContactId()), 
+															 generateHyperlink("showFullEntreprise", "Show more...", "?id=" + entreprise.getContactId()), 
 															 generateHyperlink("updateContact.jsp", "update",urlParams.toString()), 
 															 generateHyperlink("RemoveEntreprise", "delete","?id=" + entreprise.getContactId()));
 				System.out.println();
