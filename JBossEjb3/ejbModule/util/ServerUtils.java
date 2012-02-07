@@ -201,70 +201,96 @@ public class ServerUtils {
 		
 		generatedHtml += "<CAPTION><B>" + "Detailled Information:" + "</B> </CAPTION>";
 
+//		if (c instanceof Entreprise) {
+//			Entreprise e = (Entreprise) c;
+//			if (e.getNumSiret() != null ){
+//				generatedHtml += "<tr>";
+//				generatedHtml += "<td style=\"width: 100px;\" >" + "Siret" + "</td>";
+//				generatedHtml += "<td valign=\"top\">" + e.getNumSiret() + "</td>";
+//				generatedHtml += "</tr>";
+//			}
+//			
+//		}
 		
 		if (c != null)
 		{
+			if (c.getFirstName() != null ){
 			generatedHtml += "<tr>";
 			generatedHtml += "<td style=\"width: 100px;\" >" + "First Name" + "</td>";
 			generatedHtml += "<td valign=\"top\">" + c.getFirstName() + "</td>";
 			generatedHtml += "</tr>";
+			}
 			
+			if (c.getLastName() != null ){
 			generatedHtml += "<tr>";
 			generatedHtml += "<td style=\"width: 100px;\" >" + "Last Name" + "</td>";
 			generatedHtml += "<td valign=\"top\">" + c.getLastName() + "</td>";
 			generatedHtml += "</tr>";
+			}
 			
-			
+			if (c.getEmail() != null ){
 			generatedHtml += "<tr>";
 			generatedHtml += "<td style=\"width: 100px;\" >" + "Email" + "</td>";
 			generatedHtml += "<td valign=\"top\">" + c.getEmail() + "</td>";
 			generatedHtml += "</tr>";
+			}
 		}
 		if (a != null)
 		{
+			if (a.getStreet() != null ){
 			generatedHtml += "<tr>";
 			generatedHtml += "<td style=\"width: 100px;\" >" + "Street" + "</td>";
 			generatedHtml += "<td valign=\"top\">" + a.getStreet() + "</td>";
 			generatedHtml += "</tr>";
+			}
 			
+			if (a.getCity() != null ){
 			generatedHtml += "<tr>";
 			generatedHtml += "<td style=\"width: 100px;\" >" + "City" + "</td>";
 			generatedHtml += "<td valign=\"top\">" + a.getCity() + "</td>";
 			generatedHtml += "</tr>";
-	
+			}
+			
+			if (a.getZip() != null ){
 			generatedHtml += "<tr>";
 			generatedHtml += "<td style=\"width: 100px;\" >" + "Zip" + "</td>";
 			generatedHtml += "<td valign=\"top\">" + a.getZip() + "</td>";
 			generatedHtml += "</tr>";
-
+			}
+			
+			if (a.getCountry() != null ){
 			generatedHtml += "<tr>";
 			generatedHtml += "<td style=\"width: 100px;\" >" + "Country" + "</td>";
 			generatedHtml += "<td valign=\"top\">" + a.getCountry()+ "</td>";
 			generatedHtml += "</tr>";
-			
+			}
 			
 		}
 		if (p != null)
 		{
-			
+			if (p.getPhoneKind() != null ){
 			generatedHtml += "<tr>";
 			generatedHtml += "<td style=\"width: 100px;\" >" + "Phone Kind" + "</td>";
 			generatedHtml += "<td valign=\"top\">" + p.getPhoneKind() + "</td>";
 			generatedHtml += "</tr>";
+			}
 			
+			if (p.getPhoneNumber() != null ){
 			generatedHtml += "<tr>";
 			generatedHtml += "<td style=\"width: 100px;\" >" + "Phone Number" + "</td>";
 			generatedHtml += "<td valign=\"top\">" + p.getPhoneNumber() + "</td>";
 			generatedHtml += "</tr>";		
-			
+			}
 			
 		}
 		if (cg != null)
 		{
+			if (cg.getGroupName() != null ){
 			generatedHtml += "<tr>";
 			generatedHtml += "<td style=\"width: 100px;\" >" + "Group" + "</td>";
 			generatedHtml += "<td valign=\"top\">" + cg.getGroupName() + "</td>";
-			generatedHtml += "</tr>";	
+			generatedHtml += "</tr>";
+			}
 		}
 //		generatedHtml += "</tr>";
 		
@@ -272,95 +298,7 @@ public class ServerUtils {
 		System.out.println("gen html" + generatedHtml);
 		return generatedHtml;
 	}
-	static public String generateFullEntrepriseRow(Entreprise c,Address a, PhoneNumber p, ContactGroup cg)
-	{
 
-		
-		String generatedHtml = "";
-
-		generatedHtml += "<br><br>";
-		generatedHtml += "<table><tbody>";
-		
-		generatedHtml += "<CAPTION><B>" + "Detailled Information:" + "</B> </CAPTION>";
-
-		
-		if (c != null)
-		{
-			generatedHtml += "<tr>";
-			generatedHtml += "<td style=\"width: 100px;\" >" + "Siret" + "</td>";
-			generatedHtml += "<td valign=\"top\">" + c.getNumSiret() + "</td>";
-			generatedHtml += "</tr>";
-			
-			generatedHtml += "<tr>";
-			generatedHtml += "<td style=\"width: 100px;\" >" + "First Name" + "</td>";
-			generatedHtml += "<td valign=\"top\">" + c.getFirstName() + "</td>";
-			generatedHtml += "</tr>";
-			
-			generatedHtml += "<tr>";
-			generatedHtml += "<td style=\"width: 100px;\" >" + "Last Name" + "</td>";
-			generatedHtml += "<td valign=\"top\">" + c.getLastName() + "</td>";
-			generatedHtml += "</tr>";
-			
-			
-			generatedHtml += "<tr>";
-			generatedHtml += "<td style=\"width: 100px;\" >" + "Email" + "</td>";
-			generatedHtml += "<td valign=\"top\">" + c.getEmail() + "</td>";
-			generatedHtml += "</tr>";
-			
-
-		}
-		if (a != null)
-		{
-			generatedHtml += "<tr>";
-			generatedHtml += "<td style=\"width: 100px;\" >" + "Street" + "</td>";
-			generatedHtml += "<td valign=\"top\">" + a.getStreet() + "</td>";
-			generatedHtml += "</tr>";
-			
-			generatedHtml += "<tr>";
-			generatedHtml += "<td style=\"width: 100px;\" >" + "City" + "</td>";
-			generatedHtml += "<td valign=\"top\">" + a.getCity() + "</td>";
-			generatedHtml += "</tr>";
-	
-			generatedHtml += "<tr>";
-			generatedHtml += "<td style=\"width: 100px;\" >" + "Zip" + "</td>";
-			generatedHtml += "<td valign=\"top\">" + a.getZip() + "</td>";
-			generatedHtml += "</tr>";
-
-			generatedHtml += "<tr>";
-			generatedHtml += "<td style=\"width: 100px;\" >" + "Country" + "</td>";
-			generatedHtml += "<td valign=\"top\">" + a.getCountry()+ "</td>";
-			generatedHtml += "</tr>";
-			
-			
-		}
-		if (p != null)
-		{
-			
-			generatedHtml += "<tr>";
-			generatedHtml += "<td style=\"width: 100px;\" >" + "Phone Kind" + "</td>";
-			generatedHtml += "<td valign=\"top\">" + p.getPhoneKind() + "</td>";
-			generatedHtml += "</tr>";
-			
-			generatedHtml += "<tr>";
-			generatedHtml += "<td style=\"width: 100px;\" >" + "Phone Number" + "</td>";
-			generatedHtml += "<td valign=\"top\">" + p.getPhoneNumber() + "</td>";
-			generatedHtml += "</tr>";		
-			
-			
-		}
-		if (cg != null)
-		{
-			generatedHtml += "<tr>";
-			generatedHtml += "<td style=\"width: 100px;\" >" + "Group" + "</td>";
-			generatedHtml += "<td valign=\"top\">" + cg.getGroupName() + "</td>";
-			generatedHtml += "</tr>";	
-		}
-//		generatedHtml += "</tr>";
-		
-		generatedHtml += "</tbody></table>";
-		System.out.println("gen html" + generatedHtml);
-		return generatedHtml;
-	}
 	
 	static public String generateContactRow(Contact c,Address a, PhoneNumber p, ContactGroup cg) 
 	{
